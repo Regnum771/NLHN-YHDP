@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<title>D1 · Câu hỏi thích ứng — vùng vừa sức</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&amp;family=Literata:opsz,wght@7..72,400;7..72,500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#1E7A4F;text-decoration:none}a:hover{color:#17603E}
+</style>
+</helmet>
+<div style="width: 390px; height: 1440px; box-sizing: border-box; background: #F5F6F3; font-family: 'Be Vietnam Pro', system-ui, sans-serif; color: #15201C; display: flex; flex-direction: column; overflow: hidden">
+
+<header style="flex-shrink: 0; padding: 8px 12px 10px 12px; background: #FFFFFF; border-bottom: 1px solid #DCE1DD; display: flex; align-items: center; gap: 8px">
+<a href="Main.dc.html" aria-label="Thoát phiên" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; color: #15201C"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M6 6l12 12"></path><path d="M18 6L6 18"></path></svg></a>
+<div style="flex-grow: 1; display: flex; flex-direction: column">
+<span style="font-size: 16px; font-weight: 600">Luyện điểm yếu</span>
+<span style="font-size: 12px; color: #58635F">Mẫu số trong các tỷ lệ</span>
+</div>
+<span style="font-size: 13px; color: #58635F; padding-right: 8px">{{ qLabel }}</span>
+</header>
+
+<main style="flex-grow: 1; overflow-y: auto; padding: 14px 16px 16px 16px; display: flex; flex-direction: column; gap: 14px">
+
+<section aria-labelledby="track-title" style="background: #FFFFFF; border: 1px solid #DCE1DD; border-radius: 18px; padding: 14px 14px 12px 14px; display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 8px">
+<h2 id="track-title" style="margin: 0; font-size: 14px; font-weight: 700">Độ khó đang bám theo bạn</h2>
+<span style="display: flex; gap: 10px; font-size: 11px; color: #3B4541">
+<span style="display: flex; align-items: center; gap: 4px"><span style="width: 8px; height: 8px; border-radius: 4px; background: #1E7A4F"></span>Đúng</span>
+<span style="display: flex; align-items: center; gap: 4px"><span style="width: 8px; height: 8px; border-radius: 4px; background: #B4530A"></span>Sai</span>
+</span>
+</div>
+<div role="img" aria-label="{{ trackAria }}" style="display: grid; grid-template-columns: 64px repeat(6, minmax(0, 1fr)); row-gap: 2px">
+<sc-for list="{{ rows }}" as="r" hint-placeholder-count="3">
+<span style="font-size: 11px; color: #58635F; height: 26px; display: flex; align-items: center">{{ r.label }}</span>
+<sc-for list="{{ r.cells }}" as="c" hint-placeholder-count="6">
+<span style="{{ c.cell }}"><span style="{{ c.dot }}"></span></span>
+</sc-for>
+</sc-for>
+<span></span>
+<sc-for list="{{ qnums }}" as="n" hint-placeholder-count="6">
+<span style="{{ n.style }}">{{ n.label }}</span>
+</sc-for>
+</div>
+<span style="font-size: 12px; line-height: 1.5; color: #3B4541; border-top: 1px solid #ECEFEC; padding-top: 10px">Sai → hạ một mức, cùng dạng. Đúng 2 câu liền → tăng một mức.</span>
+</section>
+
+<section aria-labelledby="zpd-title" style="display: flex; flex-direction: column; gap: 8px">
+<div style="display: flex; justify-content: space-between; align-items: baseline">
+<h2 id="zpd-title" style="margin: 0; font-size: 13px; font-weight: 600; color: #3B4541">Câu này nằm ở đâu với bạn</h2>
+<span style="font-size: 12px; color: #17603E; font-weight: 600">Vừa sức</span>
+</div>
+<div role="img" aria-label="Câu hỏi nằm trong vùng vừa sức: đủ khó để học, không quá khó để nản" style="position: relative; height: 40px">
+<div style="position: absolute; left: 0; right: 0; top: 14px; height: 12px; display: grid; grid-template-columns: 3fr 4fr 3fr; gap: 3px">
+<span style="border-radius: 6px 0 0 6px; background: #E6EAE7"></span>
+<span style="background: #A6DDBF"></span>
+<span style="border-radius: 0 6px 6px 0; background: #E6EAE7"></span>
+</div>
+<span style="{{ zpdMarker }}"></span>
+</div>
+<div style="display: grid; grid-template-columns: 3fr 4fr 3fr; font-size: 11px; color: #58635F; margin-top: -6px">
+<span>Quá dễ</span><span style="text-align: center; color: #17603E; font-weight: 600">Vùng vừa sức</span><span style="text-align: right">Quá khó</span>
+</div>
+<span style="font-size: 12px; line-height: 1.5; color: #58635F">Chọn từ 214 câu đã duyệt của năng lực 2.3.1 · bạn chưa gặp câu này trong 14 ngày.</span>
+</section>
+
+<article style="background: #FFFFFF; border: 1px solid #DCE1DD; border-radius: 18px; padding: 16px; display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; flex-wrap: wrap; gap: 6px">
+<span style="font-size: 12px; font-weight: 600; color: #15201C; background: #ECEFEC; border-radius: 999px; padding: 4px 10px">Vận dụng</span>
+<span style="font-size: 12px; color: #3B4541; background: #ECEFEC; border-radius: 999px; padding: 4px 10px">Năng lực 2.3.1</span>
+<span style="font-size: 12px; color: #17603E; background: #E3F2E9; border-radius: 999px; padding: 4px 10px; display: flex; align-items: center; gap: 4px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>Chuyên gia đã duyệt</span>
+</div>
+<h1 style="margin: 0; font-size: 16px; font-weight: 600; line-height: 1.55">Một huyện có 50.000 dân. Đầu năm có 300 người đang điều trị lao; trong năm ghi nhận thêm 200 ca lao mới. Tỷ lệ mới mắc lao trong năm là bao nhiêu?</h1>
+<div role="radiogroup" aria-label="Phương án" style="display: flex; flex-direction: column; gap: 8px">
+<sc-for list="{{ options }}" as="o" hint-placeholder-count="4">
+<button type="button" role="radio" aria-checked="{{ o.checked }}" onClick="{{ o.pick }}" style="{{ o.style }}">
+<span style="{{ o.badge }}">{{ o.letter }}</span>
+<span style="flex-grow: 1; text-align: left">{{ o.text }}</span>
+<span style="font-size: 13px; font-weight: 600">{{ o.mark }}</span>
+</button>
+</sc-for>
+</div>
+<sc-if value="{{ answered }}" hint-placeholder-val="{{ true }}">
+<div style="display: flex; flex-direction: column; gap: 8px; border-top: 1px solid #ECEFEC; padding-top: 12px">
+<span style="{{ verdictStyle }}">{{ verdict }}</span>
+<p style="margin: 0; font-size: 14px; line-height: 1.6">Người đang mắc lao không còn nguy cơ mắc mới, nên mẫu số là 50.000 − 300 = 49.700. Tỷ lệ mới mắc ≈ 4,0 trên 1.000 dân.</p>
+<button type="button" style="align-self: flex-start; min-height: 44px; border: 0; background: #E3F2E9; color: #17603E; border-radius: 12px; padding: 0 12px; font-family: inherit; font-size: 13px; font-weight: 500; cursor: pointer">Giáo trình Dịch tễ học, tr. 61</button>
+</div>
+</sc-if>
+</article>
+
+<sc-if value="{{ answered }}" hint-placeholder-val="{{ true }}">
+<section aria-live="polite" aria-labelledby="adapt-title" style="background: #15201C; color: #FFFFFF; border-radius: 18px; padding: 16px; display: flex; flex-direction: column; gap: 12px">
+<span id="adapt-title" style="font-size: 12px; font-weight: 600; color: #A6DDBF; text-transform: uppercase; letter-spacing: 0.06em">Hệ thống vừa điều chỉnh</span>
+<sc-for list="{{ changes }}" as="ch" hint-placeholder-count="3">
+<div style="display: flex; gap: 12px; align-items: flex-start">
+<span style="width: 34px; height: 34px; flex-shrink: 0; border-radius: 10px; background: #24302B; color: #A6DDBF; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 700">{{ ch.icon }}</span>
+<span style="display: flex; flex-direction: column; gap: 2px; font-size: 14px; line-height: 1.45">
+<strong style="font-weight: 600">{{ ch.title }}</strong>
+<span style="font-size: 13px; color: #C9D3CF">{{ ch.sub }}</span>
+</span>
+</div>
+</sc-for>
+</section>
+</sc-if>
+</main>
+
+<footer style="flex-shrink: 0; padding: 12px 16px 20px 16px; background: #FFFFFF; border-top: 1px solid #DCE1DD; display: flex; gap: 10px">
+<button type="button" aria-label="Báo lỗi câu hỏi" style="width: 50px; height: 50px; flex-shrink: 0; border: 1px solid #C9D0CC; background: #FFFFFF; border-radius: 14px; color: #3B4541; display: flex; align-items: center; justify-content: center; cursor: pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4"></path><path d="M5 4h11l-2 4 2 4H5"></path></svg></button>
+<sc-if value="{{ notLast }}" hint-placeholder-val="{{ true }}">
+<button type="button" onClick="{{ next }}" aria-disabled="{{ notAnsweredAttr }}" style="{{ nextStyle }}">Câu tiếp</button>
+</sc-if>
+<sc-if value="{{ last }}" hint-placeholder-val="{{ false }}">
+<a href="SmartD_Adapting.dc.html" style="flex-grow: 1; height: 50px; border-radius: 14px; background: #1E7A4F; color: #FFFFFF; font-size: 15px; font-weight: 600; display: flex; align-items: center; justify-content: center">Hoàn thành bài luyện</a>
+</sc-if>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":1440}}'>
+class Component extends DCLogic {
+constructor(props) {
+super(props);
+this.state = { picked: 'b', q: 4, hist: [[2, true], [2, true], [3, false], [2, false]] };
+}
+renderVals() {
+var self = this;
+var picked = this.state.picked;
+var answered = picked !== null;
+var right = picked === 'a';
+var q = this.state.q;
+var hist = this.state.hist;
+var curLevel = hist[q - 1] ? hist[q - 1][0] : 2;
+var opts = [
+{ id: 'a', letter: 'A', text: '4,0 trên 1.000 dân' },
+{ id: 'b', letter: 'B', text: '10,0 trên 1.000 dân' },
+{ id: 'c', letter: 'C', text: '6,0 trên 1.000 dân' },
+{ id: 'd', letter: 'D', text: '4,0 trên 100 dân' }
+];
+var base = 'display: flex; align-items: center; gap: 12px; width: 100%; min-height: 52px; box-sizing: border-box; padding: 8px 12px; border-radius: 14px; font-family: inherit; font-size: 15px; line-height: 1.4; color: #15201C; cursor: pointer; ';
+var options = opts.map(function (o) {
+var s = base + 'background: #FFFFFF; border: 1px solid #DCE1DD;';
+var b = 'background: #ECEFEC; color: #15201C;';
+var mark = '';
+if (answered && o.id === 'a') { s = base + 'background: #E3F2E9; border: 2px solid #1E7A4F;'; b = 'background: #1E7A4F; color: #FFFFFF;'; mark = 'Đúng'; }
+else if (answered && o.id === picked) { s = base + 'background: #FDF3E4; border: 2px solid #B4530A;'; b = 'background: #B4530A; color: #FFFFFF;'; mark = 'Bạn chọn'; }
+return {
+letter: o.letter, text: o.text, mark: mark, style: s,
+checked: o.id === picked ? 'true' : 'false',
+badge: 'width: 28px; height: 28px; flex-shrink: 0; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600; ' + b,
+pick: function () {
+if (self.state.picked !== null) return;
+var h = self.state.hist.slice();
+h[self.state.q - 1] = [h[self.state.q - 1][0], o.id === 'a'];
+self.setState({ picked: o.id, hist: h });
+}
+};
+});
+var names = { 3: 'Khó', 2: 'Trung bình', 1: 'Dễ' };
+var rows = [3, 2, 1].map(function (lv) {
+var cells = [];
+for (var i = 0; i < 6; i++) {
+var h = hist[i];
+var here = h && h[0] === lv;
+var isCur = i === q - 1;
+var done = h && (i < q - 1 || (isCur && answered));
+var dot = 'display: block; border-radius: 50%; ';
+if (here && done) dot += 'width: 12px; height: 12px; background: ' + (h[1] ? '#1E7A4F' : '#B4530A') + ';';
+else if (here && isCur) dot += 'width: 12px; height: 12px; box-sizing: border-box; border: 3px solid #15201C; background: #FFFFFF;';
+else dot += 'width: 0; height: 0;';
+cells.push({
+cell: 'height: 26px; display: flex; align-items: center; justify-content: center; border-top: 1px dashed #E6EAE7;' + (isCur ? ' background: #F5F6F3;' : ''),
+dot: dot
+});
+}
+return { label: names[lv], cells: cells };
+});
+var qnums = [];
+for (var k = 1; k <= 6; k++) qnums.push({ label: 'C' + k, style: 'font-size: 11px; text-align: center; padding-top: 4px; ' + (k === q ? 'color: #15201C; font-weight: 700;' : 'color: #58635F;') });
+var pos = curLevel === 3 ? 66 : (curLevel === 2 ? 52 : 36);
+var changes = right ? [
+{ icon: '↑', title: 'Câu tiếp: khó hơn một mức', sub: 'Bài toán 2 bước, cùng năng lực 2.3.1.' },
+{ icon: '✓', title: 'Năng lực 2.3.1: thêm 1 câu đúng ở mức Vận dụng', sub: 'Thẻ “Mẫu số của tỷ lệ mới mắc” được giãn sang 7 ngày.' }
+] : [
+{ icon: '↓', title: 'Câu tiếp: cùng dạng, dễ hơn một mức', sub: 'Tách bước “chọn mẫu số” ra một câu riêng.' },
+{ icon: '+', title: 'Thẻ ôn mới: “Mẫu số của tỷ lệ mới mắc”', sub: 'Tạo từ lựa chọn B của bạn · ôn lần đầu ngày mai.' },
+{ icon: '★', title: 'Mẫu số trong các tỷ lệ lên đầu ưu tiên', sub: 'Phiên ngày mai mở đầu bằng 3 câu dạng này.' }
+];
+return {
+qLabel: 'Câu ' + q + '/6',
+trackAria: 'Độ khó các câu: câu 1 và 2 mức trung bình, đúng; câu 3 mức khó, sai; câu 4 hạ về trung bình',
+rows: rows,
+qnums: qnums,
+zpdMarker: 'position: absolute; top: 4px; left: calc(' + pos + '% - 2px); width: 4px; height: 32px; border-radius: 2px; background: #15201C;',
+options: options,
+answered: answered,
+verdict: right ? 'Chính xác' : 'Chưa đúng — đáp án là A',
+verdictStyle: 'font-size: 15px; font-weight: 700; color: ' + (right ? '#17603E' : '#8F4207'),
+changes: changes,
+notAnsweredAttr: answered ? 'false' : 'true',
+last: q >= 6 && answered,
+notLast: !(q >= 6 && answered),
+nextStyle: 'flex-grow: 1; height: 50px; border: 0; border-radius: 14px; font-family: inherit; font-size: 15px; font-weight: 600; cursor: pointer; ' + (answered ? 'background: #1E7A4F; color: #FFFFFF;' : 'background: #DCE1DD; color: #58635F;'),
+next: function () {
+if (self.state.picked === null || self.state.q >= 6) return;
+var h = self.state.hist.slice();
+var cur = h[self.state.q - 1];
+var lv = cur[1] ? Math.min(3, cur[0] + (h[self.state.q - 2] && h[self.state.q - 2][1] ? 1 : 0)) : Math.max(1, cur[0] - 1);
+h[self.state.q] = [lv, null];
+self.setState({ picked: null, q: self.state.q + 1, hist: h });
+}
+};
+}
+}
+</script>
+</body>
+</html>

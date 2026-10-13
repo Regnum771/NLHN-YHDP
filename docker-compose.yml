@@ -1,0 +1,18 @@
+services:
+  db:
+    image: pgvector/pgvector:pg16
+    environment:
+      POSTGRES_USER: demo
+      POSTGRES_PASSWORD: demo
+      POSTGRES_DB: yhdp_demo
+    ports:
+      - "5433:5432"
+    volumes:
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+
+  # The API contract's examples on port 8010: docker compose --profile mock up --build mock
+  mock:
+    profiles: ["mock"]
+    build: ./backend
+    ports:
+      - "8010:8000"

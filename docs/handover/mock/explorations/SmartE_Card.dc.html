@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<title>E2 · Ôn thẻ — đường ghi nhớ trong thẻ</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&amp;family=Literata:opsz,wght@7..72,400;7..72,500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#1E7A4F;text-decoration:none}a:hover{color:#17603E}
+</style>
+</helmet>
+<div style="width: 390px; height: 920px; box-sizing: border-box; background: #F5F6F3; font-family: 'Be Vietnam Pro', system-ui, sans-serif; color: #15201C; display: flex; flex-direction: column; overflow: hidden">
+
+<header style="flex-shrink: 0; padding: 8px 12px 12px 12px; background: #FFFFFF; border-bottom: 1px solid #DCE1DD; display: flex; flex-direction: column; gap: 8px">
+<div style="display: flex; align-items: center; gap: 8px">
+<a href="ProgressRhythm.dc.html" aria-label="Thoát ôn thẻ" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; color: #15201C"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M6 6l12 12"></path><path d="M18 6L6 18"></path></svg></a>
+<span style="flex-grow: 1; font-size: 16px; font-weight: 600">Ôn thẻ</span>
+<span style="font-size: 13px; color: #58635F; padding-right: 8px">3/12 thẻ</span>
+</div>
+<span style="display: block; height: 5px; margin: 0 8px; border-radius: 3px; background: #E6EAE7; overflow: hidden"><span style="display: block; width: 25%; height: 5px; background: #1E7A4F"></span></span>
+</header>
+
+<main style="flex-grow: 1; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 12px">
+
+<article style="background: #FFFFFF; border: 1px solid #DCE1DD; border-radius: 20px; padding: 18px; display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 8px">
+<span style="font-size: 12px; color: #58635F">Tiêm chủng mở rộng</span>
+<span style="font-size: 12px; border-radius: 999px; padding: 4px 10px; background: #ECEFEC; color: #3B4541">Độ nhớ còn 90%</span>
+</div>
+<h1 style="margin: 0; font-size: 21px; font-weight: 700; line-height: 1.4">Liều vắc xin viêm gan B sơ sinh tiêm khi nào?</h1>
+<div style="display: flex; flex-direction: column; gap: 12px; border-top: 1px dashed #C9D0CC; padding-top: 14px">
+<p style="margin: 0; font-size: 17px; line-height: 1.6; font-family: 'Literata', Georgia, serif">Trong vòng 24 giờ đầu sau sinh.</p>
+
+<div style="display: flex; gap: 18px; flex-wrap: wrap">
+<button type="button" onClick="{{ toggleSrc }}" aria-expanded="{{ srcExp }}" aria-controls="src-panel" style="min-height: 44px; border: 0; background: transparent; padding: 0; font-family: inherit; font-size: 14px; font-weight: 500; color: #17603E; text-decoration: underline; text-underline-offset: 3px; cursor: pointer">Nguồn</button>
+<button type="button" onClick="{{ toggleWhy }}" aria-expanded="{{ whyExp }}" aria-controls="why-panel" style="min-height: 44px; border: 0; background: transparent; padding: 0; font-family: inherit; font-size: 14px; font-weight: 500; color: #17603E; text-decoration: underline; text-underline-offset: 3px; cursor: pointer">Vì sao ôn câu này?</button>
+<button type="button" onClick="{{ toggleChart }}" aria-expanded="{{ chartExp }}" aria-controls="chart-panel" style="min-height: 44px; border: 0; background: transparent; padding: 0; font-family: inherit; font-size: 14px; font-weight: 500; color: #17603E; text-decoration: underline; text-underline-offset: 3px; cursor: pointer">Đường ghi nhớ</button>
+</div>
+
+<sc-if value="{{ srcOpen }}" hint-placeholder-val="{{ false }}">
+<div id="src-panel" style="display: flex; flex-direction: column; gap: 6px; background: #F5F6F3; border-radius: 12px; padding: 12px">
+<span style="font-size: 12px; font-weight: 600; color: #58635F; text-transform: uppercase; letter-spacing: 0.06em">Nguồn</span>
+<a href="#source" style="font-size: 14px; font-weight: 500; color: #17603E; min-height: 32px; display: flex; align-items: center">Hướng dẫn thực hành tiêm chủng, tr. 112</a>
+</div>
+</sc-if>
+<sc-if value="{{ whyOpen }}" hint-placeholder-val="{{ false }}">
+<div id="why-panel" style="display: flex; flex-direction: column; gap: 6px; background: #F5F6F3; border-radius: 12px; padding: 12px">
+<span style="font-size: 12px; font-weight: 600; color: #58635F; text-transform: uppercase; letter-spacing: 0.06em">Vì sao ôn câu này?</span>
+<span style="font-size: 14px; line-height: 1.5; color: #3B4541">Thẻ này được tạo từ lựa chọn sai của bạn ở Đề thi thử số 4, câu 5 (08/10).</span>
+</div>
+</sc-if>
+<sc-if value="{{ chartOpen }}" hint-placeholder-val="{{ true }}">
+<div id="chart-panel" style="display: flex; flex-direction: column; gap: 8px; background: #F5F6F3; border-radius: 12px; padding: 12px 10px 8px 10px">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 8px; padding: 0 2px">
+<span style="font-size: 12px; font-weight: 600; color: #58635F; text-transform: uppercase; letter-spacing: 0.06em">Đường ghi nhớ</span>
+<span style="font-size: 12px; color: #58635F">đã ôn 2 lần</span>
+</div>
+<svg viewBox="0 0 320 96" width="100%" height="92" role="img" aria-label="{{ curveAria }}" style="display: block">
+<text x="0" y="13" fill="#58635F" font-size="10" font-family="Be Vietnam Pro, sans-serif">100%</text>
+<text x="0" y="45" fill="#58635F" font-size="10" font-family="Be Vietnam Pro, sans-serif">90%</text>
+<line x1="34" y1="42" x2="320" y2="42" stroke="#C9D0CC" stroke-width="1" stroke-dasharray="3 4"></line>
+<path d="M34 10 Q40 36 58 42 L58 10 Q70 38 92 42 L92 10 Q100 32 110 42 L110 10" fill="none" stroke="#15201C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M110 10 Q113 40 122 42" fill="none" stroke="{{ s0 }}" stroke-width="{{ w0 }}" stroke-linecap="round"></path>
+<path d="M110 10 Q126 38 170 42" fill="none" stroke="{{ s1 }}" stroke-width="{{ w1 }}" stroke-linecap="round"></path>
+<path d="M110 10 Q144 37 240 42" fill="none" stroke="{{ s2 }}" stroke-width="{{ w2 }}" stroke-linecap="round"></path>
+<path d="M110 10 Q166 35 312 42" fill="none" stroke="{{ s3 }}" stroke-width="{{ w3 }}" stroke-linecap="round"></path>
+<circle cx="122" cy="42" r="{{ r0 }}" fill="{{ s0 }}"></circle>
+<circle cx="170" cy="42" r="{{ r1 }}" fill="{{ s1 }}"></circle>
+<circle cx="240" cy="42" r="{{ r2 }}" fill="{{ s2 }}"></circle>
+<circle cx="312" cy="42" r="{{ r3 }}" fill="{{ s3 }}"></circle>
+<line x1="110" y1="4" x2="110" y2="70" stroke="#15201C" stroke-width="1" opacity="0.35"></line>
+<text x="110" y="86" fill="#15201C" font-size="10" font-weight="600" text-anchor="middle" font-family="Be Vietnam Pro, sans-serif">nay</text>
+<text x="170" y="86" fill="#58635F" font-size="10" text-anchor="middle" font-family="Be Vietnam Pro, sans-serif">1 ngày</text>
+<text x="240" y="86" fill="#58635F" font-size="10" text-anchor="middle" font-family="Be Vietnam Pro, sans-serif">3 ngày</text>
+<text x="312" y="86" fill="#58635F" font-size="10" text-anchor="end" font-family="Be Vietnam Pro, sans-serif">7 ngày</text>
+</svg>
+</div>
+</sc-if>
+</div>
+</article>
+</main>
+
+<footer style="flex-shrink: 0; background: #FFFFFF; border-top: 1px solid #DCE1DD; padding: 12px 16px 20px 16px; display: flex; flex-direction: column; gap: 8px">
+<span style="font-size: 12px; color: #58635F; text-align: center">Bạn nhớ đến đâu? Lần ôn tiếp theo được hẹn theo câu trả lời.</span>
+<div role="group" aria-label="Bạn nhớ thẻ này đến đâu?" style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px">
+<sc-for list="{{ ratings }}" as="r" hint-placeholder-count="4">
+<button type="button" onClick="{{ r.pick }}" aria-pressed="{{ r.pressed }}" style="{{ r.style }}"><span style="font-size: 15px; font-weight: 600">{{ r.label }}</span><span style="font-size: 12px; color: #58635F">{{ r.interval }}</span></button>
+</sc-for>
+</div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"chart":{"editor":"enum","options":["Mở (khi trình bày)","Thu gọn (mặc định trong app)"],"default":"Mở (khi trình bày)"},"$preview":{"width":390,"height":920}}'>
+class Component extends DCLogic {
+constructor(props) {
+super(props);
+this.state = { sel: 2, src: false, why: false, chart: null };
+}
+renderVals() {
+var self = this;
+var sel = this.state.sel;
+var chartDefault = (this.props.chart || 'Mở (khi trình bày)') !== 'Thu gọn (mặc định trong app)';
+var chartOpen = this.state.chart === null ? chartDefault : this.state.chart;
+var defs = [
+{ l: 'Quên', i: '10 phút' },
+{ l: 'Khó', i: '1 ngày' },
+{ l: 'Nhớ', i: '3 ngày' },
+{ l: 'Dễ', i: '7 ngày' }
+];
+var vals = {};
+defs.forEach(function (d, k) {
+vals['s' + k] = k === sel ? '#1E7A4F' : '#C9D0CC';
+vals['w' + k] = k === sel ? '3' : '1.5';
+vals['r' + k] = k === sel ? '5' : '3';
+});
+vals.ratings = defs.map(function (d, k) {
+return {
+label: d.l, interval: d.i,
+pressed: k === sel ? 'true' : 'false',
+style: 'min-height: 64px; border-radius: 14px; font-family: inherit; color: #15201C; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; ' + (k === sel ? 'border: 2px solid #1E7A4F; background: #E3F2E9;' : 'border: 1px solid #C9D0CC; background: #FFFFFF;'),
+pick: function () { self.setState({ sel: k }); }
+};
+});
+vals.srcOpen = this.state.src;
+vals.whyOpen = this.state.why;
+vals.chartOpen = chartOpen;
+vals.srcExp = this.state.src ? 'true' : 'false';
+vals.whyExp = this.state.why ? 'true' : 'false';
+vals.chartExp = chartOpen ? 'true' : 'false';
+vals.toggleSrc = function () { self.setState({ src: !self.state.src }); };
+vals.toggleWhy = function () { self.setState({ why: !self.state.why }); };
+vals.toggleChart = function () { self.setState({ chart: !chartOpen }); };
+vals.curveAria = 'Đường ghi nhớ của thẻ: hai lần ôn trước, hôm nay chạm ngưỡng 90%. Bốn nhánh cho bốn lựa chọn: quên 10 phút, khó 1 ngày, nhớ 3 ngày, dễ 7 ngày. Đang chọn: ' + defs[sel].l + '.';
+return vals;
+}
+}
+</script>
+</body>
+</html>

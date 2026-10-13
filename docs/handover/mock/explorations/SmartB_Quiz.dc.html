@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<title>B2 · Luyện điểm yếu — câu thích ứng</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&amp;family=Literata:opsz,wght@7..72,400;7..72,500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#1E7A4F;text-decoration:none}a:hover{color:#17603E}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: #F5F6F3; font-family: 'Be Vietnam Pro', system-ui, sans-serif; color: #15201C; display: flex; flex-direction: column; overflow: hidden">
+
+<header style="flex-shrink: 0; padding: 8px 12px 12px 12px; background: #FFFFFF; border-bottom: 1px solid #DCE1DD; display: flex; flex-direction: column; gap: 10px">
+<div style="display: flex; align-items: center; gap: 8px">
+<a href="SmartB_Map.dc.html" aria-label="Thoát luyện tập" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; color: #15201C"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M6 6l12 12"></path><path d="M18 6L6 18"></path></svg></a>
+<div style="flex-grow: 1; display: flex; flex-direction: column">
+<span style="font-size: 16px; font-weight: 600">Luyện điểm yếu</span>
+<span style="font-size: 12px; color: #58635F">Mẫu số trong các tỷ lệ</span>
+</div>
+<span style="font-size: 13px; color: #58635F; padding-right: 8px">{{ qLabel }}</span>
+</div>
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 0 8px">
+<span aria-label="Kết quả các câu" style="display: flex; gap: 6px">
+<sc-for list="{{ dots }}" as="d" hint-placeholder-count="6">
+<span style="{{ d.style }}"></span>
+</sc-for>
+</span>
+<span style="display: flex; align-items: center; gap: 8px; font-size: 12px; color: #3B4541">
+<span aria-hidden="true" style="display: flex; align-items: flex-end; gap: 2px; height: 14px">
+<sc-for list="{{ diffBars }}" as="b" hint-placeholder-count="3">
+<span style="{{ b.style }}"></span>
+</sc-for>
+</span>
+Độ khó: {{ diffLabel }}</span>
+</div>
+</header>
+
+<main style="flex-grow: 1; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 14px">
+
+<div style="display: flex; flex-direction: column; gap: 8px">
+<button type="button" onClick="{{ toggleWhy }}" aria-expanded="{{ whyExpanded }}" style="align-self: flex-start; min-height: 36px; padding: 0 12px; border: 1px solid #A6DDBF; background: #E3F2E9; color: #17603E; border-radius: 999px; font-family: inherit; font-size: 13px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 6px">
+<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 8h.01"></path><path d="M11 12h1v5h1"></path></svg>Vì sao câu này?</button>
+<sc-if value="{{ whyOpen }}" hint-placeholder-val="{{ true }}">
+<p style="margin: 0; font-size: 13px; line-height: 1.55; color: #3B4541; background: #FFFFFF; border: 1px solid #DCE1DD; border-radius: 12px; padding: 10px 12px">Cùng năng lực 2.3.1 với câu 2 bạn vừa sai · mức Vận dụng · bạn chưa gặp câu này trong 14 ngày.</p>
+</sc-if>
+</div>
+
+<h1 style="margin: 0; font-size: 17px; font-weight: 600; line-height: 1.55">Một huyện có 50.000 dân. Đầu năm có 300 người đang điều trị lao; trong năm ghi nhận thêm 200 ca lao mới. Tỷ lệ mới mắc lao trong năm là bao nhiêu?</h1>
+
+<div role="radiogroup" aria-label="Phương án" style="display: flex; flex-direction: column; gap: 8px">
+<sc-for list="{{ options }}" as="o" hint-placeholder-count="4">
+<button type="button" role="radio" aria-checked="{{ o.checked }}" onClick="{{ o.pick }}" style="{{ o.style }}">
+<span style="{{ o.badge }}">{{ o.letter }}</span>
+<span style="flex-grow: 1; text-align: left">{{ o.text }}</span>
+<span style="font-size: 13px; font-weight: 600">{{ o.mark }}</span>
+</button>
+</sc-for>
+</div>
+
+<sc-if value="{{ answered }}" hint-placeholder-val="{{ true }}">
+<section aria-live="polite" style="display: flex; flex-direction: column; gap: 12px">
+<span style="{{ verdictStyle }}">{{ verdict }}</span>
+<div style="background: #FFFFFF; border: 1px solid #DCE1DD; border-radius: 16px; padding: 14px 16px; display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 12px; font-weight: 600; color: #58635F; text-transform: uppercase; letter-spacing: 0.06em">Giải thích của chuyên gia</span>
+<p style="margin: 0; font-size: 14px; line-height: 1.6">Người đang mắc lao không còn nguy cơ mắc mới, nên mẫu số là 50.000 − 300 = 49.700. Tỷ lệ mới mắc = 200 ÷ 49.700 ≈ 4,0 trên 1.000 dân.</p>
+<sc-if value="{{ wrong }}" hint-placeholder-val="{{ true }}">
+<p style="margin: 0; font-size: 14px; line-height: 1.6; color: #6B3A08; background: #FDF3E4; border-radius: 10px; padding: 10px 12px">{{ rationale }}</p>
+</sc-if>
+<div style="display: flex; gap: 8px; flex-wrap: wrap">
+<button type="button" style="min-height: 44px; border: 1px solid #C9D0CC; background: #FFFFFF; color: #15201C; border-radius: 12px; padding: 0 12px; font-family: inherit; font-size: 13px; cursor: pointer">Giải thích thêm · AI, có trích dẫn</button>
+<button type="button" style="min-height: 44px; border: 0; background: #E3F2E9; color: #17603E; border-radius: 12px; padding: 0 12px; font-family: inherit; font-size: 13px; font-weight: 500; cursor: pointer">tr. 61</button>
+</div>
+</div>
+<div style="display: flex; gap: 12px; align-items: flex-start; background: #15201C; color: #FFFFFF; border-radius: 16px; padding: 14px 16px">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A6DDBF" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 1px"><path d="M4 17l6-6 4 4 6-8"></path><path d="M14 7h6v6"></path></svg>
+<span style="display: flex; flex-direction: column; gap: 4px; font-size: 14px; line-height: 1.5">
+<strong style="font-weight: 600">{{ nextTitle }}</strong>
+<span style="color: #C9D3CF">{{ nextSub }}</span>
+</span>
+</div>
+</section>
+</sc-if>
+</main>
+
+<footer style="flex-shrink: 0; padding: 12px 16px 20px 16px; background: #FFFFFF; border-top: 1px solid #DCE1DD; display: flex; gap: 10px">
+<button type="button" aria-label="Báo lỗi câu hỏi" style="width: 50px; height: 50px; flex-shrink: 0; border: 1px solid #C9D0CC; background: #FFFFFF; border-radius: 14px; color: #3B4541; display: flex; align-items: center; justify-content: center; cursor: pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4"></path><path d="M5 4h11l-2 4 2 4H5"></path></svg></button>
+<button type="button" onClick="{{ next }}" aria-disabled="{{ notAnsweredAttr }}" style="{{ nextStyle }}">Câu tiếp</button>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+constructor(props) {
+super(props);
+this.state = { picked: 'b', why: true, q: 3, level: 2 };
+}
+renderVals() {
+var self = this;
+var picked = this.state.picked;
+var answered = picked !== null;
+var right = picked === 'a';
+var opts = [
+{ id: 'a', letter: 'A', text: '4,0 trên 1.000 dân' },
+{ id: 'b', letter: 'B', text: '10,0 trên 1.000 dân' },
+{ id: 'c', letter: 'C', text: '6,0 trên 1.000 dân' },
+{ id: 'd', letter: 'D', text: '4,0 trên 100 dân' }
+];
+var rationales = {
+b: 'Bạn chọn B: cộng cả 300 ca cũ vào tử số — đó là cách nghĩ của tỷ lệ hiện mắc.',
+c: 'Bạn chọn C: 300 là số người đang mắc đầu năm, không phải ca mới.',
+d: 'Bạn chọn D: phép chia đúng nhưng sai đơn vị — kết quả là trên 1.000, không phải trên 100.'
+};
+var base = 'display: flex; align-items: center; gap: 12px; width: 100%; min-height: 56px; box-sizing: border-box; padding: 10px 14px; border-radius: 14px; font-family: inherit; font-size: 15px; line-height: 1.4; color: #15201C; cursor: pointer; ';
+var options = opts.map(function (o) {
+var isRight = answered && o.id === 'a';
+var isWrongPick = answered && o.id === picked && !right;
+var s = base + 'background: #FFFFFF; border: 1px solid #DCE1DD;';
+var b = 'background: #ECEFEC; color: #15201C;';
+var mark = '';
+if (isRight) { s = base + 'background: #E3F2E9; border: 2px solid #1E7A4F;'; b = 'background: #1E7A4F; color: #FFFFFF;'; mark = 'Đúng'; }
+else if (isWrongPick) { s = base + 'background: #FDF3E4; border: 2px solid #B4530A;'; b = 'background: #B4530A; color: #FFFFFF;'; mark = 'Bạn chọn'; }
+return {
+letter: o.letter, text: o.text, mark: mark,
+checked: o.id === picked ? 'true' : 'false',
+style: s,
+badge: 'width: 30px; height: 30px; flex-shrink: 0; border-radius: 15px; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600; ' + b,
+pick: function () { if (self.state.picked === null) { self.setState({ picked: o.id }); } }
+};
+});
+var q = this.state.q;
+var dots = [];
+for (var i = 1; i <= 6; i++) {
+var c = '#DCE1DD';
+if (i === 1) c = '#1E7A4F';
+else if (i === 2) c = '#B4530A';
+else if (i < q) c = '#1E7A4F';
+else if (i === q) c = '#15201C';
+dots.push({ style: 'display: block; width: ' + (i === q ? 18 : 10) + 'px; height: 10px; border-radius: 5px; background: ' + c });
+}
+var level = this.state.level;
+var diffBars = [1, 2, 3].map(function (k) {
+return { style: 'display: block; width: 4px; border-radius: 1px; height: ' + (4 + k * 3) + 'px; background: ' + (k <= level ? '#15201C' : '#C9D0CC') };
+});
+var labels = ['', 'Dễ', 'Trung bình', 'Khó'];
+return {
+qLabel: q + ' / 6',
+dots: dots,
+diffBars: diffBars,
+diffLabel: labels[level],
+whyOpen: this.state.why,
+whyExpanded: this.state.why ? 'true' : 'false',
+toggleWhy: function () { self.setState({ why: !self.state.why }); },
+options: options,
+answered: answered,
+wrong: answered && !right,
+rationale: rationales[picked] || '',
+verdict: right ? 'Chính xác' : 'Chưa đúng — đáp án là A',
+verdictStyle: 'font-size: 16px; font-weight: 700; color: ' + (right ? '#17603E' : '#8F4207'),
+nextTitle: right ? 'Câu tiếp: khó hơn một mức' : 'Câu tiếp: cùng dạng, dễ hơn một mức',
+nextSub: right ? 'Bài toán 2 bước, cùng năng lực 2.3.1.' : 'Đã tạo 1 thẻ ôn “Mẫu số của tỷ lệ mới mắc” · ôn lần đầu ngày mai.',
+notAnsweredAttr: answered ? 'false' : 'true',
+nextStyle: 'flex-grow: 1; height: 50px; border: 0; border-radius: 14px; font-family: inherit; font-size: 15px; font-weight: 600; cursor: pointer; ' + (answered ? 'background: #1E7A4F; color: #FFFFFF;' : 'background: #DCE1DD; color: #58635F;'),
+next: function () {
+if (self.state.picked === null) return;
+var ok = self.state.picked === 'a';
+var lv = ok ? Math.min(3, self.state.level + 1) : Math.max(1, self.state.level - 1);
+self.setState({ picked: null, q: Math.min(6, self.state.q + 1), level: lv, why: false });
+}
+};
+}
+}
+</script>
+</body>
+</html>

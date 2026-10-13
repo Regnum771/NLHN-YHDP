@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<title>Tổng quan bộ thẻ</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&amp;family=Literata:opsz,wght@7..72,400;7..72,500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#1E7A4F;text-decoration:none}a:hover{color:#17603E}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: #F5F6F3; font-family: 'Be Vietnam Pro', system-ui, sans-serif; color: #15201C; display: flex; flex-direction: column; overflow: hidden">
+
+<header style="flex-shrink: 0; padding: 8px 8px 4px 8px; display: flex; align-items: center; gap: 4px">
+<a href="Decks.dc.html" aria-label="Quay lại bộ thẻ" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; color: #15201C"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"></path></svg></a>
+<span style="flex-grow: 1"></span>
+<a href="DeckSettings.dc.html" aria-label="Cài đặt ôn tập" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; color: #15201C"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h10"></path><path d="M18 6h2"></path><circle cx="16" cy="6" r="2"></circle><path d="M4 12h4"></path><path d="M12 12h8"></path><circle cx="10" cy="12" r="2"></circle><path d="M4 18h12"></path><path d="M20 18h0"></path><circle cx="18" cy="18" r="2"></circle></svg></a>
+</header>
+
+<main style="flex-grow: 1; overflow-y: auto; padding: 4px 20px 20px 20px; display: flex; flex-direction: column; gap: 20px">
+<div style="display: flex; flex-direction: column; gap: 4px">
+<span style="font-size: 13px; color: #58635F">Dịch tễ học cơ bản</span>
+<h1 style="margin: 0; font-size: 24px; font-weight: 700; line-height: 1.3">Chủ đề 3 · Đo lường bệnh trạng</h1>
+</div>
+
+<section style="background: #FFFFFF; border: 1px solid #DCE1DD; border-radius: 18px; padding: 18px; display: flex; flex-direction: column; gap: 16px">
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; text-align: center">
+<div style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 30px; font-weight: 700; color: #1F5FAD">2</span><span style="font-size: 13px; color: #3B4541">Mới</span></div>
+<div style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 30px; font-weight: 700; color: #B4530A">0</span><span style="font-size: 13px; color: #3B4541">Đang học</span></div>
+<div style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 30px; font-weight: 700; color: #1E7A4F">1</span><span style="font-size: 13px; color: #3B4541">Đến hạn</span></div>
+</div>
+<a href="Cards.dc.html" style="height: 52px; border-radius: 14px; background: #1E7A4F; color: #FFFFFF; font-size: 16px; font-weight: 600; display: flex; align-items: center; justify-content: center">Bắt đầu ôn</a>
+</section>
+
+<section aria-label="Dự báo 7 ngày" style="display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; justify-content: space-between; align-items: baseline">
+<h2 style="margin: 0; font-size: 15px; font-weight: 600">Thẻ đến hạn 7 ngày tới</h2>
+<span style="font-size: 12px; color: #58635F">Trước ngày thi</span>
+</div>
+<div style="height: 128px; display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 8px; align-items: end">
+<sc-for list="{{ days }}" as="d" hint-placeholder-count="7">
+<div style="display: flex; flex-direction: column; align-items: center; gap: 4px">
+<span style="font-size: 12px; font-weight: 600; color: #3B4541">{{ d.n }}</span>
+<span style="{{ d.bar }}"></span>
+<span style="font-size: 12px; color: #58635F">{{ d.label }}</span>
+</div>
+</sc-for>
+</div>
+</section>
+
+<section style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
+<div style="background: #FFFFFF; border: 1px solid #DCE1DD; border-radius: 14px; padding: 14px; display: flex; flex-direction: column; gap: 2px"><span style="font-size: 22px; font-weight: 700">86%</span><span style="font-size: 13px; color: #3B4541">nhớ đúng, 30 ngày</span></div>
+<div style="background: #FFFFFF; border: 1px solid #DCE1DD; border-radius: 14px; padding: 14px; display: flex; flex-direction: column; gap: 2px"><span style="font-size: 22px; font-weight: 700">24</span><span style="font-size: 13px; color: #3B4541">thẻ trong bộ</span></div>
+</section>
+
+<section style="background: #FFFFFF; border: 1px solid #DCE1DD; border-radius: 16px; overflow: hidden">
+<a href="Browser.dc.html" style="display: flex; justify-content: space-between; align-items: center; min-height: 56px; padding: 0 16px; border-bottom: 1px solid #ECEFEC; font-size: 15px; color: #15201C">Duyệt thẻ trong bộ<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6B7571" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg></a>
+<a href="Cards.dc.html" style="display: flex; justify-content: space-between; align-items: center; min-height: 56px; padding: 0 16px; border-bottom: 1px solid #ECEFEC; font-size: 15px; color: #15201C">Ôn thêm thẻ quên gần đây<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6B7571" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg></a>
+<a href="Unit.dc.html" style="display: flex; justify-content: space-between; align-items: center; min-height: 56px; padding: 0 16px; font-size: 15px; color: #15201C">Mở lại chủ đề trong học phần<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6B7571" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg></a>
+</section>
+</main>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+renderVals() {
+var data = [{ label: 'Nay', n: 3 }, { label: 'CN', n: 1 }, { label: 'T2', n: 2 }, { label: 'T3', n: 0 }, { label: 'T4', n: 1 }, { label: 'T5', n: 1 }, { label: 'T6', n: 2 }];
+var max = 3;
+var days = data.map(function (d, i) {
+return { label: d.label, n: d.n, bar: 'display: block; width: 100%; border-radius: 6px 6px 2px 2px; height: ' + Math.round(d.n / max * 80) + 'px; background: ' + (i === 0 ? '#1E7A4F' : '#A0D2B4') };
+});
+return { days: days };
+}
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<title>Học phần — Dịch tễ học cơ bản</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&amp;family=Literata:opsz,wght@7..72,400;7..72,500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#1E7A4F;text-decoration:none}a:hover{color:#17603E}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: #F5F6F3; font-family: 'Be Vietnam Pro', system-ui, sans-serif; color: #15201C; display: flex; flex-direction: column; overflow: hidden; position: relative">
+
+<header style="flex-shrink: 0; padding: 8px 12px 14px 12px; background: #FFFFFF; border-bottom: 1px solid #DCE1DD; display: flex; flex-direction: column; gap: 10px">
+<div style="display: flex; align-items: center; gap: 8px">
+<a href="Main.dc.html" aria-label="Đóng học phần" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; color: #15201C">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M6 6l12 12"></path><path d="M18 6L6 18"></path></svg>
+</a>
+<div style="flex-grow: 1; display: flex; flex-direction: column">
+<span style="font-size: 16px; font-weight: 600">Dịch tễ học cơ bản</span>
+<span style="font-size: 12px; color: #58635F">Chủ đề 3 · Đo lường bệnh trạng</span>
+</div>
+</div>
+<div aria-label="Lộ trình chủ đề" style="display: flex; align-items: center; gap: 5px; padding: 0 8px">
+<sc-for list="{{ path }}" as="p" hint-placeholder-count="5">
+<span style="{{ p.style }}"></span>
+</sc-for>
+</div>
+</header>
+
+<main style="flex-grow: 1; overflow-y: auto; padding: 20px 16px; display: flex; flex-direction: column; gap: 14px">
+
+<sc-if value="{{ isC1 }}" hint-placeholder-val="{{ false }}">
+<article style="display: flex; flex-direction: column; gap: 14px">
+<span style="font-size: 12px; font-weight: 600; color: #17603E; text-transform: uppercase; letter-spacing: 0.06em">Nội dung</span>
+<h1 style="margin: 0; font-size: 22px; font-weight: 700; line-height: 1.3">Tỷ lệ hiện mắc</h1>
+<p style="margin: 0; font-size: 16px; line-height: 1.65">Bao nhiêu người <strong style="font-weight: 600">đang mắc bệnh</strong> trong quần thể tại một thời điểm — cả ca cũ lẫn ca mới.</p>
+<div style="background: #FFFFFF; border: 1px solid #DCE1DD; border-radius: 14px; padding: 14px 16px; font-size: 15px; line-height: 1.6; text-align: center">số người đang mắc<br><span style="display: inline-block; width: 70%; border-top: 1px solid #15201C; margin: 4px 0"></span><br>tổng số người tại thời điểm đó</div>
+<button type="button" style="align-self: flex-start; min-height: 44px; border: 0; background: #E3F2E9; color: #17603E; border-radius: 12px; padding: 0 14px; font-family: inherit; font-size: 14px; font-weight: 500; cursor: pointer">Giáo trình Dịch tễ học, tr. 58</button>
+</article>
+</sc-if>
+
+<sc-if value="{{ isQ1 }}" hint-placeholder-val="{{ true }}">
+<article style="display: flex; flex-direction: column; gap: 14px">
+<span style="font-size: 12px; font-weight: 600; color: #8F4207; text-transform: uppercase; letter-spacing: 0.06em">Kiểm tra nhanh</span>
+<h1 style="margin: 0; font-size: 18px; font-weight: 600; line-height: 1.5">Một xã có 2.000 dân; ngày 1/1 có 50 người đang mắc lao. Tỷ lệ hiện mắc là?</h1>
+<div role="radiogroup" aria-label="Phương án" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
+<sc-for list="{{ options }}" as="o" hint-placeholder-count="4">
+<button type="button" role="radio" aria-checked="{{ o.checked }}" onClick="{{ o.pick }}" style="{{ o.style }}"><span>{{ o.text }}</span><span style="{{ o.markStyle }}">{{ o.mark }}</span></button>
+</sc-for>
+</div>
+<sc-if value="{{ checked }}" hint-placeholder-val="{{ true }}">
+<section aria-live="polite" style="background: #FFFFFF; border: 1px solid #DCE1DD; border-radius: 16px; padding: 16px; display: flex; flex-direction: column; gap: 10px">
+<span style="{{ verdictStyle }}">{{ verdict }}</span>
+<p style="margin: 0; font-size: 15px; line-height: 1.6">50 ÷ 2.000 = 2,5%. Tử số là mọi người đang mắc vào ngày 1/1; mẫu số là toàn bộ dân số xã tại thời điểm đó.</p>
+<sc-if value="{{ wrong }}" hint-placeholder-val="{{ true }}">
+<p style="margin: 0; font-size: 14px; line-height: 1.55; color: #3B4541; background: #ECEFEC; border-radius: 10px; padding: 10px 12px">Đã thêm 1 ví dụ vào lộ trình vì bạn chọn 5% — hãy xem lại mẫu số.</p>
+</sc-if>
+<div style="display: flex; gap: 8px; align-items: center">
+<button type="button" onClick="{{ openTutor }}" style="min-height: 44px; border: 1px solid #C9D0CC; background: #FFFFFF; border-radius: 12px; padding: 0 14px; font-family: inherit; font-size: 14px; color: #15201C; cursor: pointer">Giải thích thêm</button>
+<button type="button" style="min-height: 44px; border: 0; background: #E3F2E9; color: #17603E; border-radius: 12px; padding: 0 14px; font-family: inherit; font-size: 14px; font-weight: 500; cursor: pointer">tr. 58</button>
+<span style="flex-grow: 1"></span>
+<button type="button" aria-label="Báo lỗi câu hỏi" style="width: 44px; height: 44px; border: 0; background: transparent; color: #3B4541; display: flex; align-items: center; justify-content: center; cursor: pointer">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4"></path><path d="M5 4h11l-2 4 2 4H5"></path></svg>
+</button>
+</div>
+</section>
+</sc-if>
+</article>
+</sc-if>
+
+<sc-if value="{{ isEx }}" hint-placeholder-val="{{ false }}">
+<article style="display: flex; flex-direction: column; gap: 14px">
+<span style="align-self: flex-start; font-size: 13px; color: #3B4541; background: #ECEFEC; border-radius: 999px; padding: 6px 12px">Được thêm vì bạn chọn 5% ở câu trước</span>
+<span style="font-size: 12px; font-weight: 600; color: #17603E; text-transform: uppercase; letter-spacing: 0.06em">Ví dụ</span>
+<h1 style="margin: 0; font-size: 20px; font-weight: 700; line-height: 1.35">Tính từng bước</h1>
+<ol style="margin: 0; padding-left: 20px; font-size: 16px; line-height: 1.8">
+<li>Tử số: 50 người đang mắc</li>
+<li>Mẫu số: 2.000 dân tại ngày 1/1</li>
+<li>50 ÷ 2.000 = 0,025 = <strong style="font-weight: 600">2,5%</strong></li>
+</ol>
+</article>
+</sc-if>
+
+<sc-if value="{{ isC2 }}" hint-placeholder-val="{{ false }}">
+<article style="display: flex; flex-direction: column; gap: 14px">
+<span style="font-size: 12px; font-weight: 600; color: #17603E; text-transform: uppercase; letter-spacing: 0.06em">Nội dung</span>
+<h1 style="margin: 0; font-size: 22px; font-weight: 700; line-height: 1.3">Tỷ lệ mới mắc</h1>
+<p style="margin: 0; font-size: 16px; line-height: 1.65">Chỉ đếm <strong style="font-weight: 600">ca mới</strong> xuất hiện trong một khoảng thời gian, trên quần thể có nguy cơ.</p>
+<div style="background: #FFFFFF; border: 1px solid #DCE1DD; border-radius: 14px; padding: 14px 16px; font-size: 15px; line-height: 1.6; text-align: center">số ca mới trong khoảng thời gian<br><span style="display: inline-block; width: 70%; border-top: 1px solid #15201C; margin: 4px 0"></span><br>quần thể có nguy cơ</div>
+</article>
+</sc-if>
+
+<sc-if value="{{ isQ2 }}" hint-placeholder-val="{{ false }}">
+<article style="display: flex; flex-direction: column; gap: 14px">
+<span style="font-size: 12px; font-weight: 600; color: #8F4207; text-transform: uppercase; letter-spacing: 0.06em">Tự luận ngắn</span>
+<h1 style="margin: 0; font-size: 18px; font-weight: 600; line-height: 1.5">Phân biệt tỷ lệ hiện mắc và tỷ lệ mới mắc.</h1>
+<sc-if value="{{ notGraded }}" hint-placeholder-val="{{ true }}">
+<div style="display: flex; flex-direction: column; gap: 12px">
+<label for="unit-answer" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Câu trả lời</label>
+<textarea id="unit-answer" rows="5" placeholder="Viết câu trả lời…" style="width: 100%; box-sizing: border-box; border: 1px solid #C9D0CC; border-radius: 14px; padding: 14px; font-family: inherit; font-size: 15px; line-height: 1.6; background: #FFFFFF; color: #15201C; resize: none">Hiện mắc là mọi người đang bị bệnh tại một thời điểm. Mới mắc là ca mới trong một khoảng thời gian.</textarea>
+<span style="font-size: 13px; color: #58635F">Bạn chắc chắn đến đâu?</span>
+<div role="radiogroup" aria-label="Độ tự tin" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px">
+<sc-for list="{{ confs }}" as="c" hint-placeholder-count="3">
+<button type="button" role="radio" aria-checked="{{ c.checked }}" onClick="{{ c.pick }}" style="{{ c.style }}">{{ c.label }}</button>
+</sc-for>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{ graded }}" hint-placeholder-val="{{ false }}">
+<section aria-live="polite" style="background: #FFFFFF; border: 1px solid #DCE1DD; border-radius: 16px; padding: 14px 16px; display: flex; flex-direction: column; gap: 10px">
+<div style="display: flex; justify-content: space-between; align-items: baseline">
+<span style="font-size: 20px; font-weight: 700">2/3 ý</span>
+<span style="font-size: 12px; color: #58635F">Gia sư chấm · độ tin cậy cao</span>
+</div>
+<span style="font-size: 14px; line-height: 1.5">✓ Hiện mắc: mọi ca đang mắc</span>
+<span style="font-size: 14px; line-height: 1.5">✓ Mới mắc: chỉ ca mới</span>
+<span style="font-size: 14px; line-height: 1.5; color: #8F4207">✕ Thiếu: mẫu số khác nhau</span>
+<div style="display: flex; gap: 8px; align-items: center">
+<button type="button" onClick="{{ openTutor }}" style="min-height: 44px; border: 1px solid #C9D0CC; background: #FFFFFF; border-radius: 12px; padding: 0 14px; font-family: inherit; font-size: 14px; color: #15201C; cursor: pointer">Đáp án mẫu</button>
+<button type="button" style="min-height: 44px; border: 0; background: #E3F2E9; color: #17603E; border-radius: 12px; padding: 0 14px; font-family: inherit; font-size: 14px; font-weight: 500; cursor: pointer">tr. 58</button>
+<span style="flex-grow: 1"></span>
+<button type="button" aria-label="Báo lỗi chấm điểm" style="width: 44px; height: 44px; border: 0; background: transparent; color: #3B4541; display: flex; align-items: center; justify-content: center; cursor: pointer">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4"></path><path d="M5 4h11l-2 4 2 4H5"></path></svg>
+</button>
+</div>
+</section>
+</sc-if>
+</article>
+</sc-if>
+
+<sc-if value="{{ isEnd }}" hint-placeholder-val="{{ false }}">
+<article style="display: flex; flex-direction: column; gap: 16px; padding-top: 12px">
+<span style="width: 56px; height: 56px; border-radius: 28px; background: #E3F2E9; display: flex; align-items: center; justify-content: center">
+<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1E7A4F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>
+</span>
+<h1 style="margin: 0; font-size: 22px; font-weight: 700">Xong chủ đề 3</h1>
+<div style="background: #FFFFFF; border: 1px solid #DCE1DD; border-radius: 14px; padding: 4px 16px">
+<div style="display: flex; justify-content: space-between; align-items: center; min-height: 52px; border-bottom: 1px solid #ECEFEC; font-size: 15px"><span>Gia sư tạo thẻ từ câu sai</span><strong style="font-weight: 600">3 thẻ</strong></div>
+<div style="display: flex; justify-content: space-between; align-items: center; min-height: 52px; font-size: 15px"><span>Ôn lại</span><strong style="font-weight: 600">ngày mai</strong></div>
+</div>
+<div style="background: #15201C; color: #FFFFFF; border-radius: 14px; padding: 14px 16px; display: flex; flex-direction: column; gap: 6px">
+<span style="font-size: 12px; font-weight: 600; color: #A6DDBF; text-transform: uppercase; letter-spacing: 0.06em">Gia sư gợi ý</span>
+<span style="font-size: 15px; line-height: 1.55">Tiếp theo: <strong style="font-weight: 600">Tỷ suất tử vong</strong>. Bạn nắm chắc tử số; hãy chú ý mẫu số.</span>
+</div>
+</article>
+</sc-if>
+
+</main>
+
+<footer style="flex-shrink: 0; padding: 12px 16px 20px 16px; background: #FFFFFF; border-top: 1px solid #DCE1DD; display: flex; gap: 10px">
+<button type="button" aria-label="Hỏi gia sư" onClick="{{ openTutor }}" style="width: 50px; height: 50px; flex-shrink: 0; border: 1px solid #C9D0CC; background: #FFFFFF; border-radius: 14px; color: #15201C; display: flex; align-items: center; justify-content: center; cursor: pointer">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"></path></svg>
+</button>
+<sc-if value="{{ showSkip }}" hint-placeholder-val="{{ false }}">
+<button type="button" onClick="{{ skip }}" style="height: 50px; padding: 0 16px; border: 1px solid #C9D0CC; background: #FFFFFF; border-radius: 14px; font-family: inherit; font-size: 15px; color: #15201C; cursor: pointer">{{ skipLabel }}</button>
+</sc-if>
+<button type="button" onClick="{{ primary }}" aria-disabled="{{ primaryDisabled }}" style="{{ primaryStyle }}">{{ primaryLabel }}</button>
+</footer>
+
+<sc-if value="{{ tutor }}" hint-placeholder-val="{{ false }}">
+<div style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; background: rgba(21, 32, 28, 0.42); display: flex; flex-direction: column; justify-content: flex-end">
+<section aria-label="Gia sư" style="background: #FFFFFF; border-radius: 22px 22px 0 0; padding: 10px 16px 20px 16px; display: flex; flex-direction: column; gap: 12px; height: 62%; box-sizing: border-box">
+<span style="align-self: center; width: 40px; height: 4px; border-radius: 2px; background: #C9D0CC"></span>
+<div style="display: flex; justify-content: space-between; align-items: center">
+<div style="display: flex; flex-direction: column">
+<span style="font-size: 16px; font-weight: 600">Gia sư</span>
+<span style="font-size: 12px; color: #58635F">Đang hỏi về: Tỷ lệ hiện mắc</span>
+</div>
+<button type="button" aria-label="Đóng gia sư" onClick="{{ closeTutor }}" style="width: 44px; height: 44px; border: 0; border-radius: 22px; background: #F0F2EF; color: #15201C; display: flex; align-items: center; justify-content: center; cursor: pointer">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M6 6l12 12"></path><path d="M18 6L6 18"></path></svg>
+</button>
+</div>
+<div style="flex-grow: 1; display: flex; flex-direction: column; gap: 10px; overflow-y: auto">
+<p style="margin: 0; align-self: flex-start; max-width: 90%; background: #F5F6F3; border-radius: 14px 14px 14px 4px; padding: 12px 14px; font-size: 15px; line-height: 1.55">Bạn muốn mình giải thích lại phần nào?</p>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<button type="button" style="align-self: flex-start; min-height: 44px; border: 1px solid #C9D0CC; background: #FFFFFF; border-radius: 12px; padding: 0 14px; font-family: inherit; font-size: 14px; color: #15201C; cursor: pointer">Vì sao mẫu số là toàn bộ dân?</button>
+<button type="button" style="align-self: flex-start; min-height: 44px; border: 1px solid #C9D0CC; background: #FFFFFF; border-radius: 12px; padding: 0 14px; font-family: inherit; font-size: 14px; color: #15201C; cursor: pointer">Cho mình một ví dụ khác</button>
+</div>
+</div>
+<div style="display: flex; gap: 8px">
+<label for="tutor-input" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Hỏi gia sư</label>
+<input id="tutor-input" type="text" placeholder="Hỏi về chủ đề này…" style="flex-grow: 1; min-width: 0; height: 48px; border: 1px solid #C9D0CC; border-radius: 24px; padding: 0 16px; font-family: inherit; font-size: 15px; background: #F5F6F3; color: #15201C">
+<button type="button" aria-label="Gửi" style="width: 48px; height: 48px; border-radius: 24px; border: 0; background: #1E7A4F; color: #FFFFFF; display: flex; align-items: center; justify-content: center; cursor: pointer">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
+</button>
+</div>
+</section>
+</div>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+constructor(props) {
+super(props);
+this.state = { idx: 1, picked: 'b', checked: true, graded: false, conf: null, tutor: false };
+}
+renderVals() {
+var self = this;
+var st = this.state;
+var remedial = st.checked && st.picked !== null && st.picked !== 'a';
+var seq = remedial ? ['c1', 'q1', 'ex', 'c2', 'q2', 'end'] : ['c1', 'q1', 'c2', 'q2', 'end'];
+var idx = Math.min(st.idx, seq.length - 1);
+var cur = seq[idx];
+var path = seq.map(function (s, i) {
+var isQuiz = s === 'q1' || s === 'q2';
+var color = i < idx ? '#1E7A4F' : (i === idx ? '#15201C' : '#DCE1DD');
+var shape = isQuiz ? 'width: 10px; height: 10px; border-radius: 5px; flex-shrink: 0;' : 'flex-grow: 1; height: 5px; border-radius: 3px;';
+return { style: shape + ' background: ' + color + ';' };
+});
+var base = 'min-height: 56px; display: flex; align-items: center; justify-content: center; gap: 8px; border-radius: 14px; font-family: inherit; font-size: 17px; font-weight: 600; color: #15201C; cursor: pointer; ';
+var opts = [{ id: 'a', text: '2,5%' }, { id: 'b', text: '5%' }, { id: 'c', text: '0,25%' }, { id: 'd', text: '25%' }];
+var options = opts.map(function (o) {
+var on = o.id === st.picked;
+var s = base + (on ? 'background: #FFFFFF; border: 2px solid #15201C;' : 'background: #FFFFFF; border: 1px solid #C9D0CC;');
+var mark = '';
+var markStyle = 'font-size: 15px; font-weight: 700;';
+if (st.checked && o.id === 'a') { s = base + 'background: #E3F2E9; border: 2px solid #1E7A4F;'; mark = '✓'; markStyle += ' color: #17603E;'; }
+else if (st.checked && on) { s = base + 'background: #FDF3E4; border: 2px solid #B4530A;'; mark = '✕'; markStyle += ' color: #8F4207;'; }
+return { text: o.text, style: s, mark: mark, markStyle: markStyle, checked: on ? 'true' : 'false', pick: function () { if (!self.state.checked) { self.setState({ picked: o.id }); } } };
+});
+var confDefs = [{ v: 1, label: 'Chưa chắc' }, { v: 2, label: 'Khá chắc' }, { v: 3, label: 'Chắc chắn' }];
+var confs = confDefs.map(function (d) {
+var on = d.v === st.conf;
+return { label: d.label, checked: on ? 'true' : 'false', style: 'min-height: 44px; border-radius: 12px; font-family: inherit; font-size: 14px; cursor: pointer; ' + (on ? 'background: #15201C; color: #FFFFFF; border: 1px solid #15201C; font-weight: 600;' : 'background: #FFFFFF; color: #15201C; border: 1px solid #C9D0CC;'), pick: function () { self.setState({ conf: d.v }); } };
+});
+var go = function () { self.setState({ idx: idx + 1 }); };
+var primaryLabel = 'Tiếp tục';
+var disabled = false;
+var primary = go;
+if (cur === 'q1' && !st.checked) { primaryLabel = 'Kiểm tra'; disabled = st.picked === null; primary = function () { if (self.state.picked !== null) { self.setState({ checked: true }); } }; }
+if (cur === 'q2' && !st.graded) { primaryLabel = 'Kiểm tra'; disabled = st.conf === null; primary = function () { if (self.state.conf !== null) { self.setState({ graded: true }); } }; }
+if (cur === 'end') { primaryLabel = 'Chủ đề tiếp theo'; primary = function () { self.setState({ idx: 0, picked: null, checked: false, graded: false, conf: null }); }; }
+var showSkip = cur !== 'end' && !(cur === 'q1' && st.checked) && !(cur === 'q2' && st.graded);
+var wrong = st.checked && st.picked !== 'a';
+return {
+path: path,
+isC1: cur === 'c1', isQ1: cur === 'q1', isEx: cur === 'ex', isC2: cur === 'c2', isQ2: cur === 'q2', isEnd: cur === 'end',
+options: options, confs: confs,
+checked: st.checked, wrong: wrong,
+verdict: wrong ? '✕ Chưa đúng — đáp án là 2,5%' : '✓ Chính xác',
+verdictStyle: 'font-size: 16px; font-weight: 700; color: ' + (wrong ? '#8F4207' : '#17603E'),
+notGraded: !st.graded, graded: st.graded,
+showSkip: showSkip,
+skipLabel: cur === 'ex' ? 'Bỏ qua ví dụ' : 'Bỏ qua',
+skip: go,
+primary: primary,
+primaryLabel: primaryLabel,
+primaryDisabled: disabled ? 'true' : 'false',
+primaryStyle: 'flex-grow: 1; height: 50px; border: 0; border-radius: 14px; font-family: inherit; font-size: 15px; font-weight: 600; cursor: pointer; ' + (disabled ? 'background: #DCE1DD; color: #58635F;' : 'background: #1E7A4F; color: #FFFFFF;'),
+tutor: st.tutor,
+openTutor: function () { self.setState({ tutor: true }); },
+closeTutor: function () { self.setState({ tutor: false }); }
+};
+}
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,130 @@
+/* Quản lý cấp Bộ (mock/AdminOverview.dc.html): a desktop-first page outside the phone frame.
+   Under 600 px the sidebar becomes a top bar and the school table a list of cards. */
+.admin { min-height: 100%; background: var(--bg); display: flex; align-items: stretch; font-size: 14px; }
+.admin a { color: var(--primary); }
+.admin .admin-nav { flex: 0 0 248px; background: var(--ink); color: #fff; display: flex; flex-direction: column; gap: 4px;
+  padding: 24px 14px; position: sticky; top: 0; height: 100vh; }
+.admin .admin-brand { display: flex; flex-direction: column; gap: 2px; padding: 0 10px 20px; }
+.admin .admin-brand strong { font-size: 16px; font-weight: 700; line-height: 1.3; }
+.admin .admin-brand span { font-size: 12px; color: var(--primary-on-dark); }
+.admin .admin-nav a, .admin .admin-nav button { min-height: 44px; padding: 0 12px; border-radius: 10px; color: #c9d3cf; font-size: 14px;
+  display: flex; align-items: center; background: none; border: 0; text-align: left; }
+.admin .admin-nav a[aria-current='page'] { background: var(--ink-2); color: #fff; font-weight: 600; }
+.admin .admin-nav :focus-visible { outline-color: #fff; }
+.admin .admin-nav .spacer { flex: 1; }
+.admin .admin-nav .signout { border-top: 1px solid var(--ink-3); border-radius: 0; margin-top: 8px; }
+.admin .admin-main { flex: 1; min-width: 0; }
+.admin .admin-main > main { max-width: 1200px; margin: 0 auto; padding: 28px 32px 48px; display: flex; flex-direction: column; gap: 20px; }
+
+.admin .admin-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px; }
+.admin .admin-head h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.01em; }
+.admin .admin-title { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.admin .admin-sub, .staff-login .admin-sub { font-size: 13px; color: var(--text-3); }
+.admin .sample-badge { font-size: 12px; font-weight: 600; color: var(--warn-text); background: #fbefd9; border: 1px solid #e8c48f;
+  border-radius: var(--r-pill); padding: 3px 10px; }
+.admin .admin-btn { min-height: 44px; padding: 0 16px; border-radius: 12px; border: 1px solid var(--border-input); background: var(--surface);
+  font-size: 14px; }
+.admin .admin-btn:disabled { opacity: 0.5; }
+
+.admin .admin-filters { display: flex; flex-wrap: wrap; gap: 8px; padding: 12px; background: var(--surface); border: 1px solid var(--border);
+  border-radius: 14px; }
+.admin .admin-filters label { min-height: 44px; padding: 0 4px 0 12px; border-radius: 10px; border: 1px solid var(--border); background: var(--bg);
+  font-size: 13px; color: var(--text-3); display: flex; align-items: center; gap: 4px; }
+.admin .admin-filters select { font: inherit; font-weight: 600; color: var(--ink); background: transparent; border: 0; min-height: 40px;
+  padding: 0 4px; max-width: 220px; }
+
+.admin .admin-card { min-width: 0; background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-card); padding: 18px 20px;
+  display: flex; flex-direction: column; gap: 12px; }
+.admin .admin-card h2 { font-size: 16px; font-weight: 700; }
+.admin .admin-card .head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.admin .admin-note { font-size: 12px; line-height: 1.45; color: var(--text-3); }
+.admin .admin-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px; }
+.admin .admin-grid .wide { grid-column: span 2; }
+.admin .admin-blocks { display: flex; flex-direction: column; gap: 20px; transition: opacity 0.15s; }
+/* figures still on screen while new filters load belong to the old ones */
+.admin .admin-blocks[aria-busy='true'] { opacity: 0.45; }
+.admin .admin-notice { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-card); padding: 28px 20px;
+  text-align: center; color: var(--text-2); }
+
+.admin .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; }
+.admin .kpi { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-card); padding: 16px; display: flex;
+  flex-direction: column; gap: 6px; }
+.admin .kpi-label { font-size: 13px; color: var(--text-3); }
+.admin .kpi-value { font-size: 28px; font-weight: 700; line-height: 1.15; }
+.admin .kpi-note { font-size: 12px; line-height: 1.45; color: var(--text-2); }
+
+.admin .retention { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; border-top: 1px solid var(--soft); padding-top: 12px; }
+.admin .retention div { display: flex; flex-direction: column; gap: 2px; }
+.admin .ret-label { font-size: 12px; color: var(--text-3); }
+.admin .ret-value { font-size: 20px; font-weight: 700; }
+
+.admin .alert-line { display: flex; gap: 10px; align-items: flex-start; padding: 10px 0; border-top: 1px solid var(--soft); }
+.admin .alert-line .mark { width: 24px; height: 24px; flex-shrink: 0; border-radius: 12px; display: flex; align-items: center;
+  justify-content: center; font-size: 13px; font-weight: 700; background: var(--learning-tint); color: var(--learning-dark); }
+.admin .alert-title { font-size: 14px; font-weight: 600; line-height: 1.4; }
+
+.admin .bar-row { display: grid; grid-template-columns: minmax(0, 1fr) 96px 44px; gap: 10px; align-items: center; font-size: 13px; }
+.admin .bar-row .pct { font-weight: 600; text-align: right; font-variant-numeric: tabular-nums; }
+.admin .bar { display: block; height: 8px; border-radius: 4px; background: var(--divider); overflow: hidden; }
+.admin .bar.thin { height: 6px; border-radius: 3px; }
+.admin .bar > span { display: block; height: 100%; background: var(--primary); }
+.admin .bar > span.low { background: var(--learning); }
+.admin .legend-low { display: flex; align-items: center; gap: 6px; }
+.admin .legend-low i { width: 18px; height: 8px; border-radius: 4px; background: var(--learning); }
+
+.admin .bank-total { display: flex; align-items: baseline; gap: 8px; }
+.admin .bank-total strong { font-size: 28px; font-weight: 700; }
+.admin .bank-split { display: flex; height: 12px; gap: 2px; border-radius: 4px; overflow: hidden; }
+.admin .bank-legend { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px 12px; font-size: 12px; color: var(--text-2); }
+.admin .bank-legend span { display: flex; align-items: center; gap: 6px; }
+.admin .bank-legend i { width: 10px; height: 10px; border-radius: 2px; }
+.admin .bank-legend strong { color: var(--ink); }
+.admin .facts { display: flex; flex-direction: column; font-size: 13px; }
+.admin .facts > div { display: flex; justify-content: space-between; align-items: center; gap: 12px; min-height: 36px; border-top: 1px solid var(--soft);
+  color: var(--text-2); }
+.admin .facts strong { color: var(--ink); font-weight: 600; font-variant-numeric: tabular-nums; text-align: right; }
+.admin .facts strong.over { color: var(--learning-dark); }
+.admin .cost-part { display: flex; align-items: center; gap: 6px; }
+.admin .cost-part i { width: 10px; height: 10px; border-radius: 2px; }
+.admin .ops-tag { font-size: 11px; font-weight: 600; border-radius: var(--r-pill); padding: 2px 8px; margin-left: 8px; background: var(--primary-tint);
+  color: var(--primary-dark); }
+.admin .ops-tag.att { background: var(--learning-tint); color: var(--learning-dark); }
+.admin .target-line { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--text-3); padding-bottom: 6px; }
+.admin .target-line .bar { flex: 1; }
+
+.admin .schools { width: 100%; border-collapse: collapse; font-size: 14px; }
+.admin .schools th { font-size: 12px; font-weight: 600; color: var(--text-3); text-align: left; padding: 8px 10px 8px 0; }
+.admin .schools td, .admin .schools tbody th { padding: 0 10px 0 0; height: 48px; border-top: 1px solid var(--soft); font-variant-numeric: tabular-nums; }
+.admin .schools tbody th { font-size: 14px; color: var(--ink); }
+.admin .schools .num { text-align: right; }
+.admin .schools .activation { display: flex; align-items: center; gap: 8px; height: 48px; }
+.admin .schools .activation .bar { width: 72px; flex-shrink: 0; }
+.admin .schools .low-text { color: var(--learning-dark); font-weight: 600; }
+.admin .table-scroll { overflow-x: auto; }
+
+.staff-login { min-height: 100%; background: var(--bg); display: flex; align-items: center; justify-content: center; padding: 24px 16px; }
+.staff-login form { width: 100%; max-width: 380px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-card);
+  padding: 28px 24px; display: flex; flex-direction: column; gap: 16px; }
+.staff-login h1 { font-size: 20px; font-weight: 700; }
+
+@media (max-width: 899px) {
+  .admin .admin-grid .wide { grid-column: auto; }
+}
+@media (max-width: 599px) {
+  .admin { flex-direction: column; }
+  .admin .admin-nav { flex: none; position: static; height: auto; flex-direction: row; flex-wrap: wrap; align-items: center; padding: 8px 10px; gap: 2px; }
+  .admin .admin-brand { padding: 4px 10px; flex-basis: 100%; }
+  .admin .admin-nav .spacer { display: none; }
+  .admin .admin-nav .signout { border-top: 0; margin-top: 0; }
+  .admin .admin-main > main { padding: 16px 12px 32px; }
+  .admin .admin-head h1 { font-size: 22px; }
+  .admin .table-scroll { overflow-x: visible; }
+  .admin .schools thead { display: none; }
+  .admin .schools, .admin .schools tbody { display: block; }
+  .admin .schools tr { display: block; border: 1px solid var(--border); border-radius: 12px; padding: 8px 12px; margin-bottom: 8px; }
+  .admin .schools td, .admin .schools tbody th { display: flex; justify-content: space-between; align-items: center; gap: 12px; height: auto; min-height: 32px;
+    padding: 0; border-top: 0; text-align: right; }
+  .admin .schools tbody th { font-size: 15px; }
+  .admin .schools td::before { content: attr(data-label); color: var(--text-3); font-size: 12px; text-align: left; }
+  .admin .schools .activation { height: auto; }
+}

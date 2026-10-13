@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<title>Hỏi gia sư — từ câu quiz</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&amp;family=Literata:opsz,wght@7..72,400;7..72,500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#1E7A4F;text-decoration:none}a:hover{color:#17603E}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+@media (prefers-reduced-motion: reduce){.anim{animation:none !important}}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: #F5F6F3; font-family: 'Be Vietnam Pro', system-ui, sans-serif; color: #15201C; display: flex; flex-direction: column; overflow: hidden; position: relative">
+
+<header style="height: 60px; flex-shrink: 0; display: flex; align-items: center; gap: 4px; padding: 0 16px 0 8px; background: #FFFFFF; border-bottom: 1px solid #DCE1DD">
+<a href="SessionQuiz.dc.html" aria-label="Quay lại bài luyện" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; color: #15201C"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"></path></svg></a>
+<h1 style="flex-grow: 1; margin: 0; font-size: 18px; font-weight: 600">Hỏi gia sư</h1>
+<span style="font-size: 12px; color: #58635F">Phiên hôm nay · câu 3/6</span>
+</header>
+
+<main style="flex-grow: 1; padding: 16px 16px 20px 16px; display: flex; flex-direction: column; gap: 14px; overflow: hidden">
+
+<sc-if value="{{ isQuiz }}" hint-placeholder-val="{{ false }}">
+<div style="background: #FFFFFF; border: 1px solid #DCE1DD; border-radius: 14px; padding: 10px 12px; display: flex; gap: 10px; align-items: flex-start">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1E7A4F" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 2px"><circle cx="12" cy="12" r="8"></circle><circle cx="12" cy="12" r="4"></circle></svg>
+<span style="display: flex; flex-direction: column; gap: 2px; font-size: 13px; line-height: 1.45">
+<strong style="font-weight: 600">Đang hỏi về: Câu 3 · Luyện điểm yếu</strong>
+<span style="color: #3B4541">Tỷ lệ mới mắc lao trong năm · bạn chọn B (10,0 trên 1.000 dân)</span>
+</span>
+</div>
+</sc-if>
+
+<div style="align-self: flex-end; max-width: 82%; background: #1E7A4F; color: #FFFFFF; border-radius: 18px 18px 4px 18px; padding: 12px 14px; font-size: 15px; line-height: 1.5">{{ question }}</div>
+
+<sc-if value="{{ isWorking }}" hint-placeholder-val="{{ false }}">
+<div role="status" aria-live="polite" style="align-self: flex-start; width: 88%; box-sizing: border-box; background: #FFFFFF; border: 1px solid #DCE1DD; border-radius: 18px 18px 18px 4px; padding: 14px; display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 12px; font-weight: 600; color: #58635F; text-transform: uppercase; letter-spacing: 0.06em">Gia sư đang làm</span>
+<span style="display: flex; gap: 10px; align-items: center; font-size: 14px; color: #3B4541"><span style="width: 20px; height: 20px; flex-shrink: 0; border-radius: 10px; background: #E3F2E9; display: flex; align-items: center; justify-content: center"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1E7A4F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg></span>Tìm trong 20 giáo trình đã thẩm định</span>
+<span style="display: flex; gap: 10px; align-items: center; font-size: 14px; color: #3B4541"><span style="width: 20px; height: 20px; flex-shrink: 0; border-radius: 10px; background: #E3F2E9; display: flex; align-items: center; justify-content: center"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1E7A4F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg></span>Đã đọc: Hướng dẫn tiêm chủng tr. 112, 114</span>
+<span style="display: flex; gap: 10px; align-items: center; font-size: 14px; font-weight: 500; color: #15201C"><span class="anim" style="width: 20px; height: 20px; flex-shrink: 0; border-radius: 10px; border: 2px solid #1E7A4F; box-sizing: border-box; animation: blink 1.2s ease-in-out infinite"></span>Kiểm tra từng nhận định với nguồn…</span>
+</div>
+</sc-if>
+
+<sc-if value="{{ isAnswered }}" hint-placeholder-val="{{ true }}">
+<div style="align-self: flex-start; max-width: 94%; display: flex; flex-direction: column; gap: 8px">
+<button type="button" onClick="{{ toggleTrace }}" aria-expanded="{{ traceExp }}" style="align-self: flex-start; min-height: 36px; border: 1px solid #DCE1DD; background: #FFFFFF; border-radius: 999px; padding: 0 12px; font-family: inherit; font-size: 13px; color: #3B4541; cursor: pointer; display: flex; align-items: center; gap: 6px">
+<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1E7A4F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>Đã tra 2 nguồn · kiểm tra 3 nhận định
+<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="{{ traceChevron }}"></path></svg>
+</button>
+<sc-if value="{{ traceOpen }}" hint-placeholder-val="{{ false }}">
+<ol style="margin: 0; padding: 10px 12px 10px 30px; background: #FFFFFF; border: 1px solid #ECEFEC; border-radius: 12px; font-size: 13px; line-height: 1.6; color: #3B4541">
+<li>Tìm trong 20 giáo trình đã thẩm định</li>
+<li>Đọc Hướng dẫn tiêm chủng tr. 112, 114</li>
+<li>Kiểm tra 3 nhận định: 2 có nguồn, 1 bị bỏ</li>
+</ol>
+</sc-if>
+<div style="background: #FFFFFF; border: 1px solid #DCE1DD; border-radius: 18px 18px 18px 4px; padding: 14px; display: flex; flex-direction: column; gap: 12px">
+<p style="margin: 0; font-size: 15px; line-height: 1.7">Liều vắc xin viêm gan B sơ sinh được tiêm trong vòng 24 giờ đầu sau sinh <button type="button" aria-label="Nguồn 1" onClick="{{ openSheet }}" style="min-width: 32px; min-height: 32px; border: 0; background: #E3F2E9; color: #17603E; font-family: inherit; font-size: 13px; font-weight: 600; border-radius: 8px; padding: 0 8px; cursor: pointer">1</button>. Các liều tiếp theo tiêm theo lịch Tiêm chủng mở rộng <button type="button" aria-label="Nguồn 2" onClick="{{ openSheet }}" style="min-width: 32px; min-height: 32px; border: 0; background: #E3F2E9; color: #17603E; font-family: inherit; font-size: 13px; font-weight: 600; border-radius: 8px; padding: 0 8px; cursor: pointer">2</button>.</p>
+<span style="display: flex; gap: 8px; align-items: flex-start; font-size: 12px; line-height: 1.5; color: #58635F; background: #F5F6F3; border-radius: 10px; padding: 8px 10px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 2px"><path d="M12 3l8 4v5c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V7z"></path></svg>Đã bỏ 1 ý về phản ứng sau tiêm vì không tìm được nguồn trong giáo trình.</span>
+<div style="display: flex; gap: 4px; align-items: center; padding-top: 6px; border-top: 1px solid #ECEFEC">
+<button type="button" style="min-height: 44px; border: 1px solid #C9D0CC; background: #FFFFFF; border-radius: 12px; padding: 0 14px; font-family: inherit; font-size: 14px; color: #15201C; cursor: pointer">Giải thích thêm</button>
+<span style="flex-grow: 1"></span>
+<button type="button" aria-label="Hữu ích" style="width: 44px; height: 44px; border: 0; background: transparent; color: #3B4541; display: flex; align-items: center; justify-content: center; cursor: pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 10v11H3V10z"></path><path d="M7 10l4-8a3 3 0 0 1 3 3v4h6a2 2 0 0 1 2 2.3l-1.4 8A2 2 0 0 1 18.6 21H7"></path></svg></button>
+<button type="button" aria-label="Báo lỗi" style="width: 44px; height: 44px; border: 0; background: transparent; color: #3B4541; display: flex; align-items: center; justify-content: center; cursor: pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4"></path><path d="M5 4h11l-2 4 2 4H5"></path></svg></button>
+</div>
+</div>
+<div style="background: #FBF3E2; border-radius: 14px; padding: 12px 14px; display: flex; flex-direction: column; gap: 10px">
+<span style="display: flex; gap: 8px; align-items: flex-start; font-size: 14px; line-height: 1.5; color: #3A2A08"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" style="flex-shrink: 0; margin-top: 1px"><path d="M10 2c.6 4.4 3.6 7.4 8 8-4.4.6-7.4 3.6-8 8-.6-4.4-3.6-7.4-8-8 4.4-.6 7.4-3.6 8-8z" fill="#B97A14"></path><path d="M19 14c.3 2 1.3 3 3 3.3-1.7.3-2.7 1.3-3 3.3-.3-2-1.3-3-3-3.3 1.7-.3 2.7-1.3 3-3.3z" fill="#B97A14"></path></svg>Bạn từng chọn sai mốc tiêm này ở Đề thi thử số 4, câu 5.</span>
+<div style="display: flex; gap: 8px; flex-wrap: wrap">
+<a href="SessionQuiz.dc.html" style="min-height: 44px; border-radius: 12px; background: #1E7A4F; color: #FFFFFF; padding: 0 14px; font-size: 14px; font-weight: 600; display: inline-flex; align-items: center">Luyện 3 câu đã duyệt</a>
+<button type="button" style="min-height: 44px; border: 1px solid #D9C49A; background: #FFFFFF; border-radius: 12px; padding: 0 14px; font-family: inherit; font-size: 14px; color: #15201C; cursor: pointer">Thêm vào phiên ngày mai</button>
+</div>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isTable }}" hint-placeholder-val="{{ false }}">
+<div style="align-self: flex-start; width: 94%; display: flex; flex-direction: column; gap: 8px">
+<span style="align-self: flex-start; min-height: 32px; border: 1px solid #DCE1DD; background: #FFFFFF; border-radius: 999px; padding: 0 12px; font-size: 13px; color: #3B4541; display: flex; align-items: center; gap: 6px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1E7A4F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>Tra bảng, không sinh văn bản</span>
+<div style="background: #FFFFFF; border: 1px solid #DCE1DD; border-radius: 18px 18px 18px 4px; padding: 14px; display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 12px; font-weight: 600; color: #17603E; text-transform: uppercase; letter-spacing: 0.06em">Từ bảng lịch tiêm chủng đã thẩm định</span>
+<table style="border-collapse: collapse; font-size: 14px; line-height: 1.45">
+<thead><tr><th scope="col" style="text-align: left; padding: 6px 8px 6px 0; font-size: 12px; color: #58635F; font-weight: 600; border-bottom: 1px solid #DCE1DD">Tuổi</th><th scope="col" style="text-align: left; padding: 6px 0; font-size: 12px; color: #58635F; font-weight: 600; border-bottom: 1px solid #DCE1DD">Vắc xin</th></tr></thead>
+<tbody>
+<sc-for list="{{ rows }}" as="r" hint-placeholder-count="5">
+<tr><td style="padding: 8px 8px 8px 0; border-bottom: 1px solid #ECEFEC; font-weight: 600; white-space: nowrap; vertical-align: top">{{ r.age }}</td><td style="padding: 8px 0; border-bottom: 1px solid #ECEFEC">{{ r.vac }}</td></tr>
+</sc-for>
+</tbody>
+</table>
+<button type="button" onClick="{{ openSheet }}" style="align-self: flex-start; min-height: 40px; border: 0; background: #E3F2E9; color: #17603E; border-radius: 10px; padding: 0 12px; font-family: inherit; font-size: 13px; font-weight: 500; cursor: pointer">Hướng dẫn thực hành tiêm chủng, tr. 98</button>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isClarify }}" hint-placeholder-val="{{ false }}">
+<div style="align-self: flex-start; max-width: 94%; background: #FFFFFF; border: 1px solid #DCE1DD; border-radius: 18px 18px 18px 4px; padding: 14px; display: flex; flex-direction: column; gap: 12px">
+<p style="margin: 0; font-size: 15px; line-height: 1.6">"Tỷ lệ mắc" có ba chỉ số khác nhau, cách tính khác nhau. Bạn muốn hỏi chỉ số nào?</p>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<button type="button" style="min-height: 46px; text-align: left; border: 1px solid #C9D0CC; background: #FFFFFF; border-radius: 12px; padding: 0 14px; font-family: inherit; font-size: 14px; color: #15201C; cursor: pointer">Tỷ lệ hiện mắc</button>
+<button type="button" style="min-height: 46px; text-align: left; border: 1px solid #C9D0CC; background: #FFFFFF; border-radius: 12px; padding: 0 14px; font-family: inherit; font-size: 14px; color: #15201C; cursor: pointer">Tỷ lệ mới mắc (nguy cơ)</button>
+<button type="button" style="min-height: 46px; text-align: left; border: 1px solid #C9D0CC; background: #FFFFFF; border-radius: 12px; padding: 0 14px; font-family: inherit; font-size: 14px; color: #15201C; cursor: pointer">Mật độ mới mắc</button>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isNoEvidence }}" hint-placeholder-val="{{ false }}">
+<div style="align-self: flex-start; max-width: 94%; background: #FFFFFF; border: 1px solid #DCE1DD; border-radius: 18px 18px 18px 4px; padding: 14px; display: flex; flex-direction: column; gap: 12px">
+<p style="margin: 0; font-size: 15px; line-height: 1.6">Mình chưa tìm được căn cứ để trả lời, nên không đoán.</p>
+<div style="display: flex; flex-direction: column; gap: 4px; font-size: 13px; line-height: 1.5; color: #3B4541; background: #F5F6F3; border-radius: 10px; padding: 10px 12px">
+<strong style="font-weight: 600; color: #15201C">Đã tìm ở:</strong>
+<span>Hướng dẫn thực hành tiêm chủng, tr. 90–130</span>
+<span>Bệnh truyền nhiễm, chương 6 (Sốt xuất huyết)</span>
+<span>Bảng lịch tiêm chủng đã thẩm định</span>
+</div>
+<div style="display: flex; gap: 8px; flex-wrap: wrap">
+<a href="Modules.dc.html" style="min-height: 44px; border: 1px solid #C9D0CC; border-radius: 12px; padding: 0 14px; font-size: 14px; color: #15201C; display: inline-flex; align-items: center">Mở chương Sốt xuất huyết</a>
+<button type="button" style="min-height: 44px; border: 1px solid #C9D0CC; background: #FFFFFF; border-radius: 12px; padding: 0 14px; font-family: inherit; font-size: 14px; color: #58635F; cursor: pointer">Gửi chuyên gia · R2</button>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isDeclined }}" hint-placeholder-val="{{ false }}">
+<div style="align-self: flex-start; max-width: 92%; background: #FFFFFF; border: 1px solid #DCE1DD; border-radius: 18px 18px 18px 4px; padding: 14px; display: flex; flex-direction: column; gap: 12px">
+<p style="margin: 0; font-size: 15px; line-height: 1.6">Mình không tư vấn cho một ca bệnh cụ thể. Hãy liên hệ bác sĩ hoặc cơ sở y tế gần nhất.</p>
+<button type="button" style="align-self: flex-start; min-height: 44px; border: 1px solid #C9D0CC; background: #FFFFFF; border-radius: 12px; padding: 0 14px; font-family: inherit; font-size: 14px; color: #15201C; cursor: pointer">Giải thích phản ứng sau tiêm nói chung</button>
+</div>
+</sc-if>
+
+<sc-if value="{{ isQueued }}" hint-placeholder-val="{{ false }}">
+<div role="status" style="align-self: flex-start; max-width: 92%; background: #FFFFFF; border: 1px solid #DCE1DD; border-radius: 18px 18px 18px 4px; padding: 14px 16px; display: flex; flex-direction: column; gap: 6px">
+<span style="font-size: 15px; font-weight: 600">Đang xếp hàng · vị trí 3</span>
+<span style="font-size: 14px; color: #3B4541">Nhiều người đang hỏi. Câu hỏi của bạn vẫn giữ chỗ.</span>
+</div>
+</sc-if>
+
+<sc-if value="{{ isQuiz }}" hint-placeholder-val="{{ false }}">
+<div style="align-self: flex-start; max-width: 94%; display: flex; flex-direction: column; gap: 8px">
+<span style="align-self: flex-start; min-height: 32px; border: 1px solid #DCE1DD; background: #FFFFFF; border-radius: 999px; padding: 0 12px; font-size: 13px; color: #3B4541; display: flex; align-items: center; gap: 6px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1E7A4F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>Đọc câu hỏi, lựa chọn của bạn và Dịch tễ học tr. 58–61</span>
+<div style="background: #FFFFFF; border: 1px solid #DCE1DD; border-radius: 18px 18px 18px 4px; padding: 14px; display: flex; flex-direction: column; gap: 10px">
+<p style="margin: 0; font-size: 15px; line-height: 1.7">Bạn đã cộng cả 300 người đang điều trị vào tử số. Tỷ lệ mới mắc chỉ đếm <strong>ca mới</strong> <button type="button" aria-label="Nguồn 1" onClick="{{ openSheet }}" style="min-width: 32px; min-height: 32px; border: 0; background: #E3F2E9; color: #17603E; font-family: inherit; font-size: 13px; font-weight: 600; border-radius: 8px; padding: 0 8px; cursor: pointer">1</button>, và mẫu số chỉ gồm những người còn có nguy cơ mắc, tức 50.000 − 300 <button type="button" aria-label="Nguồn 2" onClick="{{ openSheet }}" style="min-width: 32px; min-height: 32px; border: 0; background: #E3F2E9; color: #17603E; font-family: inherit; font-size: 13px; font-weight: 600; border-radius: 8px; padding: 0 8px; cursor: pointer">2</button>.</p>
+<div style="display: flex; gap: 8px; flex-wrap: wrap; padding-top: 6px; border-top: 1px solid #ECEFEC">
+<a href="SessionQuiz.dc.html" style="min-height: 44px; border-radius: 12px; background: #1E7A4F; color: #FFFFFF; padding: 0 14px; font-size: 14px; font-weight: 600; display: inline-flex; align-items: center">Làm câu tương tự</a>
+<a href="SessionQuiz.dc.html" style="min-height: 44px; border: 1px solid #C9D0CC; border-radius: 12px; padding: 0 14px; font-size: 14px; color: #15201C; display: inline-flex; align-items: center">Quay lại bài luyện</a>
+</div>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isPlan }}" hint-placeholder-val="{{ false }}">
+<div style="align-self: flex-start; width: 94%; display: flex; flex-direction: column; gap: 8px">
+<span style="align-self: flex-start; min-height: 32px; border: 1px solid #DCE1DD; background: #FFFFFF; border-radius: 999px; padding: 0 12px; font-size: 12px; color: #3B4541; display: flex; align-items: center; gap: 6px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1E7A4F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>Đã xem 12 thẻ đến hạn · 3 chủ đề ưu tiên · kỳ thi 01/03</span>
+<div style="background: #FFFFFF; border: 1px solid #DCE1DD; border-radius: 18px 18px 18px 4px; padding: 14px; display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 8px">
+<span style="display: flex; gap: 6px; align-items: center; font-size: 12px; font-weight: 600; color: #7A4F08; text-transform: uppercase; letter-spacing: 0.06em"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 2c.6 4.4 3.6 7.4 8 8-4.4.6-7.4 3.6-8 8-.6-4.4-3.6-7.4-8-8 4.4-.6 7.4-3.6 8-8z" fill="#B97A14"></path><path d="M19 14c.3 2 1.3 3 3 3.3-1.7.3-2.7 1.3-3 3.3-.3-2-1.3-3-3-3.3 1.7-.3 2.7-1.3 3-3.3z" fill="#B97A14"></path></svg>Lịch đề xuất</span>
+<span style="font-size: 11px; font-weight: 600; color: #3B4541; background: #ECEFEC; border-radius: 6px; padding: 3px 7px">R2</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 4px">
+<span style="font-size: 18px; font-weight: 700">Mỗi tối 20:00 – 20:30</span>
+<span style="font-size: 13px; color: #58635F">Thứ hai đến chủ nhật · nhắc lúc 19:55</span>
+</div>
+<div role="img" aria-label="Một buổi 30 phút: 10 phút thẻ ôn, 15 phút luyện điểm yếu, 5 phút học tiếp" style="display: flex; flex-direction: column; gap: 6px">
+<span style="display: flex; height: 10px; gap: 3px">
+<span style="flex: 10 1 0; border-radius: 5px 0 0 5px; background: #1E7A4F"></span>
+<span style="flex: 15 1 0; background: #6CB58A"></span>
+<span style="flex: 5 1 0; border-radius: 0 5px 5px 0; background: #BADDC7"></span>
+</span>
+<span style="display: flex; justify-content: space-between; font-size: 12px; color: #3B4541"><span>10′ thẻ ôn</span><span>15′ luyện điểm yếu</span><span>5′ học tiếp</span></span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px; background: #FDF3E4; border-radius: 12px; padding: 12px">
+<span style="font-size: 14px; line-height: 1.5; color: #6B3A08">Đề thi thử dài 50 phút, không vừa khung 30 phút. Bạn muốn:</span>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<button type="button" onClick="{{ pickA }}" aria-pressed="{{ aPressed }}" style="{{ aStyle }}">Chủ nhật làm đề đầy đủ (cần 50 phút)</button>
+<button type="button" onClick="{{ pickB }}" aria-pressed="{{ bPressed }}" style="{{ bStyle }}">Đề rút gọn 20 câu, 25 phút</button>
+</div>
+</div>
+<span style="font-size: 12px; line-height: 1.5; color: #58635F">Đề xuất về thời gian học, không trích từ giáo trình.</span>
+<div style="display: flex; gap: 8px">
+<a href="Schedule.dc.html" style="flex-grow: 1; min-height: 46px; border-radius: 12px; background: #1E7A4F; color: #FFFFFF; font-size: 15px; font-weight: 600; display: flex; align-items: center; justify-content: center">Áp dụng</a>
+<button type="button" style="min-height: 46px; border: 1px solid #C9D0CC; background: #FFFFFF; border-radius: 12px; padding: 0 18px; font-family: inherit; font-size: 15px; color: #15201C; cursor: pointer">Chỉnh</button>
+</div>
+</div>
+</div>
+</sc-if>
+</main>
+
+<form style="flex-shrink: 0; padding: 10px 12px; background: #FFFFFF; border-top: 1px solid #DCE1DD; display: flex; gap: 8px; align-items: center">
+<label for="ask-input" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Câu hỏi của bạn</label>
+<input id="ask-input" type="text" placeholder="Hỏi thêm về câu này…" style="flex-grow: 1; min-width: 0; height: 44px; border: 1px solid #C9D0CC; border-radius: 22px; padding: 0 16px; font-family: inherit; font-size: 15px; background: #F5F6F3; color: #15201C">
+<button type="button" aria-label="Gửi" style="width: 44px; height: 44px; border-radius: 22px; border: 0; background: #1E7A4F; color: #FFFFFF; display: flex; align-items: center; justify-content: center; cursor: pointer">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
+</button>
+</form>
+
+
+
+<sc-if value="{{ open }}" hint-placeholder-val="{{ false }}">
+<div style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; background: rgba(21, 32, 28, 0.42); display: flex; flex-direction: column; justify-content: flex-end">
+<section aria-label="Nguồn trích dẫn" style="background: #FFFFFF; border-radius: 22px 22px 0 0; padding: 10px 20px 24px 20px; display: flex; flex-direction: column; gap: 14px">
+<span style="align-self: center; width: 40px; height: 4px; border-radius: 2px; background: #C9D0CC"></span>
+<div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 12px">
+<div style="display: flex; flex-direction: column; gap: 4px">
+<span style="font-size: 12px; font-weight: 600; color: #17603E">Nguồn 1</span>
+<span style="font-size: 16px; font-weight: 600; line-height: 1.35">Hướng dẫn thực hành tiêm chủng</span>
+<span style="font-size: 13px; color: #58635F">Chương 4 · Bài 2 · trang 112</span>
+</div>
+<button type="button" aria-label="Đóng" onClick="{{ closeSheet }}" style="width: 44px; height: 44px; flex-shrink: 0; border: 0; border-radius: 22px; background: #F0F2EF; color: #15201C; display: flex; align-items: center; justify-content: center; cursor: pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M6 6l12 12"></path><path d="M18 6L6 18"></path></svg></button>
+</div>
+<blockquote style="margin: 0; padding: 14px 16px; background: #F7F5EE; border-radius: 12px; font-family: 'Literata', Georgia, serif; font-size: 15px; line-height: 1.7; color: #2A2F2C">[…] <mark style="background: #E3F2E9; color: #15201C; padding: 1px 2px">Trẻ sơ sinh được tiêm liều vắc xin viêm gan B trong vòng 24 giờ đầu sau sinh.</mark> […]</blockquote>
+<span style="font-size: 12px; color: #58635F">Trích đoạn giới hạn theo giấy phép.</span>
+<div style="display: flex; gap: 10px">
+<button type="button" style="flex: 1; height: 48px; border: 1px solid #C9D0CC; background: #FFFFFF; border-radius: 12px; font-family: inherit; font-size: 14px; color: #15201C; cursor: pointer">Báo lỗi</button>
+<button type="button" onClick="{{ closeSheet }}" style="flex: 1; height: 48px; border: 0; background: #1E7A4F; border-radius: 12px; font-family: inherit; font-size: 14px; font-weight: 600; color: #FFFFFF; cursor: pointer">Đóng</button>
+</div>
+</section>
+</div>
+</sc-if>
+
+<sc-if value="{{ listOpen }}" hint-placeholder-val="{{ false }}">
+<div style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; background: rgba(21, 32, 28, 0.42); display: flex; flex-direction: column; justify-content: flex-end">
+<section aria-label="Các cuộc trò chuyện" style="background: #FFFFFF; border-radius: 22px 22px 0 0; padding: 10px 20px 24px 20px; display: flex; flex-direction: column; gap: 6px">
+<span style="align-self: center; width: 40px; height: 4px; border-radius: 2px; background: #C9D0CC; margin-bottom: 6px"></span>
+<div style="display: flex; justify-content: space-between; align-items: center"><span style="font-size: 16px; font-weight: 600">Cuộc trò chuyện</span><button type="button" aria-label="Đóng" onClick="{{ closeList }}" style="width: 44px; height: 44px; border: 0; border-radius: 22px; background: #F0F2EF; color: #15201C; display: flex; align-items: center; justify-content: center; cursor: pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M6 6l12 12"></path><path d="M18 6L6 18"></path></svg></button></div>
+<button type="button" onClick="{{ closeList }}" style="min-height: 56px; text-align: left; border: 0; border-bottom: 1px solid #ECEFEC; background: transparent; font-family: inherit; color: #15201C; cursor: pointer; display: flex; flex-direction: column; justify-content: center; gap: 2px"><span style="font-size: 15px; font-weight: 600">Liều vắc xin viêm gan B sơ sinh</span><span style="font-size: 12px; color: #58635F">Hôm nay</span></button>
+<button type="button" onClick="{{ closeList }}" style="min-height: 56px; text-align: left; border: 0; border-bottom: 1px solid #ECEFEC; background: transparent; font-family: inherit; color: #15201C; cursor: pointer; display: flex; flex-direction: column; justify-content: center; gap: 2px"><span style="font-size: 15px; font-weight: 600">Phân biệt tỷ lệ hiện mắc và mới mắc</span><span style="font-size: 12px; color: #58635F">Hôm qua</span></button>
+<button type="button" onClick="{{ closeList }}" style="min-height: 56px; text-align: left; border: 0; background: transparent; font-family: inherit; color: #15201C; cursor: pointer; display: flex; flex-direction: column; justify-content: center; gap: 2px"><span style="font-size: 15px; font-weight: 600">Các bước điều tra một vụ dịch</span><span style="font-size: 12px; color: #58635F">05/10</span></button>
+</section>
+</div>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+constructor(props) {
+super(props);
+this.state = { open: false, listOpen: false, trace: false, pick: null };
+}
+renderVals() {
+var self = this;
+var s = 'Hỏi từ câu quiz';
+var q = 'Liều vắc xin viêm gan B sơ sinh tiêm khi nào?';
+if (s === 'Trả lời bằng bảng') q = 'Lịch tiêm chủng cho trẻ dưới 1 tuổi?';
+if (s === 'Hỏi lại') q = 'Cách tính tỷ lệ mắc?';
+if (s === 'Thiếu bằng chứng') q = 'Lịch tiêm vắc xin sốt xuất huyết cho người lớn?';
+if (s === 'Từ chối ca bệnh') q = 'Con tôi 2 tháng, sốt sau tiêm, có cần đi viện không?';
+if (s === 'Hỏi từ câu quiz') q = 'Sao mình sai câu này?';
+if (s === 'Đề xuất lịch học (R2)') q = 'Mình làm 6h–18h hằng ngày, chỉ rảnh 30 phút sau 8h tối. Xếp lịch học giúp mình.';
+var opt = 'min-height: 44px; text-align: left; border-radius: 10px; padding: 0 12px; font-family: inherit; font-size: 14px; color: #15201C; cursor: pointer; ';
+var on = 'border: 2px solid #1E7A4F; background: #E3F2E9;';
+var off = 'border: 1px solid #D9C49A; background: #FFFFFF;';
+var pick = this.state.pick;
+return {
+question: q,
+isWorking: s === 'Đang làm việc',
+isAnswered: s === 'Đã trả lời',
+isTable: s === 'Trả lời bằng bảng',
+isClarify: s === 'Hỏi lại',
+isNoEvidence: s === 'Thiếu bằng chứng',
+isDeclined: s === 'Từ chối ca bệnh',
+isQueued: s === 'Đang xếp hàng',
+isQuiz: s === 'Hỏi từ câu quiz',
+isPlan: s === 'Đề xuất lịch học (R2)',
+rows: [
+{ age: 'Sơ sinh', vac: 'Viêm gan B (trong 24 giờ đầu), BCG' },
+{ age: '2 tháng', vac: 'DPT-VGB-Hib mũi 1, OPV lần 1' },
+{ age: '3 tháng', vac: 'DPT-VGB-Hib mũi 2, OPV lần 2' },
+{ age: '4 tháng', vac: 'DPT-VGB-Hib mũi 3, OPV lần 3' },
+{ age: '9 tháng', vac: 'Sởi mũi 1' }
+],
+traceOpen: this.state.trace,
+traceExp: this.state.trace ? 'true' : 'false',
+traceChevron: this.state.trace ? 'M6 15l6-6 6 6' : 'M6 9l6 6 6-6',
+toggleTrace: function () { self.setState({ trace: !self.state.trace }); },
+aStyle: opt + (pick === 'a' ? on : off),
+bStyle: opt + (pick === 'b' ? on : off),
+aPressed: pick === 'a' ? 'true' : 'false',
+bPressed: pick === 'b' ? 'true' : 'false',
+pickA: function () { self.setState({ pick: 'a' }); },
+pickB: function () { self.setState({ pick: 'b' }); },
+open: this.state.open,
+openSheet: function () { self.setState({ open: true }); },
+closeSheet: function () { self.setState({ open: false }); },
+listOpen: this.state.listOpen,
+openList: function () { self.setState({ listOpen: true }); },
+closeList: function () { self.setState({ listOpen: false }); }
+};
+}
+}
+</script>
+</body>
+</html>

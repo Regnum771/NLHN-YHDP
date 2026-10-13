@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<title>Ôn thẻ</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&amp;family=Literata:opsz,wght@7..72,400;7..72,500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#1E7A4F;text-decoration:none}a:hover{color:#17603E}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: #F5F6F3; font-family: 'Be Vietnam Pro', system-ui, sans-serif; color: #15201C; display: flex; flex-direction: column; overflow: hidden; position: relative">
+
+<header style="flex-shrink: 0; padding: 8px 8px; display: flex; align-items: center; gap: 4px">
+<a href="Decks.dc.html" aria-label="Dừng ôn" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; color: #15201C"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M6 6l12 12"></path><path d="M18 6L6 18"></path></svg></a>
+<div aria-label="Còn lại: 3 mới, 2 đang học, 1 đến hạn" style="flex-grow: 1; display: flex; justify-content: center; gap: 14px; font-size: 16px; font-weight: 700; font-variant-numeric: tabular-nums">
+<span style="color: #1F5FAD">3</span><span style="color: #B4530A">2</span><span style="color: #1E7A4F">1</span>
+</div>
+<button type="button" aria-label="Tùy chọn thẻ" onClick="{{ openMenu }}" style="width: 44px; height: 44px; border: 0; background: transparent; color: #15201C; display: flex; align-items: center; justify-content: center; cursor: pointer"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="1.8"></circle><circle cx="12" cy="12" r="1.8"></circle><circle cx="19" cy="12" r="1.8"></circle></svg></button>
+</header>
+
+<sc-if value="{{ notDone }}" hint-placeholder-val="{{ true }}">
+<main style="flex-grow: 1; padding: 8px 20px 16px 20px; display: flex; flex-direction: column; gap: 16px">
+<section style="flex-grow: 1; background: #FFFFFF; border: 1px solid #DCE1DD; border-radius: 22px; padding: 24px; display: flex; flex-direction: column; gap: 18px">
+<div style="display: flex; justify-content: space-between; align-items: center">
+<span style="font-size: 12px; font-weight: 600; color: #58635F; text-transform: uppercase; letter-spacing: 0.06em">{{ deck }}</span>
+<span style="font-size: 12px; color: #3B4541; background: #ECEFEC; border-radius: 999px; padding: 3px 10px">{{ origin }}</span>
+</div>
+<sc-if value="{{ isBasic }}" hint-placeholder-val="{{ true }}">
+<h1 style="margin: 0; font-size: 22px; font-weight: 600; line-height: 1.45">Mẫu số của tỷ lệ mới mắc là gì?</h1>
+</sc-if>
+<sc-if value="{{ isCloze }}" hint-placeholder-val="{{ false }}">
+<p style="margin: 0; font-size: 22px; font-weight: 600; line-height: 1.55">Liều vắc xin viêm gan B sơ sinh tiêm trong vòng <span style="{{ clozeStyle }}">{{ clozeText }}</span> giờ đầu sau sinh.</p>
+</sc-if>
+<sc-if value="{{ showBack }}" hint-placeholder-val="{{ true }}">
+<div style="display: flex; flex-direction: column; gap: 12px; padding-top: 16px; border-top: 1px dashed #C9D0CC">
+<sc-if value="{{ isBasic }}" hint-placeholder-val="{{ true }}">
+<p style="margin: 0; font-size: 18px; line-height: 1.6; font-family: 'Literata', Georgia, serif">Quần thể có nguy cơ trong khoảng thời gian theo dõi.</p>
+</sc-if>
+<button type="button" style="align-self: flex-start; min-height: 44px; border: 0; background: #E3F2E9; color: #17603E; border-radius: 12px; padding: 0 14px; font-family: inherit; font-size: 14px; font-weight: 500; cursor: pointer">{{ sourceLabel }}</button>
+</div>
+</sc-if>
+</section>
+
+<sc-if value="{{ isFront }}" hint-placeholder-val="{{ false }}">
+<button type="button" onClick="{{ reveal }}" style="height: 60px; border: 0; border-radius: 16px; background: #15201C; color: #FFFFFF; font-family: inherit; font-size: 16px; font-weight: 600; cursor: pointer">Hiện đáp án</button>
+</sc-if>
+<sc-if value="{{ showBack }}" hint-placeholder-val="{{ true }}">
+<div role="group" aria-label="Bạn nhớ thẻ này thế nào?" style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px">
+<button type="button" onClick="{{ rate }}" style="min-height: 64px; border: 1px solid #E8C48F; background: #FBEFD9; border-radius: 14px; font-family: inherit; color: #6B3A08; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px"><span style="font-size: 12px">&lt;1 phút</span><span style="font-size: 15px; font-weight: 600">Học lại</span></button>
+<button type="button" onClick="{{ rate }}" style="min-height: 64px; border: 1px solid #C9D0CC; background: #FFFFFF; border-radius: 14px; font-family: inherit; color: #15201C; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px"><span style="font-size: 12px; color: #58635F">6 phút</span><span style="font-size: 15px; font-weight: 600">Khó</span></button>
+<button type="button" onClick="{{ rate }}" style="min-height: 64px; border: 2px solid #1E7A4F; background: #E3F2E9; border-radius: 14px; font-family: inherit; color: #17603E; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px"><span style="font-size: 12px">1 ngày</span><span style="font-size: 15px; font-weight: 600">Tốt</span></button>
+<button type="button" onClick="{{ rate }}" style="min-height: 64px; border: 1px solid #A9C3E6; background: #EAF1FA; border-radius: 14px; font-family: inherit; color: #1A4E8F; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px"><span style="font-size: 12px">4 ngày</span><span style="font-size: 15px; font-weight: 600">Dễ</span></button>
+</div>
+</sc-if>
+</main>
+</sc-if>
+
+<sc-if value="{{ isDone }}" hint-placeholder-val="{{ false }}">
+<main style="flex-grow: 1; padding: 24px; display: flex; flex-direction: column; gap: 20px">
+<span style="width: 64px; height: 64px; border-radius: 32px; background: #E3F2E9; display: flex; align-items: center; justify-content: center"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#1E7A4F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg></span>
+<h1 style="margin: 0; font-size: 26px; font-weight: 700; line-height: 1.3">Xong thẻ hôm nay</h1>
+<div style="background: #FFFFFF; border: 1px solid #DCE1DD; border-radius: 16px; padding: 4px 16px">
+<div style="display: flex; justify-content: space-between; align-items: center; min-height: 52px; border-bottom: 1px solid #ECEFEC; font-size: 15px"><span>Đã ôn</span><strong style="font-weight: 600">12 thẻ · 6 phút</strong></div>
+<div style="display: flex; justify-content: space-between; align-items: center; min-height: 52px; border-bottom: 1px solid #ECEFEC; font-size: 15px"><span>Nhớ đúng</span><strong style="font-weight: 600">10/12 thẻ</strong></div>
+<div style="display: flex; justify-content: space-between; align-items: center; min-height: 52px; font-size: 15px"><span>Ngày mai</span><strong style="font-weight: 600">5 thẻ đến hạn</strong></div>
+</div>
+<span style="flex-grow: 1"></span>
+<a href="Unit.dc.html" style="height: 52px; border-radius: 14px; border: 1px solid #C9D0CC; background: #FFFFFF; color: #15201C; font-size: 15px; display: flex; align-items: center; justify-content: center">Học chủ đề mới</a>
+<a href="Main.dc.html" style="height: 52px; border-radius: 14px; background: #1E7A4F; color: #FFFFFF; font-size: 15px; font-weight: 600; display: flex; align-items: center; justify-content: center">Về trang chủ</a>
+</main>
+</sc-if>
+
+<sc-if value="{{ menu }}" hint-placeholder-val="{{ false }}">
+<div style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; background: rgba(21, 32, 28, 0.42); display: flex; flex-direction: column; justify-content: flex-end">
+<section aria-label="Tùy chọn thẻ" style="background: #FFFFFF; border-radius: 22px 22px 0 0; padding: 10px 12px 24px 12px; display: flex; flex-direction: column">
+<span style="align-self: center; width: 40px; height: 4px; border-radius: 2px; background: #C9D0CC; margin-bottom: 8px"></span>
+<button type="button" onClick="{{ closeMenu }}" style="min-height: 52px; text-align: left; padding: 0 12px; border: 0; background: transparent; font-family: inherit; font-size: 15px; color: #15201C; cursor: pointer">Mở trang nguồn</button>
+<button type="button" onClick="{{ closeMenu }}" style="min-height: 52px; text-align: left; padding: 0 12px; border: 0; background: transparent; font-family: inherit; font-size: 15px; color: #15201C; cursor: pointer">Tạm ẩn thẻ này</button>
+<button type="button" onClick="{{ closeMenu }}" style="min-height: 52px; text-align: left; padding: 0 12px; border: 0; background: transparent; font-family: inherit; font-size: 15px; color: #15201C; cursor: pointer">Hoãn đến ngày mai</button>
+<button type="button" onClick="{{ closeMenu }}" style="min-height: 52px; text-align: left; padding: 0 12px; border: 0; background: transparent; font-family: inherit; font-size: 15px; color: #8F4207; cursor: pointer">Báo lỗi nội dung thẻ</button>
+</section>
+</div>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"cardType":{"editor":"enum","options":["Cơ bản","Điền khuyết"],"default":"Cơ bản"},"phase":{"editor":"enum","options":["Mặt trước","Mặt sau","Hoàn thành"],"default":"Mặt sau"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+constructor(props) {
+super(props);
+this.state = { phase: null, menu: false };
+}
+componentDidUpdate(prev) {
+if (prev.phase !== this.props.phase && this.state.phase !== null) { this.setState({ phase: null }); }
+}
+renderVals() {
+var self = this;
+var phase = this.state.phase ?? (this.props.phase ?? 'Mặt sau');
+var type = this.props.cardType ?? 'Cơ bản';
+var cloze = type === 'Điền khuyết';
+var back = phase === 'Mặt sau';
+return {
+isBasic: !cloze, isCloze: cloze,
+deck: cloze ? 'Tiêm chủng mở rộng' : 'Dịch tễ học · Chủ đề 3',
+origin: cloze ? 'Gia sư tạo · bài đánh giá' : 'Gia sư tạo · đề thi thử 4',
+clozeText: back ? '24' : '[…]',
+clozeStyle: 'border-radius: 6px; padding: 0 6px; ' + (back ? 'background: #E3F2E9; color: #17603E;' : 'background: #EAF1FA; color: #1A4E8F;'),
+sourceLabel: cloze ? 'Hướng dẫn thực hành tiêm chủng, tr. 112' : 'Giáo trình Dịch tễ học, tr. 58',
+isFront: phase === 'Mặt trước',
+showBack: back,
+isDone: phase === 'Hoàn thành',
+notDone: phase !== 'Hoàn thành',
+reveal: function () { self.setState({ phase: 'Mặt sau' }); },
+rate: function () { self.setState({ phase: 'Mặt trước' }); },
+menu: this.state.menu,
+openMenu: function () { self.setState({ menu: true }); },
+closeMenu: function () { self.setState({ menu: false }); }
+};
+}
+}
+</script>
+</body>
+</html>

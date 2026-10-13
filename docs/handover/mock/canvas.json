@@ -1,0 +1,556 @@
+{
+  "v": 3,
+  "attachments": {},
+  "boards": {
+    "Main.dc.html": {
+      "h": 1000,
+      "is_interactive": true,
+      "title": "Trang chủ — đề xuất từ gia sư (từ hướng C)",
+      "w": 390,
+      "x": 0,
+      "y": 0
+    },
+    "Modules.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "title": "Luyện tập — thẻ ôn và học phần",
+      "w": 390,
+      "x": 3290,
+      "y": 0
+    },
+    "Unit.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "title": "Phiên · bước 3 — học phần xen kẽ nội dung và câu hỏi",
+      "w": 390,
+      "x": 1880,
+      "y": 0
+    },
+    "QuizAI.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "title": "Quiz item — AI-assisted variant",
+      "w": 390,
+      "x": 2350,
+      "y": 0
+    },
+    "Practice.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "title": "Quiz item — freeform, low-confidence grade",
+      "w": 390,
+      "x": 2820,
+      "y": 0
+    },
+    "Chat.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "title": "Hỏi đáp — trạng thái agentic (Tweaks), gồm đề xuất lịch học R2",
+      "w": 390,
+      "x": 0,
+      "y": 1300
+    },
+    "Exams.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "title": "Exams — list",
+      "w": 390,
+      "x": 470,
+      "y": 1300
+    },
+    "ExamRules.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "title": "Exam rules",
+      "w": 390,
+      "x": 940,
+      "y": 1300
+    },
+    "Exam.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "title": "Taking an exam — submit, 5-min, time-up (Tweaks)",
+      "w": 390,
+      "x": 1410,
+      "y": 1300
+    },
+    "Results.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "title": "Exam results",
+      "w": 390,
+      "x": 1880,
+      "y": 1300
+    },
+    "AnswerReview.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "title": "Answer review",
+      "w": 390,
+      "x": 2350,
+      "y": 1300
+    },
+    "Decks.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "title": "Deck list — new, learning, due",
+      "w": 390,
+      "x": 0,
+      "y": 2600
+    },
+    "DeckDetail.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "title": "Deck overview — today, 7-day forecast",
+      "w": 390,
+      "x": 470,
+      "y": 2600
+    },
+    "Cards.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "title": "Card review — 4 ratings, cloze, done (Tweaks)",
+      "w": 390,
+      "x": 940,
+      "y": 2600
+    },
+    "Browser.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "title": "Card browser — filters, leech, suspend",
+      "w": 390,
+      "x": 1410,
+      "y": 2600
+    },
+    "DeckSettings.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "title": "Review settings — limits, retention, exam date",
+      "w": 390,
+      "x": 1880,
+      "y": 2600
+    },
+    "DesktopChat.dc.html": {
+      "expand": "fill",
+      "h": 900,
+      "is_interactive": true,
+      "title": "Desktop — Ask with source panel",
+      "w": 1440,
+      "x": 0,
+      "y": 3900
+    },
+    "Review.dc.html": {
+      "expand": "fill",
+      "h": 900,
+      "title": "Desktop — Review item (round 1)",
+      "w": 1440,
+      "x": 1520,
+      "y": 3900
+    },
+    "Focus.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "title": "Onboarding — chọn học phần, đánh giá hoặc bỏ qua",
+      "w": 390,
+      "x": 470,
+      "y": -1600
+    },
+    "Schedule.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "title": "Lịch ôn tập — tháng, tải thẻ theo ngày, R1/R2 (Tweaks)",
+      "w": 390,
+      "x": 4700,
+      "y": 0
+    },
+    "SmartA_Home.dc.html": {
+      "h": 1240,
+      "is_interactive": true,
+      "page": "smart",
+      "title": "A1 · Home — system-built daily session",
+      "w": 390,
+      "x": 0,
+      "y": 0
+    },
+    "SmartA_Cards.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "page": "smart",
+      "title": "A2 · In session — Nguồn and Vì sao collapsed",
+      "w": 390,
+      "x": 470,
+      "y": 0
+    },
+    "SmartB_Map.dc.html": {
+      "h": 1060,
+      "is_interactive": true,
+      "page": "smart",
+      "title": "B1 · Học phần — competency map",
+      "w": 390,
+      "x": 1060,
+      "y": 0
+    },
+    "SmartB_Quiz.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "page": "smart",
+      "title": "B2 · Adaptive quiz — why this question",
+      "w": 390,
+      "x": 1530,
+      "y": 0
+    },
+    "SmartC_Home.dc.html": {
+      "h": 1000,
+      "is_interactive": true,
+      "page": "smart",
+      "title": "C1 · Home — đề xuất từ gia sư (now the main Home)",
+      "w": 390,
+      "x": 2120,
+      "y": 0
+    },
+    "SmartC_Summary.dc.html": {
+      "h": 1060,
+      "is_interactive": true,
+      "page": "smart",
+      "title": "C2 · Unit end — what adapted",
+      "w": 390,
+      "x": 2590,
+      "y": 0
+    },
+    "ProgressSkills.dc.html": {
+      "h": 2080,
+      "is_interactive": true,
+      "title": "Tiến độ · Năng lực",
+      "w": 390,
+      "x": 3760,
+      "y": 0
+    },
+    "ProgressRhythm.dc.html": {
+      "h": 2250,
+      "is_interactive": true,
+      "title": "Tiến độ · Nhịp học",
+      "w": 390,
+      "x": 4230,
+      "y": 0
+    },
+    "SessionCards.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "title": "Phiên · bước 1 — thẻ ôn, có lý do",
+      "w": 390,
+      "x": 470,
+      "y": 0
+    },
+    "SessionQuiz.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "title": "Phiên · bước 2 — luyện điểm yếu, câu thích ứng",
+      "w": 390,
+      "x": 940,
+      "y": 0
+    },
+    "AdminOverview.dc.html": {
+      "expand": "fill",
+      "h": 1955,
+      "w": 1440,
+      "x": 0,
+      "y": 5400,
+      "title": "Quản lý cấp Bộ · Tổng quan toàn quốc"
+    },
+    "AdminLearning.dc.html": {
+      "expand": "fill",
+      "h": 1829,
+      "w": 1440,
+      "x": 1520,
+      "y": 5400,
+      "title": "Quản lý cấp Bộ · Kết quả học tập"
+    },
+    "SmartD_Quiz.dc.html": {
+      "h": 1440,
+      "is_interactive": true,
+      "page": "smart",
+      "title": "D1 · Adaptive quiz — difficulty track, ZPD gauge, what changed",
+      "w": 390,
+      "x": 3180,
+      "y": 0
+    },
+    "SmartE_Card.dc.html": {
+      "h": 920,
+      "is_interactive": true,
+      "page": "smart",
+      "title": "E2 · Card — Nguồn, Vì sao, Đường ghi nhớ (collapsed links)",
+      "w": 390,
+      "x": 4120,
+      "y": 0
+    },
+    "SmartD_Adapting.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "page": "smart",
+      "title": "D2 · After a quiz — tutor adapting (≈3 s)",
+      "w": 390,
+      "x": 3650,
+      "y": 0
+    },
+    "SessionAdapting.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "title": "Phiên · sau bước 2 — gia sư đang điều chỉnh (≈3 s)",
+      "w": 390,
+      "x": 1410,
+      "y": 0
+    },
+    "Login.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "title": "Đăng nhập — mã kích hoạt (màu Bộ Y tế)",
+      "w": 390,
+      "x": 0,
+      "y": -1600
+    },
+    "ChatQuiz.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "title": "Hỏi gia sư — mở từ câu quiz, đã gắn sẵn câu hỏi và lựa chọn sai",
+      "w": 390,
+      "x": 2820,
+      "y": 1300
+    },
+    "ChatPlan.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "title": "Hỏi đáp — gia sư đề xuất lịch học từ thời gian rảnh (R2)",
+      "w": 390,
+      "x": 3290,
+      "y": 1300
+    }
+  },
+  "createdOnFiles": {
+    "at": "2026-10-08T15:00:00Z",
+    "v": 1
+  },
+  "designSystems": [],
+  "launch": {
+    "view": "canvas",
+    "page": "current"
+  },
+  "notes": {
+    "mobileTitle": {
+      "kind": "title1",
+      "maxW": 5090,
+      "text": "Trang chủ → Phiên hôm nay → Luyện tập → Tiến độ",
+      "w": 240,
+      "x": 0,
+      "y": -300
+    },
+    "examTitle": {
+      "kind": "title1",
+      "maxW": 3680,
+      "text": "Hỏi đáp and Thi thử",
+      "w": 240,
+      "x": 0,
+      "y": 1000
+    },
+    "srsTitle": {
+      "kind": "title1",
+      "maxW": 2270,
+      "text": "Ôn tập ngắt quãng — bộ thẻ",
+      "w": 240,
+      "x": 0,
+      "y": 2300
+    },
+    "desktopTitle": {
+      "kind": "title1",
+      "maxW": 2960,
+      "text": "Desktop — learner and reviewer",
+      "w": 240,
+      "x": 0,
+      "y": 3600
+    },
+    "onboardTitle": {
+      "kind": "title1",
+      "maxW": 860,
+      "text": "Đăng nhập → chọn học phần",
+      "w": 240,
+      "x": 0,
+      "y": -1900
+    },
+    "smartA": {
+      "kind": "title1",
+      "maxW": 860,
+      "page": "smart",
+      "text": "A · Phiên hôm nay",
+      "x": 0,
+      "y": -300
+    },
+    "smartB": {
+      "kind": "title1",
+      "maxW": 860,
+      "page": "smart",
+      "text": "B · Bản đồ năng lực",
+      "x": 1060,
+      "y": -300
+    },
+    "smartC": {
+      "kind": "title1",
+      "maxW": 860,
+      "page": "smart",
+      "text": "C · Cho thấy gia sư đã làm gì",
+      "x": 2120,
+      "y": -300
+    },
+    "smartAnote": {
+      "fill": "green",
+      "maxH": 260,
+      "page": "smart",
+      "size": "m",
+      "text": "A · Today's session — the system decides what's next.\nOne daily session built by rules: due cards, then a weak-spot quiz, then the unfinished unit, each with a plain reason. Revision cards stop being a separate deck manager and become step 1 of the day. Every card says which mistake created it.\nAll R1: spaced repetition, quiz assembly by gap (Learning engine table).",
+      "w": 400,
+      "x": 0,
+      "y": 1340
+    },
+    "smartBnote": {
+      "fill": "blue",
+      "maxH": 260,
+      "page": "smart",
+      "size": "m",
+      "text": "B · Competency map — show the learner model.\nEach topic shows correct answers at Nhớ / Hiểu / Vận dụng, fading memory and a tutor recommendation. Practice questions say why they were picked and which way difficulty moves next.\nR1 can show counts and thresholds; % mastery needs R2 (FR-LRN-19, 22). No readiness or pass score (FR-LRN-26).",
+      "w": 400,
+      "x": 1060,
+      "y": 1340
+    },
+    "smartCnote": {
+      "fill": "orange",
+      "maxH": 260,
+      "page": "smart",
+      "size": "m",
+      "text": "C · Show the work — keep today's structure.\nHome gets a 'since last time' feed of what the tutor changed: cards made, example added, questions queued. Every unit ends with a recap of what adapted and why. Cheapest change; all R1.",
+      "w": 400,
+      "x": 2120,
+      "y": 1340
+    },
+    "progressNote": {
+      "fill": "teal",
+      "maxH": 300,
+      "size": "m",
+      "w": 860,
+      "x": 3760,
+      "y": 2370,
+      "text": "Split by what the data measures, not by length.\nNăng lực = what you know, measured on mock exams only (same blueprint, so attempts compare): coverage, top 3 to fix, whole-exam score, domain × exam grid with a pooled column, cognitive level. One filter: 3 latest exams / all.\nNhịp học = how you study: time this week, 8-week calendar, memory curve (from direction E), recall by module, card memory and due forecast, this week's activity.\nCountdown and the segmented control sit at the top of both. No predicted score, pass line or per-domain trend arrows (FR-LRN-26; too few questions per domain per exam). Domain breakdown pulls FR-LRN-13 into R1 — PO to confirm."
+    },
+    "sampleNote": {
+      "fill": "gray",
+      "maxH": 300,
+      "size": "m",
+      "w": 400,
+      "x": 5170,
+      "y": 0,
+      "text": "Dữ liệu mẫu (một học viên xuyên suốt): Nguyễn Thu Hà · hôm nay thứ bảy 10/10/2026 · kỳ thi 01/03/2027 (còn 142 ngày) · 4 đề thi thử: 26, 29, 31, 33/40 · 12 thẻ đến hạn hôm nay · 104 thẻ trong 2 học phần · tên giáo trình và số trang là mẫu, chưa phải dữ liệu thật."
+    },
+    "adminTitle": {
+      "kind": "title1",
+      "maxW": 2960,
+      "text": "Dashboard quản lý cấp Bộ — chỉ xem, số liệu tổng hợp",
+      "x": 0,
+      "y": 5100
+    },
+    "adminNote": {
+      "fill": "teal",
+      "maxH": 360,
+      "size": "m",
+      "w": 560,
+      "x": 3040,
+      "y": 5400,
+      "text": "Rules applied: aggregates only, no learner names or IDs; groups under 10 hidden (CSĐT F); outcome figures only from learners who consented to research use; no predicted pass rate or pass line (FR-LRN-26).\nSidebar = the six areas from the Dashboards tab of the spec; Tổng quan and Kết quả học tập are designed, the other four reuse their cards.\nSchools are coded CSĐT A–F on purpose: the numbers are invented and must not be read as real universities."
+    },
+    "smartDEF": {
+      "kind": "title1",
+      "maxW": 1330,
+      "page": "smart",
+      "text": "D–E · Cho thấy hệ thống đang thích ứng",
+      "x": 3180,
+      "y": -300
+    },
+    "smartDnote": {
+      "fill": "purple",
+      "maxH": 320,
+      "page": "smart",
+      "size": "m",
+      "w": 860,
+      "x": 3180,
+      "y": 1560,
+      "text": "D · Show the adaptive bank at work.\nD1: the quiz shows its own logic: a difficulty track, a 'vùng vừa sức' gauge, and a 'Hệ thống vừa điều chỉnh' panel after every answer.\nD2: after the last question, a ~3 s screen ticks off what the tutor is doing (grade, update mastery, create cards, reorder tomorrow), then opens C2. Every line must be a real result of that attempt; it is skippable and respects reduced motion. Tap 'Phát lại hiệu ứng' to replay when presenting.\nR1.0: panel, cards by rule, D2. Item-by-item difficulty and the gauge need adaptive selection (R1.1)."
+    },
+    "smartEnote": {
+      "fill": "teal",
+      "maxH": 300,
+      "page": "smart",
+      "size": "m",
+      "w": 400,
+      "x": 4120,
+      "y": 1560,
+      "text": "E · Make spaced repetition visible.\nThe memory curve and recall-by-module bars now live in Tiến độ · Nhịp học (current page), not on Home.\nE2: the card keeps three underlined links, all collapsed in the app: Nguồn, Vì sao ôn câu này?, Đường ghi nhớ. The Tweak opens the curve for presentations. All R1.0 (FSRS)."
+    },
+    "paletteNote": {
+      "fill": "green",
+      "maxH": 360,
+      "size": "m",
+      "w": 420,
+      "x": 940,
+      "y": -1600,
+      "text": "Màu theo Bộ Y tế (phương án 1 + 2).\nXanh chủ đạo #1E7A4F: cùng sắc với xanh #2E9C6A trên moh.gov.vn nhưng đậm hơn để chữ trắng trên nút đạt tỷ lệ tương phản 5,3:1 (#2E9C6A chỉ đạt 3,4:1). Nền nhạt #E3F2E9, chữ đậm trên nền nhạt #17603E.\nĐỏ #9C0C02 và viền vàng #DD9A33 chỉ dùng ở màn hình đăng nhập và dòng ghi nhận đơn vị. Vàng #B97A14 (trên nền tối #E8B04F) chỉ dùng cho ngôi sao AI.\nCam #B4530A vẫn dùng cho câu sai và 'Cần ôn'; không dùng đỏ cho câu sai.\nLogo, tên đơn vị chủ trì và dòng nguồn kinh phí đang để chỗ trống, chờ xác nhận và cho phép sử dụng."
+    }
+  },
+  "order": [
+    "Login.dc.html",
+    "Focus.dc.html",
+    "Main.dc.html",
+    "SessionCards.dc.html",
+    "SessionQuiz.dc.html",
+    "SessionAdapting.dc.html",
+    "Modules.dc.html",
+    "Unit.dc.html",
+    "QuizAI.dc.html",
+    "Practice.dc.html",
+    "ProgressSkills.dc.html",
+    "ProgressRhythm.dc.html",
+    "Schedule.dc.html",
+    "Chat.dc.html",
+    "ChatQuiz.dc.html",
+    "ChatPlan.dc.html",
+    "Exams.dc.html",
+    "ExamRules.dc.html",
+    "Exam.dc.html",
+    "Results.dc.html",
+    "AnswerReview.dc.html",
+    "Decks.dc.html",
+    "DeckDetail.dc.html",
+    "Cards.dc.html",
+    "Browser.dc.html",
+    "DeckSettings.dc.html",
+    "DesktopChat.dc.html",
+    "Review.dc.html",
+    "SmartA_Home.dc.html",
+    "SmartA_Cards.dc.html",
+    "SmartB_Map.dc.html",
+    "SmartB_Quiz.dc.html",
+    "SmartC_Home.dc.html",
+    "SmartC_Summary.dc.html",
+    "AdminOverview.dc.html",
+    "AdminLearning.dc.html",
+    "SmartD_Quiz.dc.html",
+    "SmartD_Adapting.dc.html",
+    "SmartE_Card.dc.html"
+  ],
+  "pages": [
+    {
+      "id": "current",
+      "name": "Thiết kế hiện tại"
+    },
+    {
+      "id": "smart",
+      "name": "Hướng “thông minh”"
+    }
+  ],
+  "title": "YHDP Exam Platform — Mock UI"
+}

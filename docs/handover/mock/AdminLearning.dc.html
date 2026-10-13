@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<title>Quản lý cấp Bộ — Kết quả học tập</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#1E7A4F;text-decoration:none}a:hover{color:#17603E}
+</style>
+</helmet>
+<div style="box-sizing: border-box; background: #F5F6F3; font-family: 'Be Vietnam Pro', system-ui, sans-serif; color: #15201C; display: flex; flex-wrap: wrap; align-items: stretch">
+
+<nav aria-label="Khu vực báo cáo" style="flex: 1 1 248px; background: #15201C; color: #FFFFFF; display: flex; flex-direction: column; padding: 24px 14px; box-sizing: border-box; gap: 4px">
+<div style="display: flex; flex-direction: column; gap: 2px; padding: 0 10px 20px 10px">
+<span style="font-size: 16px; font-weight: 700; line-height: 1.3">Ôn thi năng lực<br>Y học dự phòng</span>
+<span style="font-size: 12px; color: #A6DDBF">Quản lý cấp Bộ · chỉ xem</span>
+</div>
+<a href="AdminOverview.dc.html" style="min-height: 44px; padding: 0 12px; border-radius: 10px; color: #C9D3CF; font-size: 14px; display: flex; align-items: center">Tổng quan</a>
+<a href="#reach" style="min-height: 44px; padding: 0 12px; border-radius: 10px; color: #C9D3CF; font-size: 14px; display: flex; align-items: center">Tiếp cận và sử dụng</a>
+<a href="AdminLearning.dc.html" aria-current="page" style="min-height: 44px; padding: 0 12px; border-radius: 10px; background: #24302B; color: #FFFFFF; font-size: 14px; font-weight: 600; display: flex; align-items: center">Kết quả học tập</a>
+<a href="#content" style="min-height: 44px; padding: 0 12px; border-radius: 10px; color: #C9D3CF; font-size: 14px; display: flex; align-items: center">Nội dung và thẩm định</a>
+<a href="#ai" style="min-height: 44px; padding: 0 12px; border-radius: 10px; color: #C9D3CF; font-size: 14px; display: flex; align-items: center">An toàn câu trả lời AI</a>
+<a href="#ops" style="min-height: 44px; padding: 0 12px; border-radius: 10px; color: #C9D3CF; font-size: 14px; display: flex; align-items: center">Vận hành và tuân thủ</a>
+<a href="#kpi" style="min-height: 44px; padding: 0 12px; border-radius: 10px; color: #C9D3CF; font-size: 14px; display: flex; align-items: center">Chỉ tiêu nhiệm vụ</a>
+<span style="height: 1px; background: #2E3A35; margin: 12px 0"></span>
+<a href="#reports" style="min-height: 44px; padding: 0 12px; border-radius: 10px; color: #C9D3CF; font-size: 14px; display: flex; align-items: center">Báo cáo và xuất dữ liệu</a>
+<span style="flex-grow: 1"></span>
+<div style="display: flex; align-items: center; gap: 10px; padding: 12px 10px 0 10px; border-top: 1px solid #2E3A35">
+<span style="width: 36px; height: 36px; border-radius: 18px; background: #24302B; color: #A6DDBF; font-size: 13px; font-weight: 600; display: flex; align-items: center; justify-content: center">PL</span>
+<span style="display: flex; flex-direction: column"><span style="font-size: 13px; font-weight: 600">Phạm Thị Lan</span><span style="font-size: 12px; color: #A6DDBF">Quản lý cấp Bộ</span></span>
+</div>
+</nav>
+
+<div style="flex: 999 1 560px; min-width: 0; display: flex; flex-direction: column">
+
+<main style="width: 100%; max-width: 1200px; box-sizing: border-box; margin: 0 auto; padding: 28px 32px 48px 32px; display: flex; flex-direction: column; gap: 20px">
+
+<header style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap">
+<h1 style="margin: 0; font-size: 28px; font-weight: 700; letter-spacing: -0.01em">Kết quả học tập</h1>
+<span style="font-size: 12px; font-weight: 600; color: #6B3A08; background: #FBEFD9; border: 1px solid #E8C48F; border-radius: 999px; padding: 3px 10px">Dữ liệu mẫu</span>
+</div>
+<span style="font-size: 13px; color: #58635F">Từ đề thi thử, chỉ học viên đồng ý dùng dữ liệu cho nghiên cứu · không có điểm dự đoán hay tỷ lệ đỗ</span>
+</div>
+<button type="button" style="min-height: 44px; padding: 0 16px; border-radius: 12px; border: 1px solid #C9D0CC; background: #FFFFFF; font-family: inherit; font-size: 14px; color: #15201C; cursor: pointer">Xuất Excel</button>
+</header>
+
+<div role="group" aria-label="Bộ lọc" style="display: flex; flex-wrap: wrap; gap: 8px; padding: 12px; background: #FFFFFF; border: 1px solid #DCE1DD; border-radius: 14px">
+<sc-for list="{{ filters }}" as="f" hint-placeholder-count="5">
+<button type="button" style="min-height: 40px; padding: 0 12px; border-radius: 10px; border: 1px solid #DCE1DD; background: #F5F6F3; font-family: inherit; font-size: 13px; color: #15201C; cursor: pointer; display: flex; align-items: center; gap: 6px"><span style="color: #58635F">{{ f.label }}:</span><strong style="font-weight: 600">{{ f.value }}</strong><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg></button>
+</sc-for>
+</div>
+
+<section aria-label="Chỉ số chính" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px">
+<sc-for list="{{ kpis }}" as="k" hint-placeholder-count="4">
+<div style="background: #FFFFFF; border: 1px solid #DCE1DD; border-radius: 16px; padding: 16px; display: flex; flex-direction: column; gap: 6px">
+<span style="font-size: 13px; color: #58635F">{{ k.label }}</span>
+<span style="font-size: 28px; font-weight: 700; line-height: 1.15">{{ k.value }}</span>
+<span style="font-size: 12px; line-height: 1.45; color: #3B4541">{{ k.note }}</span>
+</div>
+</sc-for>
+</section>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px">
+
+<section aria-labelledby="dist-title" style="grid-column: span 2; min-width: 0; background: #FFFFFF; border: 1px solid #DCE1DD; border-radius: 16px; padding: 18px 20px; display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap">
+<h2 id="dist-title" style="margin: 0; font-size: 16px; font-weight: 700">Phân bố điểm thi thử</h2>
+<span style="font-size: 13px; color: #58635F">5.870 lượt · số câu đúng trên 40</span>
+</div>
+<div role="img" aria-label="{{ distAria }}" style="display: grid; grid-template-columns: repeat(10, minmax(0, 1fr)); gap: 6px; align-items: end; height: 220px; border-bottom: 1px solid #DCE1DD; padding-top: 8px">
+<sc-for list="{{ bins }}" as="b" hint-placeholder-count="10">
+<span style="display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 4px; height: 100%">
+<span style="font-size: 11px; color: #3B4541; font-variant-numeric: tabular-nums">{{ b.n }}</span>
+<span style="{{ b.bar }}"></span>
+</span>
+</sc-for>
+</div>
+<div aria-hidden="true" style="display: grid; grid-template-columns: repeat(10, minmax(0, 1fr)); gap: 6px; margin-top: -6px">
+<sc-for list="{{ bins }}" as="b" hint-placeholder-count="10">
+<span style="font-size: 11px; color: #58635F; text-align: center">{{ b.label }}</span>
+</sc-for>
+</div>
+<span style="font-size: 13px; color: #3B4541">Cột đậm chứa trung vị (27 câu, tháng 8: 26). Không vẽ ngưỡng đỗ vì kỳ thi thật chưa liên kết và không dự đoán kết quả.</span>
+</section>
+
+<section aria-labelledby="level-title" style="min-width: 0; background: #FFFFFF; border: 1px solid #DCE1DD; border-radius: 16px; padding: 18px 20px; display: flex; flex-direction: column; gap: 14px">
+<h2 id="level-title" style="margin: 0; font-size: 16px; font-weight: 700">Theo mức nhận thức</h2>
+<sc-for list="{{ levels }}" as="l" hint-placeholder-count="3">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<span style="display: flex; justify-content: space-between; font-size: 14px"><span>{{ l.name }}</span><strong style="font-variant-numeric: tabular-nums">{{ l.pct }}</strong></span>
+<span style="display: block; height: 10px; border-radius: 5px; background: #E6EAE7; overflow: hidden"><span style="{{ l.fill }}"></span></span>
+<span style="font-size: 12px; color: #58635F">{{ l.n }}</span>
+</div>
+</sc-for>
+<span style="font-size: 13px; line-height: 1.5; color: #3B4541; border-top: 1px solid #ECEFEC; padding-top: 12px">Câu vận dụng thấp hơn câu ghi nhớ 29 điểm % trên toàn quốc — gợi ý tăng bài tập tình huống trong đào tạo.</span>
+</section>
+
+</div>
+
+<section aria-labelledby="heat-title" style="background: #FFFFFF; border: 1px solid #DCE1DD; border-radius: 16px; padding: 18px 20px; display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap">
+<h2 id="heat-title" style="margin: 0; font-size: 16px; font-weight: 700">Tỷ lệ câu đúng theo miền và cơ sở đào tạo</h2>
+<span style="font-size: 13px; color: #58635F">Sắp từ miền yếu nhất · mỗi ô có ít nhất 400 câu trả lời</span>
+</div>
+<div style="overflow-x: auto">
+<div role="table" aria-label="Tỷ lệ câu đúng theo miền và cơ sở đào tạo" style="min-width: 720px; display: flex; flex-direction: column; gap: 4px; font-size: 14px">
+<div role="row" style="display: grid; grid-template-columns: minmax(170px, 1.6fr) repeat(6, minmax(76px, 1fr)); gap: 4px; align-items: center; font-size: 12px; color: #58635F; padding-bottom: 4px">
+<span role="columnheader" style="font-weight: 600">Miền năng lực</span>
+<sc-for list="{{ cols }}" as="c" hint-placeholder-count="6">
+<span role="columnheader" style="{{ c.style }}">{{ c.label }}</span>
+</sc-for>
+</div>
+<sc-for list="{{ heat }}" as="h" hint-placeholder-count="7">
+<div role="row" style="display: grid; grid-template-columns: minmax(170px, 1.6fr) repeat(6, minmax(76px, 1fr)); gap: 4px; align-items: center;">
+<span role="rowheader" style="font-weight: 500">{{ h.name }}</span>
+<sc-for list="{{ h.cells }}" as="c" hint-placeholder-count="6">
+<span role="cell" aria-label="{{ c.aria }}" style="{{ c.style }}">{{ c.text }}</span>
+</sc-for>
+</div>
+</sc-for>
+</div>
+</div>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 16px; font-size: 12px; color: #58635F">
+<span style="display: flex; align-items: center; gap: 6px">Ít đúng<span style="display: flex; gap: 2px"><span style="width: 20px; height: 12px; border-radius: 3px; background: #EEF2EF"></span><span style="width: 20px; height: 12px; border-radius: 3px; background: #D4EDDF"></span><span style="width: 20px; height: 12px; border-radius: 3px; background: #A6DDBF"></span><span style="width: 20px; height: 12px; border-radius: 3px; background: #7FC8A0"></span></span>Nhiều đúng</span>
+<span style="display: flex; align-items: center; gap: 6px"><span style="width: 20px; height: 12px; border-radius: 3px; box-shadow: inset 0 0 0 2px #B4530A; background: #FFFFFF"></span>Viền cam: dưới 55%, cần xem lại nội dung đào tạo</span>
+<span>CSĐT F ẩn (dưới 10 học viên)</span>
+</div>
+</section>
+
+<section aria-labelledby="weak-title" style="background: #FFFFFF; border: 1px solid #DCE1DD; border-radius: 16px; padding: 18px 20px; display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap">
+<h2 id="weak-title" style="margin: 0; font-size: 16px; font-weight: 700">10 vấn đề cốt lõi yếu nhất toàn quốc</h2>
+<span style="font-size: 13px; color: #58635F">Trên 54 vấn đề cốt lõi · tháng 9/2026</span>
+</div>
+<div style="overflow-x: auto">
+<div role="table" aria-label="10 vấn đề cốt lõi yếu nhất toàn quốc" style="min-width: 820px; display: flex; flex-direction: column; font-size: 14px">
+<div role="row" style="display: grid; grid-template-columns: 32px minmax(200px, 2fr) minmax(150px, 1.3fr) minmax(180px, 1.5fr) 110px 120px; gap: 10px; align-items: center; padding: 8px 0; font-size: 12px; font-weight: 600; color: #58635F">
+<span role="columnheader">#</span><span role="columnheader">Vấn đề cốt lõi</span><span role="columnheader">Miền</span><span role="columnheader">Câu đúng</span><span role="columnheader" style="text-align: right">Lượt trả lời</span><span role="columnheader" style="text-align: right">So với tháng 8</span>
+</div>
+<sc-for list="{{ weak }}" as="w" hint-placeholder-count="10">
+<div role="row" style="display: grid; grid-template-columns: 32px minmax(200px, 2fr) minmax(150px, 1.3fr) minmax(180px, 1.5fr) 110px 120px; gap: 10px; align-items: center; min-height: 44px; border-top: 1px solid #ECEFEC">
+<span role="cell" style="color: #58635F; font-variant-numeric: tabular-nums">{{ w.rank }}</span>
+<span role="rowheader" style="font-weight: 600">{{ w.name }}</span>
+<span role="cell" style="color: #3B4541">{{ w.domain }}</span>
+<span role="cell" style="display: flex; align-items: center; gap: 8px"><span style="width: 110px; flex-shrink: 0; display: block; height: 6px; border-radius: 3px; background: #E6EAE7; overflow: hidden"><span style="{{ w.fill }}"></span></span><span style="font-variant-numeric: tabular-nums">{{ w.pct }}</span></span>
+<span role="cell" style="text-align: right; font-variant-numeric: tabular-nums">{{ w.n }}</span>
+<span role="cell" style="text-align: right; font-variant-numeric: tabular-nums">{{ w.delta }}</span>
+</div>
+</sc-for>
+</div>
+</div>
+<span style="font-size: 12px; color: #58635F">Mỗi vấn đề có hàng nghìn câu trả lời mỗi tháng nên so sánh theo tháng có ý nghĩa ở cấp toàn quốc; không áp dụng cho từng học viên.</span>
+</section>
+
+</main>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1829}}'>
+class Component extends DCLogic {
+renderVals() {
+var binsRaw = [['0–3', 12], ['4–7', 38], ['8–11', 96], ['12–15', 248], ['16–19', 612], ['20–23', 1104], ['24–27', 1486], ['28–31', 1342], ['32–35', 752], ['36–40', 180]];
+var max = 1486;
+var bins = binsRaw.map(function (b) {
+var med = b[0] === '24–27';
+return { label: b[0], n: b[1].toLocaleString('vi-VN'), bar: 'display: block; width: 100%; max-width: 48px; border-radius: 4px 4px 0 0; height: ' + Math.max(2, Math.round(b[1] / max * 170)) + 'px; background: ' + (med ? '#1E7A4F' : '#A6DDBF') };
+});
+var levels = [['Nhớ', 78, '52.300 câu trả lời'], ['Hiểu', 66, '91.800 câu trả lời'], ['Vận dụng', 49, '90.700 câu trả lời']].map(function (l) {
+return { name: l[0], pct: l[1] + '%', n: l[2], fill: 'display: block; height: 10px; background: #1E7A4F; width: ' + l[1] + '%' };
+});
+var schools = ['CSĐT A', 'CSĐT B', 'CSĐT C', 'CSĐT D', 'CSĐT E', 'Toàn quốc'];
+var data = [
+['Thống kê y sinh', [56, 53, 50, 49, 45, 52]],
+['Dinh dưỡng', [61, 60, 57, 55, 52, 58]],
+['Sức khỏe môi trường', [67, 66, 63, 60, 58, 64]],
+['Dịch tễ học', [73, 70, 68, 66, 62, 69]],
+['Bệnh truyền nhiễm', [74, 72, 71, 69, 64, 71]],
+['Tiêm chủng', [79, 77, 75, 74, 70, 76]],
+['Sức khỏe nghề nghiệp', [83, 81, 79, 78, 74, 80]]
+];
+function shade(v) { return v < 55 ? '#EEF2EF' : v < 65 ? '#D4EDDF' : v < 75 ? '#A6DDBF' : '#7FC8A0'; }
+var cols = schools.map(function (s, i) { return { label: s, style: 'font-weight: ' + (i === 5 ? 700 : 600) + '; padding: 4px 0; text-align: center; color: ' + (i === 5 ? '#15201C' : '#58635F') }; });
+var heat = data.map(function (r) {
+return {
+name: r[0],
+cells: r[1].map(function (v, i) {
+var nat = i === 5;
+var flag = v < 55;
+return {
+text: v + '%',
+aria: r[0] + ', ' + schools[i] + ': ' + v + '% câu đúng' + (flag ? ', dưới 55%' : ''),
+style: 'height: 44px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-variant-numeric: tabular-nums; color: #15201C; font-weight: ' + (nat ? 700 : 500) + '; background: ' + shade(v) + ';' + (flag ? ' box-shadow: inset 0 0 0 2px #B4530A;' : (nat ? ' box-shadow: inset 0 0 0 1.5px #15201C;' : ''))
+};
+})
+};
+});
+var weakRaw = [
+['Cỡ mẫu và lực mẫu', 'Thống kê y sinh', 41, '3.920', '+2'],
+['Kiểm định giả thuyết', 'Thống kê y sinh', 47, '4.110', '+1'],
+['Đánh giá tình trạng dinh dưỡng', 'Dinh dưỡng', 51, '3.240', '−1'],
+['Đo lường bệnh trạng', 'Dịch tễ học', 53, '6.880', '+4'],
+['Quản lý chất thải y tế', 'Sức khỏe môi trường', 55, '2.150', '0'],
+['An toàn thực phẩm', 'Dinh dưỡng', 56, '2.870', '+3'],
+['Thiết kế nghiên cứu', 'Dịch tễ học', 57, '5.420', '+2'],
+['Ô nhiễm không khí', 'Sức khỏe môi trường', 58, '1.990', '−2'],
+['Bảo quản và vận chuyển vắc xin', 'Tiêm chủng', 60, '2.630', '+1'],
+['Điều tra vụ dịch', 'Dịch tễ học', 61, '4.010', '+3']
+];
+var weak = weakRaw.map(function (w, i) {
+return { rank: i + 1, name: w[0], domain: w[1], pct: w[2] + '%', n: w[3], delta: w[4] === '0' ? '0 điểm %' : w[4] + ' điểm %', fill: 'display: block; height: 6px; background: #1E7A4F; width: ' + w[2] + '%' };
+});
+return {
+filters: [{ label: 'Kỳ', value: 'Tháng 9/2026' }, { label: 'Cơ sở đào tạo', value: 'Tất cả' }, { label: 'Đối tượng', value: 'Tất cả' }, { label: 'Vùng', value: 'Toàn quốc' }, { label: 'Nguồn', value: 'Đề thi thử' }],
+kpis: [
+{ label: 'Học viên có kết quả', value: '2.184', note: 'Đã đồng ý dùng dữ liệu cho nghiên cứu · 64% học viên hoạt động' },
+{ label: 'Lượt thi thử được tính', value: '5.870', note: 'Trung bình 2,7 lượt mỗi học viên' },
+{ label: 'Trung vị điểm thi thử', value: '27 / 40', note: 'Tháng 8: 26 / 40' },
+{ label: 'Thay đổi từ đề đầu đến đề gần nhất', value: '+3 câu', note: 'Trung vị của học viên đã làm từ 2 đề trở lên' }
+],
+bins: bins,
+distAria: 'Phân bố điểm thi thử: ' + binsRaw.map(function (b) { return b[0] + ' câu: ' + b[1] + ' lượt'; }).join('; '),
+levels: levels,
+cols: cols,
+heat: heat,
+weak: weak
+};
+}
+}
+</script>
+</body>
+</html>

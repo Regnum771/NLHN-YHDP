@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<title>Tiến độ — Năng lực</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&amp;family=Literata:opsz,wght@7..72,400;7..72,500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#1E7A4F;text-decoration:none}a:hover{color:#17603E}
+</style>
+</helmet>
+<div style="width: 390px; height: 2080px; box-sizing: border-box; background: #F5F6F3; font-family: 'Be Vietnam Pro', system-ui, sans-serif; color: #15201C; display: flex; flex-direction: column; overflow: hidden">
+
+<header style="flex-shrink: 0; padding: 28px 16px 12px 16px; display: flex; flex-direction: column; gap: 14px; background: #F5F6F3">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 0 4px">
+<h1 style="margin: 0; font-size: 26px; font-weight: 700; letter-spacing: -0.01em">Tiến độ</h1>
+<a href="Schedule.dc.html" style="font-size: 13px; color: #3B4541; min-height: 44px; display: flex; align-items: center; gap: 6px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M3 10h18"></path><path d="M8 3v4"></path><path d="M16 3v4"></path></svg>Còn <strong style="font-weight: 600; color: #15201C">142 ngày</strong> đến kỳ thi</a>
+</div>
+<nav aria-label="Trang trong Tiến độ" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); background: #E6EAE7; border-radius: 14px; padding: 4px; gap: 4px">
+<a href="ProgressSkills.dc.html" aria-current="page" style="min-height: 44px; border-radius: 11px; background: #FFFFFF; color: #15201C; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 1px 2px rgba(21, 32, 28, 0.08)"><span style="font-size: 15px; font-weight: 600">Năng lực</span><span style="font-size: 11px; color: #58635F">Bạn biết gì</span></a>
+<a href="ProgressRhythm.dc.html" style="min-height: 44px; border-radius: 11px; color: #3B4541; display: flex; flex-direction: column; align-items: center; justify-content: center"><span style="font-size: 15px; font-weight: 500">Nhịp học</span><span style="font-size: 11px; color: #58635F">Bạn học thế nào</span></a>
+</nav>
+</header>
+
+<main style="flex-grow: 1; overflow-y: auto; padding: 4px 16px 24px 16px; display: flex; flex-direction: column; gap: 16px">
+
+<div role="group" aria-label="Phạm vi đề thi thử" style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap">
+<span style="font-size: 13px; color: #58635F">Tính trên</span>
+<sc-for list="{{ wins }}" as="w" hint-placeholder-count="2">
+<button type="button" aria-pressed="{{ w.pressed }}" onClick="{{ w.pick }}" style="{{ w.style }}">{{ w.label }}</button>
+</sc-for>
+</div>
+
+<section aria-labelledby="cover-title" style="background: #FFFFFF; border: 1px solid #DCE1DD; border-radius: 18px; padding: 16px; display: flex; flex-direction: column; gap: 12px">
+<h2 id="cover-title" style="margin: 0; font-size: 13px; font-weight: 600; color: #58635F; text-transform: uppercase; letter-spacing: 0.06em">Độ phủ chương trình</h2>
+<div style="display: flex; align-items: baseline; gap: 8px">
+<span style="font-size: 40px; font-weight: 700; line-height: 1">28</span>
+<span style="font-size: 15px; color: #3B4541">/ 54 vấn đề cốt lõi đã luyện</span>
+</div>
+<span aria-hidden="true" style="display: block; height: 8px; border-radius: 4px; background: #E6EAE7; overflow: hidden"><span style="display: block; height: 8px; width: 52%; background: #1E7A4F"></span></span>
+<div style="display: flex; flex-direction: column; border-top: 1px solid #ECEFEC; padding-top: 4px">
+<a href="Unit.dc.html" style="display: grid; grid-template-columns: minmax(0, 1fr) 72px 64px; gap: 10px; align-items: center; min-height: 44px; color: #15201C; font-size: 14px"><span style="line-height: 1.35">Dịch tễ học cơ bản</span><span style="display: block; height: 5px; border-radius: 3px; background: #E6EAE7; overflow: hidden"><span style="display: block; height: 5px; width: 37%; background: #1E7A4F"></span></span><span style="font-size: 12px; color: #58635F; text-align: right">3/8 chủ đề</span></a>
+<a href="Unit.dc.html" style="display: grid; grid-template-columns: minmax(0, 1fr) 72px 64px; gap: 10px; align-items: center; min-height: 44px; color: #15201C; font-size: 14px"><span style="line-height: 1.35">Thống kê y sinh</span><span style="display: block; height: 5px; border-radius: 3px; background: #E6EAE7; overflow: hidden"><span style="display: block; height: 5px; width: 40%; background: #1E7A4F"></span></span><span style="font-size: 12px; color: #58635F; text-align: right">2/5 chủ đề</span></a>
+<a href="Unit.dc.html" style="display: grid; grid-template-columns: minmax(0, 1fr) 72px 64px; gap: 10px; align-items: center; min-height: 44px; color: #15201C; font-size: 14px"><span style="line-height: 1.35">Tiêm chủng mở rộng</span><span style="display: block; height: 5px; border-radius: 3px; background: #E6EAE7; overflow: hidden"><span style="display: block; height: 5px; width: 17%; background: #1E7A4F"></span></span><span style="font-size: 12px; color: #58635F; text-align: right">1/6 chủ đề</span></a>
+<a href="Modules.dc.html" style="min-height: 44px; display: flex; align-items: center; font-size: 13px; font-weight: 600">Xem tất cả 8 học phần</a>
+</div>
+</section>
+
+<section aria-labelledby="prio-title" style="background: #FFFFFF; border: 1px solid #DCE1DD; border-radius: 18px; padding: 16px; display: flex; flex-direction: column; gap: 4px">
+<div style="display: flex; justify-content: space-between; align-items: baseline; padding-bottom: 6px">
+<h2 id="prio-title" style="margin: 0; font-size: 13px; font-weight: 600; color: #58635F; text-transform: uppercase; letter-spacing: 0.06em">Cần ưu tiên</h2>
+<span style="font-size: 12px; color: #58635F">{{ winShort }}</span>
+</div>
+<sc-for list="{{ weakest }}" as="k" hint-placeholder-count="3">
+<div style="display: flex; align-items: center; gap: 12px; min-height: 56px; border-top: 1px solid #ECEFEC">
+<span style="width: 26px; height: 26px; flex-shrink: 0; border-radius: 13px; background: #FDF3E4; color: #8F4207; font-size: 13px; font-weight: 700; display: flex; align-items: center; justify-content: center">{{ k.rank }}</span>
+<span style="flex-grow: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px">
+<span style="font-size: 15px; font-weight: 600; line-height: 1.35">{{ k.name }}</span>
+<span style="font-size: 12px; color: #58635F">{{ k.frac }} câu đúng · yếu nhất: {{ k.issue }}</span>
+</span>
+<a href="SmartB_Quiz.dc.html" style="min-height: 40px; padding: 0 14px; border-radius: 10px; background: #E3F2E9; color: #17603E; font-size: 13px; font-weight: 600; display: flex; align-items: center">Luyện</a>
+</div>
+</sc-for>
+</section>
+
+<section aria-labelledby="exam-title" style="background: #FFFFFF; border: 1px solid #DCE1DD; border-radius: 18px; padding: 16px; display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; justify-content: space-between; align-items: baseline">
+<h2 id="exam-title" style="margin: 0; font-size: 13px; font-weight: 600; color: #58635F; text-transform: uppercase; letter-spacing: 0.06em">Điểm cả đề</h2>
+<a href="Exams.dc.html" style="font-size: 13px; font-weight: 600; min-height: 44px; display: flex; align-items: center">Lịch sử thi</a>
+</div>
+<p style="margin: 0; font-size: 15px; line-height: 1.5">{{ scoreLine }}</p>
+<div role="img" aria-label="{{ chartAria }}" style="position: relative; width: 326px; height: 150px">
+<svg width="326" height="130" viewBox="0 0 326 130" style="position: absolute; left: 0; top: 0">
+<path d="M24 15H326M24 65H326M24 115H326" stroke="#E6EAE7" stroke-width="1"></path>
+<text x="0" y="19" font-size="11" fill="#58635F" font-family="Be Vietnam Pro, sans-serif">40</text>
+<text x="0" y="69" font-size="11" fill="#58635F" font-family="Be Vietnam Pro, sans-serif">20</text>
+<text x="6" y="119" font-size="11" fill="#58635F" font-family="Be Vietnam Pro, sans-serif">0</text>
+<polyline points="{{ linePts }}" fill="none" stroke="#1E7A4F" stroke-width="2" stroke-linejoin="round"></polyline>
+<path d="{{ dotsPath }}" fill="#1E7A4F" stroke="#FFFFFF" stroke-width="2"></path>
+</svg>
+<sc-for list="{{ pts }}" as="p" hint-placeholder-count="3">
+<span style="{{ p.labelStyle }}">{{ p.score }}</span>
+<span style="{{ p.dateStyle }}">{{ p.date }}</span>
+</sc-for>
+</div>
+</section>
+
+<section aria-labelledby="grid-title" style="background: #FFFFFF; border: 1px solid #DCE1DD; border-radius: 18px; padding: 16px; display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; flex-direction: column; gap: 4px">
+<h2 id="grid-title" style="margin: 0; font-size: 13px; font-weight: 600; color: #58635F; text-transform: uppercase; letter-spacing: 0.06em">Câu đúng theo miền năng lực</h2>
+<span style="font-size: 13px; line-height: 1.5; color: #3B4541">Mỗi đề chỉ có 4–8 câu cho một miền, nên hãy đọc cột Gộp. Chạm một miền để xem từng vấn đề cốt lõi.</span>
+</div>
+<div role="table" aria-label="Câu đúng theo miền và đề" style="display: flex; flex-direction: column">
+<div role="row" style="{{ headStyle }}">
+<span role="columnheader" style="font-size: 12px; color: #58635F">Miền</span>
+<sc-for list="{{ heads }}" as="h" hint-placeholder-count="3">
+<span role="columnheader" style="font-size: 12px; color: #58635F; text-align: center">{{ h.label }}</span>
+</sc-for>
+<span role="columnheader" style="font-size: 12px; font-weight: 700; color: #15201C; text-align: center">Gộp</span>
+</div>
+<sc-for list="{{ rows }}" as="r" hint-placeholder-count="7">
+<div style="display: flex; flex-direction: column; border-top: 1px solid #ECEFEC">
+<button type="button" role="row" onClick="{{ r.toggle }}" aria-expanded="{{ r.expanded }}" style="{{ r.rowStyle }}">
+<span role="rowheader" style="font-size: 13px; font-weight: 500; line-height: 1.3; text-align: left">{{ r.name }}</span>
+<sc-for list="{{ r.cells }}" as="c" hint-placeholder-count="3">
+<span role="cell" style="{{ c.style }}">{{ c.text }}</span>
+</sc-for>
+<span role="cell" style="{{ r.poolStyle }}">{{ r.pool }}</span>
+</button>
+<sc-if value="{{ r.open }}" hint-placeholder-val="{{ false }}">
+<div style="background: #F5F6F3; border-radius: 12px; padding: 10px 12px; margin-bottom: 8px; display: flex; flex-direction: column; gap: 6px">
+<sc-for list="{{ r.issues }}" as="i" hint-placeholder-count="3">
+<span style="display: flex; justify-content: space-between; gap: 12px; font-size: 13px"><span style="color: #3B4541">{{ i.name }}</span><span style="font-weight: 600; white-space: nowrap">{{ i.frac }}</span></span>
+</sc-for>
+<div style="display: flex; gap: 8px; padding-top: 4px">
+<a href="AnswerReview.dc.html" style="flex-grow: 1; min-height: 40px; border-radius: 10px; border: 1px solid #C9D0CC; background: #FFFFFF; color: #15201C; font-size: 13px; display: flex; align-items: center; justify-content: center">Xem câu sai</a>
+<a href="SmartB_Quiz.dc.html" style="flex-grow: 1; min-height: 40px; border-radius: 10px; background: #1E7A4F; color: #FFFFFF; font-size: 13px; font-weight: 600; display: flex; align-items: center; justify-content: center">Luyện miền này</a>
+</div>
+</div>
+</sc-if>
+</div>
+</sc-for>
+</div>
+<div style="display: flex; align-items: center; gap: 8px; font-size: 12px; color: #58635F; padding-top: 4px">
+<span>Ít đúng</span>
+<span style="display: flex; gap: 2px"><span style="width: 18px; height: 12px; border-radius: 3px; background: #EEF2EF"></span><span style="width: 18px; height: 12px; border-radius: 3px; background: #D4EDDF"></span><span style="width: 18px; height: 12px; border-radius: 3px; background: #A6DDBF"></span><span style="width: 18px; height: 12px; border-radius: 3px; background: #7FC8A0"></span></span>
+<span>Nhiều đúng</span>
+<span style="margin-left: auto">ô = đúng / số câu</span>
+</div>
+</section>
+
+<section aria-labelledby="level-title" style="background: #FFFFFF; border: 1px solid #DCE1DD; border-radius: 18px; padding: 16px; display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; flex-direction: column; gap: 4px">
+<h2 id="level-title" style="margin: 0; font-size: 13px; font-weight: 600; color: #58635F; text-transform: uppercase; letter-spacing: 0.06em">Theo mức nhận thức</h2>
+<span style="font-size: 13px; line-height: 1.5; color: #3B4541">Câu càng đòi hỏi vận dụng, bạn càng hay sai.</span>
+</div>
+<sc-for list="{{ levels }}" as="l" hint-placeholder-count="3">
+<div style="display: grid; grid-template-columns: 72px minmax(0, 1fr) 56px; gap: 12px; align-items: center; min-height: 32px">
+<span style="font-size: 14px">{{ l.name }}</span>
+<span style="display: block; height: 8px; border-radius: 4px; background: #E6EAE7; overflow: hidden"><span style="{{ l.fill }}"></span></span>
+<span style="font-size: 13px; font-weight: 600; text-align: right">{{ l.frac }}</span>
+</div>
+</sc-for>
+</section>
+
+</main>
+
+<nav aria-label="Điều hướng chính" style="height: 72px; flex-shrink: 0; background: #FFFFFF; border-top: 1px solid #DCE1DD; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); padding-bottom: 6px; box-sizing: border-box">
+<a href="Main.dc.html" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; font-size: 11px; color: #58635F"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"></path></svg>Trang chủ</a>
+<a href="Chat.dc.html" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; font-size: 11px; color: #58635F"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"></path></svg>Hỏi đáp</a>
+<a href="Modules.dc.html" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; font-size: 11px; color: #58635F"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"></path><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"></path></svg>Luyện tập</a>
+<a href="Exams.dc.html" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; font-size: 11px; color: #58635F"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"></circle><path d="M12 9v4l2.5 2.5"></path><path d="M9 2h6"></path></svg>Thi thử</a>
+<a href="ProgressSkills.dc.html" aria-current="page" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; font-size: 11px; font-weight: 600; color: #1E7A4F"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10"></path><path d="M10 20V4"></path><path d="M16 20v-7"></path><path d="M22 20H2"></path></svg>Tiến độ</a>
+</nav>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":2080}}'>
+class Component extends DCLogic {
+constructor(props) {
+super(props);
+this.state = { win: '3', open: 'Thống kê y sinh' };
+}
+renderVals() {
+var self = this;
+var exams = [
+{ label: 'Đề 1', date: '05/09', score: 26 },
+{ label: 'Đề 2', date: '19/09', score: 29 },
+{ label: 'Đề 3', date: '28/09', score: 31 },
+{ label: 'Đề 4', date: '06/10', score: 33 }
+];
+var domains = [
+{ name: 'Dịch tễ học', asked: 8, c: [5, 6, 6, 7], issues: ['Đo lường bệnh trạng', 'Thiết kế nghiên cứu', 'Điều tra vụ dịch'] },
+{ name: 'Bệnh truyền nhiễm', asked: 7, c: [5, 5, 6, 6], issues: ['Lao', 'Sốt xuất huyết', 'Bệnh lây qua hô hấp'] },
+{ name: 'Tiêm chủng', asked: 5, c: [4, 4, 4, 5], issues: ['Lịch tiêm chủng mở rộng', 'Bảo quản vắc xin', 'Phản ứng sau tiêm'] },
+{ name: 'Sức khỏe môi trường', asked: 6, c: [4, 4, 5, 5], issues: ['Nước sạch và vệ sinh', 'Ô nhiễm không khí', 'Chất thải y tế'] },
+{ name: 'Dinh dưỡng', asked: 5, c: [2, 3, 3, 3], issues: ['Suy dinh dưỡng trẻ em', 'Đánh giá tình trạng dinh dưỡng', 'An toàn thực phẩm'] },
+{ name: 'Thống kê y sinh', asked: 4, c: [1, 2, 2, 2], issues: ['Cỡ mẫu', 'Kiểm định giả thuyết', 'Thống kê mô tả'] },
+{ name: 'Sức khỏe nghề nghiệp', asked: 5, c: [5, 5, 5, 5], issues: ['Bệnh nghề nghiệp', 'Vệ sinh lao động'] }
+];
+var win = this.state.win;
+var idx = win === '3' ? [1, 2, 3] : [0, 1, 2, 3];
+var n = idx.length;
+function shade(rate) {
+if (rate < 0.5) return '#EEF2EF';
+if (rate < 0.7) return '#D4EDDF';
+if (rate < 0.85) return '#A6DDBF';
+return '#7FC8A0';
+}
+function split(c, a, k) {
+var out = [];
+var base = Math.floor(a / k), rem = a % k;
+var asked = [];
+for (var i = 0; i < k; i++) asked.push(base + (i < rem ? 1 : 0));
+var left = c;
+for (var j = 0; j < k; j++) {
+var share = j === k - 1 ? left : Math.min(asked[j], Math.round(c * asked[j] / a) - (j === 0 ? 1 : 0));
+share = Math.max(0, Math.min(asked[j], share, left));
+out.push(share);
+left -= share;
+}
+if (left > 0) { for (var m = k - 1; m >= 0 && left > 0; m--) { var room = asked[m] - out[m]; var add = Math.min(room, left); out[m] += add; left -= add; } }
+return asked.map(function (av, q) { return { a: av, c: out[q] }; });
+}
+var cols = 'display: grid; grid-template-columns: minmax(0, 1fr) repeat(' + n + ', 38px) 50px; gap: 4px; align-items: center;';
+var rows = domains.map(function (d) {
+var pc = 0, pa = 0;
+var cells = idx.map(function (i) {
+pc += d.c[i]; pa += d.asked;
+return { text: d.c[i] + '/' + d.asked, style: 'height: 32px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 12px; font-variant-numeric: tabular-nums; color: #15201C; background: ' + shade(d.c[i] / d.asked) };
+});
+var parts = split(pc, pa, d.issues.length);
+var issues = d.issues.map(function (nm, q) { return { name: nm, frac: parts[q].c + '/' + parts[q].a, rate: parts[q].c / parts[q].a }; });
+var weakIssue = issues.slice().sort(function (x, y) { return x.rate - y.rate; })[0];
+return { d: d, name: d.name, pc: pc, pa: pa, rate: pc / pa, cells: cells, issues: issues, weakIssue: weakIssue.name };
+});
+rows.sort(function (x, y) { return x.rate - y.rate || (x.name < y.name ? -1 : 1); });
+var open = this.state.open;
+var outRows = rows.map(function (r) {
+var isOpen = open === r.name;
+return {
+name: r.name,
+cells: r.cells,
+pool: r.pc + '/' + r.pa,
+poolStyle: 'height: 32px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; font-variant-numeric: tabular-nums; color: #15201C; box-shadow: inset 0 0 0 1.5px #15201C; background: ' + shade(r.rate),
+rowStyle: cols + ' width: 100%; min-height: 48px; padding: 6px 0; border: 0; background: transparent; font-family: inherit; color: #15201C; cursor: pointer;',
+issues: r.issues,
+open: isOpen,
+expanded: isOpen ? 'true' : 'false',
+toggle: function () { self.setState({ open: self.state.open === r.name ? '' : r.name }); }
+};
+});
+var weakest = rows.slice(0, 3).map(function (r, q) { return { rank: q + 1, name: r.name, frac: r.pc + '/' + r.pa, issue: r.weakIssue }; });
+var heads = idx.map(function (i) { return { label: exams[i].label }; });
+var xs = [];
+for (var k = 0; k < n; k++) xs.push(Math.round(44 + k * (262 / (n - 1))));
+var pts = idx.map(function (i, k) {
+var y = 115 - exams[i].score / 40 * 100;
+return {
+x: xs[k], y: y, score: exams[i].score, date: exams[i].date,
+labelStyle: 'position: absolute; top: ' + Math.round(y - 26) + 'px; left: ' + (xs[k] - 20) + 'px; width: 40px; text-align: center; font-size: 13px; font-weight: 700; color: #15201C',
+dateStyle: 'position: absolute; top: 132px; left: ' + (xs[k] - 24) + 'px; width: 48px; text-align: center; font-size: 11px; color: #58635F'
+};
+});
+var linePts = pts.map(function (p) { return p.x + ',' + p.y; }).join(' ');
+var dotsPath = pts.map(function (p) { return 'M' + (p.x - 5) + ' ' + p.y + 'a5 5 0 1 0 10 0a5 5 0 1 0 -10 0'; }).join(' ');
+var scores = idx.map(function (i) { return exams[i].score; });
+var lv = win === '3' ? [['Nhớ', 36, 40], ['Hiểu', 38, 48], ['Vận dụng', 19, 32]] : [['Nhớ', 47, 54], ['Hiểu', 49, 64], ['Vận dụng', 23, 42]];
+var levels = lv.map(function (l) { return { name: l[0], frac: l[1] + '/' + l[2], fill: 'display: block; height: 8px; background: #1E7A4F; width: ' + Math.round(l[1] / l[2] * 100) + '%' }; });
+var winDefs = [{ id: '3', label: '3 đề gần nhất' }, { id: 'all', label: 'Tất cả 4 đề' }];
+var wins = winDefs.map(function (w) {
+var on = w.id === win;
+return {
+label: w.label,
+pressed: on ? 'true' : 'false',
+style: 'min-height: 36px; padding: 0 14px; border-radius: 999px; font-family: inherit; font-size: 13px; font-weight: 500; cursor: pointer; ' + (on ? 'background: #15201C; color: #FFFFFF; border: 1px solid #15201C;' : 'background: #FFFFFF; color: #15201C; border: 1px solid #C9D0CC;'),
+pick: function () { self.setState({ win: w.id }); }
+};
+});
+return {
+wins: wins,
+winShort: win === '3' ? 'từ 3 đề gần nhất' : 'từ 4 đề',
+weakest: weakest,
+scoreLine: 'Câu đúng mỗi đề: ' + scores.join(' → ') + ' / 40',
+chartAria: 'Điểm các đề thi thử: ' + idx.map(function (i) { return exams[i].label + ' ' + exams[i].score + ' trên 40'; }).join(', '),
+pts: pts,
+linePts: linePts,
+dotsPath: dotsPath,
+headStyle: cols + ' min-height: 28px; padding-bottom: 4px;',
+heads: heads,
+rows: outRows,
+levels: levels
+};
+}
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<title>Tiến độ — Nhịp học</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&amp;family=Literata:opsz,wght@7..72,400;7..72,500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#1E7A4F;text-decoration:none}a:hover{color:#17603E}
+</style>
+</helmet>
+<div style="width: 390px; height: 2250px; box-sizing: border-box; background: #F5F6F3; font-family: 'Be Vietnam Pro', system-ui, sans-serif; color: #15201C; display: flex; flex-direction: column; overflow: hidden">
+
+<header style="flex-shrink: 0; padding: 28px 16px 12px 16px; display: flex; flex-direction: column; gap: 14px; background: #F5F6F3">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 0 4px">
+<h1 style="margin: 0; font-size: 26px; font-weight: 700; letter-spacing: -0.01em">Tiến độ</h1>
+<a href="Schedule.dc.html" style="font-size: 13px; color: #3B4541; min-height: 44px; display: flex; align-items: center; gap: 6px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M3 10h18"></path><path d="M8 3v4"></path><path d="M16 3v4"></path></svg>Còn <strong style="font-weight: 600; color: #15201C">142 ngày</strong> đến kỳ thi</a>
+</div>
+<nav aria-label="Trang trong Tiến độ" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); background: #E6EAE7; border-radius: 14px; padding: 4px; gap: 4px">
+<a href="ProgressSkills.dc.html" style="min-height: 44px; border-radius: 11px; color: #3B4541; display: flex; flex-direction: column; align-items: center; justify-content: center"><span style="font-size: 15px; font-weight: 500">Năng lực</span><span style="font-size: 11px; color: #58635F">Bạn biết gì</span></a>
+<a href="ProgressRhythm.dc.html" aria-current="page" style="min-height: 44px; border-radius: 11px; background: #FFFFFF; color: #15201C; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 1px 2px rgba(21, 32, 28, 0.08)"><span style="font-size: 15px; font-weight: 600">Nhịp học</span><span style="font-size: 11px; color: #58635F">Bạn học thế nào</span></a>
+</nav>
+</header>
+
+<main style="flex-grow: 1; overflow-y: auto; padding: 4px 16px 24px 16px; display: flex; flex-direction: column; gap: 16px">
+
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px">
+<section style="background: #FFFFFF; border: 1px solid #DCE1DD; border-radius: 18px; padding: 14px 16px; display: flex; flex-direction: column; gap: 4px">
+<span style="font-size: 12px; color: #58635F">Thời gian tuần này</span>
+<span style="font-size: 26px; font-weight: 700; line-height: 1.2">3 g 20 ph</span>
+<span style="font-size: 12px; color: #3B4541">Tuần trước: 2 g 45 ph</span>
+</section>
+<section style="background: #FFFFFF; border: 1px solid #DCE1DD; border-radius: 18px; padding: 14px 16px; display: flex; flex-direction: column; gap: 4px">
+<span style="font-size: 12px; color: #58635F">Ngày có học</span>
+<span style="font-size: 26px; font-weight: 700; line-height: 1.2">5 / 6</span>
+<span style="font-size: 12px; color: #3B4541">ngày đã qua của tuần</span>
+</section>
+</div>
+
+<section aria-labelledby="cal-title" style="background: #FFFFFF; border: 1px solid #DCE1DD; border-radius: 18px; padding: 16px; display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; flex-direction: column; gap: 4px">
+<h2 id="cal-title" style="margin: 0; font-size: 13px; font-weight: 600; color: #58635F; text-transform: uppercase; letter-spacing: 0.06em">8 tuần gần nhất</h2>
+<span style="font-size: 13px; color: #3B4541">Mỗi ô là một ngày, đậm hơn là học lâu hơn.</span>
+</div>
+<div role="grid" aria-label="Số phút học mỗi ngày trong 8 tuần" style="display: flex; flex-direction: column; gap: 4px">
+<div aria-hidden="true" style="display: grid; grid-template-columns: 40px repeat(7, minmax(0, 1fr)); gap: 4px; font-size: 11px; color: #58635F; text-align: center">
+<span></span><span>T2</span><span>T3</span><span>T4</span><span>T5</span><span>T6</span><span>T7</span><span>CN</span>
+</div>
+<sc-for list="{{ weeks }}" as="w" hint-placeholder-count="8">
+<div role="row" style="display: grid; grid-template-columns: 40px repeat(7, minmax(0, 1fr)); gap: 4px; align-items: center">
+<span role="rowheader" style="font-size: 11px; color: #58635F">{{ w.label }}</span>
+<sc-for list="{{ w.days }}" as="d" hint-placeholder-count="7">
+<span role="gridcell" aria-label="{{ d.aria }}" style="{{ d.style }}"></span>
+</sc-for>
+</div>
+</sc-for>
+</div>
+<div style="display: flex; align-items: center; gap: 8px; font-size: 12px; color: #58635F">
+<span>Không học</span>
+<span style="display: flex; gap: 2px"><span style="width: 14px; height: 14px; border-radius: 3px; background: #ECEFEC"></span><span style="width: 14px; height: 14px; border-radius: 3px; background: #D4EDDF"></span><span style="width: 14px; height: 14px; border-radius: 3px; background: #A6DDBF"></span><span style="width: 14px; height: 14px; border-radius: 3px; background: #5BB283"></span><span style="width: 14px; height: 14px; border-radius: 3px; background: #1E7A4F"></span></span>
+<span>Trên 75 phút</span>
+</div>
+</section>
+
+<section aria-labelledby="curve-title" style="background: #15201C; color: #FFFFFF; border-radius: 20px; padding: 18px; display: flex; flex-direction: column; gap: 12px">
+<span style="font-size: 12px; font-weight: 600; color: #A6DDBF; text-transform: uppercase; letter-spacing: 0.06em">Đường ghi nhớ</span>
+<h2 id="curve-title" style="margin: 0; font-size: 19px; font-weight: 700; line-height: 1.35">12 thẻ vừa chạm ngưỡng nhớ — ôn bây giờ là đúng lúc</h2>
+<svg viewBox="0 0 320 150" width="100%" height="146" role="img" aria-label="Đường độ nhớ: mỗi lần ôn đưa độ nhớ về 100% và lần sau giảm chậm hơn. Hôm nay độ nhớ chạm ngưỡng 90%; nếu không ôn sẽ xuống khoảng 70% sau một tuần." style="display: block">
+<text x="0" y="13" fill="#C9D3CF" font-size="10" font-family="Be Vietnam Pro, sans-serif">100%</text>
+<text x="0" y="45" fill="#C9D3CF" font-size="10" font-family="Be Vietnam Pro, sans-serif">90%</text>
+<text x="0" y="111" fill="#C9D3CF" font-size="10" font-family="Be Vietnam Pro, sans-serif">70%</text>
+<line x1="32" y1="42" x2="320" y2="42" stroke="#C9D3CF" stroke-width="1" stroke-dasharray="3 4"></line>
+<line x1="32" y1="108" x2="320" y2="108" stroke="#2E3A35" stroke-width="1"></line>
+<path d="M32 10 Q40 38 62 42 L62 10 Q78 38 118 42 L118 10 Q150 36 236 42" fill="none" stroke="#A6DDBF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M236 42 Q270 62 316 104" fill="none" stroke="#F2B36B" stroke-width="2" stroke-dasharray="4 4" stroke-linecap="round"></path>
+<line x1="236" y1="4" x2="236" y2="128" stroke="#FFFFFF" stroke-width="1" opacity="0.5"></line>
+<circle cx="236" cy="42" r="6" fill="#FFFFFF"></circle>
+<text x="62" y="142" fill="#C9D3CF" font-size="10" text-anchor="middle" font-family="Be Vietnam Pro, sans-serif">ôn lần 1</text>
+<text x="118" y="142" fill="#C9D3CF" font-size="10" text-anchor="middle" font-family="Be Vietnam Pro, sans-serif">ôn lần 2</text>
+<text x="236" y="142" fill="#FFFFFF" font-size="10" font-weight="600" text-anchor="middle" font-family="Be Vietnam Pro, sans-serif">hôm nay</text>
+<text x="316" y="124" fill="#F2B36B" font-size="10" text-anchor="end" font-family="Be Vietnam Pro, sans-serif">nếu không ôn</text>
+</svg>
+<p style="margin: 0; font-size: 13px; line-height: 1.55; color: #C9D3CF">Mỗi lần ôn đúng lúc, độ nhớ quay về 100% và giảm chậm hơn — khoảng cách tới lần ôn sau dài ra.</p>
+</section>
+
+<section aria-labelledby="mem-title" style="background: #FFFFFF; border: 1px solid #DCE1DD; border-radius: 18px; padding: 16px; display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; justify-content: space-between; align-items: baseline">
+<h2 id="mem-title" style="margin: 0; font-size: 13px; font-weight: 600; color: #58635F; text-transform: uppercase; letter-spacing: 0.06em">Trí nhớ</h2>
+<a href="Decks.dc.html" style="font-size: 13px; font-weight: 600; min-height: 44px; display: flex; align-items: center">Bộ thẻ trong Luyện tập</a>
+</div>
+<div style="display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap">
+<span style="font-size: 40px; font-weight: 700; line-height: 1">86%</span>
+<span style="font-size: 14px; line-height: 1.45; color: #3B4541">thẻ nhớ đúng khi ôn<br>30 ngày · 214 lượt ôn</span>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 8px">
+<span aria-hidden="true" style="display: flex; height: 12px; gap: 2px">
+<span style="flex: 18 1 0; border-radius: 4px 0 0 4px; background: #D4EDDF"></span>
+<span style="flex: 24 1 0; background: #7FC8A0"></span>
+<span style="flex: 62 1 0; border-radius: 0 4px 4px 0; background: #1E7A4F"></span>
+</span>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; font-size: 12px; color: #3B4541">
+<span style="display: flex; align-items: center; gap: 6px"><span style="width: 10px; height: 10px; border-radius: 2px; background: #D4EDDF; flex-shrink: 0"></span>Mới · <strong style="font-weight: 600; color: #15201C">18</strong></span>
+<span style="display: flex; align-items: center; gap: 6px"><span style="width: 10px; height: 10px; border-radius: 2px; background: #7FC8A0; flex-shrink: 0"></span>Đang học · <strong style="font-weight: 600; color: #15201C">24</strong></span>
+<span style="display: flex; align-items: center; gap: 6px"><span style="width: 10px; height: 10px; border-radius: 2px; background: #1E7A4F; flex-shrink: 0"></span>Đã thuộc · <strong style="font-weight: 600; color: #15201C">62</strong></span>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 4px; border-top: 1px solid #ECEFEC; padding-top: 14px">
+<span style="font-size: 14px; font-weight: 600">Độ nhớ theo học phần</span>
+<span style="font-size: 12px; color: #58635F">Hiện tại → sau 7 ngày nếu không ôn</span>
+</div>
+<div style="display: flex; flex-direction: column">
+<sc-for list="{{ mods }}" as="m" hint-placeholder-count="3">
+<div style="{{ m.row }}">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 8px">
+<span style="font-size: 14px; font-weight: 500">{{ m.name }}</span>
+<span style="font-size: 13px; color: #3B4541; white-space: nowrap"><strong style="font-weight: 600; color: #15201C">{{ m.now }}</strong> → {{ m.later }}</span>
+</div>
+<span role="img" aria-label="{{ m.aria }}" style="display: flex; height: 8px; border-radius: 4px; background: #ECEFEC; overflow: hidden">
+<span style="{{ m.keep }}"></span>
+<span style="{{ m.lose }}"></span>
+</span>
+</div>
+</sc-for>
+</div>
+<span style="display: flex; gap: 14px; flex-wrap: wrap; font-size: 12px; color: #3B4541">
+<span style="display: flex; align-items: center; gap: 6px"><span style="width: 14px; height: 8px; border-radius: 2px; background: #1E7A4F"></span>Còn nhớ sau 7 ngày</span>
+<span style="display: flex; align-items: center; gap: 6px"><span style="width: 14px; height: 8px; border-radius: 2px; background: #F2C894"></span>Sẽ quên nếu không ôn</span>
+</span>
+
+<div style="display: flex; flex-direction: column; gap: 8px; border-top: 1px solid #ECEFEC; padding-top: 14px">
+<span style="font-size: 14px; font-weight: 600">Thẻ đến hạn 7 ngày tới</span>
+<div style="display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 8px; align-items: end; height: 108px">
+<sc-for list="{{ forecast }}" as="f" hint-placeholder-count="7">
+<span style="display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 4px; height: 108px">
+<span style="font-size: 12px; font-weight: 600; color: #3B4541">{{ f.n }}</span>
+<span style="{{ f.bar }}"></span>
+<span style="{{ f.labelStyle }}">{{ f.label }}</span>
+</span>
+</sc-for>
+</div>
+</div>
+<div style="display: flex; gap: 8px">
+<a href="Cards.dc.html" style="flex-grow: 1; min-height: 46px; border-radius: 12px; background: #1E7A4F; color: #FFFFFF; font-size: 14px; font-weight: 600; display: flex; align-items: center; justify-content: center">Ôn 12 thẻ hôm nay</a>
+<a href="Browser.dc.html" style="min-height: 46px; padding: 0 14px; border-radius: 12px; border: 1px solid #C9D0CC; color: #15201C; font-size: 14px; display: flex; align-items: center">9 thẻ khó</a>
+</div>
+</section>
+
+<section aria-labelledby="hist-title" style="background: #FFFFFF; border: 1px solid #DCE1DD; border-radius: 18px; padding: 16px; display: flex; flex-direction: column">
+<div style="display: flex; justify-content: space-between; align-items: baseline; padding-bottom: 8px">
+<h2 id="hist-title" style="margin: 0; font-size: 13px; font-weight: 600; color: #58635F; text-transform: uppercase; letter-spacing: 0.06em">Hoạt động tuần này</h2>
+<span style="font-size: 12px; color: #58635F">5–10/10</span>
+</div>
+<sc-for list="{{ history }}" as="h" hint-placeholder-count="5">
+<a href="{{ h.href }}" style="display: flex; align-items: center; gap: 12px; min-height: 60px; border-top: 1px solid #ECEFEC; color: #15201C">
+<span style="{{ h.tagStyle }}">{{ h.tag }}</span>
+<span style="flex-grow: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px">
+<span style="font-size: 14px; font-weight: 600; line-height: 1.35">{{ h.title }}</span>
+<span style="font-size: 12px; color: #58635F">{{ h.sub }}</span>
+</span>
+<span style="font-size: 13px; font-weight: 600; white-space: nowrap">{{ h.result }}</span>
+</a>
+</sc-for>
+<a href="#history" style="min-height: 44px; display: flex; align-items: center; font-size: 13px; font-weight: 600; border-top: 1px solid #ECEFEC">Xem toàn bộ lịch sử</a>
+</section>
+
+</main>
+
+<nav aria-label="Điều hướng chính" style="height: 72px; flex-shrink: 0; background: #FFFFFF; border-top: 1px solid #DCE1DD; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); padding-bottom: 6px; box-sizing: border-box">
+<a href="Main.dc.html" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; font-size: 11px; color: #58635F"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"></path></svg>Trang chủ</a>
+<a href="Chat.dc.html" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; font-size: 11px; color: #58635F"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"></path></svg>Hỏi đáp</a>
+<a href="Modules.dc.html" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; font-size: 11px; color: #58635F"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"></path><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"></path></svg>Luyện tập</a>
+<a href="Exams.dc.html" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; font-size: 11px; color: #58635F"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"></circle><path d="M12 9v4l2.5 2.5"></path><path d="M9 2h6"></path></svg>Thi thử</a>
+<a href="ProgressSkills.dc.html" aria-current="page" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; font-size: 11px; font-weight: 600; color: #1E7A4F"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10"></path><path d="M10 20V4"></path><path d="M16 20v-7"></path><path d="M22 20H2"></path></svg>Tiến độ</a>
+</nav>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":2250}}'>
+class Component extends DCLogic {
+renderVals() {
+var mins = [
+['17/8', [0, 25, 40, 0, 15, 0, 0]],
+['24/8', [30, 0, 45, 20, 0, 60, 0]],
+['31/8', [20, 35, 0, 50, 25, 0, 0]],
+['7/9', [45, 30, 40, 0, 60, 90, 0]],
+['14/9', [0, 20, 0, 35, 40, 0, 15]],
+['21/9', [50, 45, 60, 0, 30, 75, 20]],
+['28/9', [40, 0, 55, 35, 25, 10, 0]],
+['5/10', [60, 45, 0, 40, 35, 20, -1]]
+];
+var dayNames = ['Thứ hai', 'Thứ ba', 'Thứ tư', 'Thứ năm', 'Thứ sáu', 'Thứ bảy', 'Chủ nhật'];
+function shade(m) {
+if (m <= 0) return '#ECEFEC';
+if (m <= 20) return '#D4EDDF';
+if (m <= 45) return '#A6DDBF';
+if (m <= 75) return '#5BB283';
+return '#1E7A4F';
+}
+var weeks = mins.map(function (w, wi) {
+return {
+label: w[0],
+days: w[1].map(function (m, di) {
+var isToday = wi === 7 && di === 5;
+var future = m < 0;
+var s = 'display: block; height: 30px; border-radius: 6px; box-sizing: border-box; ';
+if (future) s += 'background: transparent; border: 1px dashed #C9D0CC;';
+else s += 'background: ' + shade(m) + ';' + (isToday ? ' box-shadow: 0 0 0 2px #FFFFFF, 0 0 0 4px #15201C;' : '');
+return { style: s, aria: future ? dayNames[di] + ', chưa tới' : dayNames[di] + ' tuần ' + w[0] + ': ' + (m > 0 ? m + ' phút' : 'không học') + (isToday ? ', hôm nay' : '') };
+})
+};
+});
+var fc = [{ l: 'Nay', n: 12 }, { l: 'CN', n: 5 }, { l: 'T2', n: 9 }, { l: 'T3', n: 3 }, { l: 'T4', n: 7 }, { l: 'T5', n: 4 }, { l: 'T6', n: 6 }];
+var forecast = fc.map(function (d, i) {
+return {
+label: d.l, n: d.n,
+bar: 'display: block; width: 100%; border-radius: 6px 6px 2px 2px; height: ' + Math.round(d.n / 12 * 60) + 'px; background: ' + (i === 0 ? '#1E7A4F' : '#BBE0CB'),
+labelStyle: 'font-size: 12px; ' + (i === 0 ? 'font-weight: 700; color: #15201C' : 'color: #58635F')
+};
+});
+var tag = 'width: 64px; flex-shrink: 0; text-align: center; font-size: 11px; font-weight: 600; border-radius: 6px; padding: 4px 0; ';
+var history = [
+{ tag: 'Học phần', tc: 'background: #E3F2E9; color: #17603E;', title: 'Dịch tễ học · Chủ đề 3', sub: 'Thứ sáu 9/10 · 14 phút', result: 'Hoàn thành', href: 'SmartC_Summary.dc.html' },
+{ tag: 'Luyện tập', tc: 'background: #ECEFEC; color: #3B4541;', title: 'Luyện điểm yếu: mẫu số', sub: 'Thứ sáu 9/10 · 8 phút', result: '4/6', href: 'SmartB_Quiz.dc.html' },
+{ tag: 'Hỏi đáp', tc: 'background: #ECEFEC; color: #3B4541;', title: 'Liều vắc xin viêm gan B sơ sinh', sub: 'Thứ năm 8/10', result: '', href: 'Chat.dc.html' },
+{ tag: 'Thẻ ôn', tc: 'background: #ECEFEC; color: #3B4541;', title: 'Ôn 23 thẻ', sub: 'Thứ tư 7/10 · 11 phút', result: '20/23', href: 'Cards.dc.html' },
+{ tag: 'Thi thử', tc: 'background: #15201C; color: #FFFFFF;', title: 'Đề thi thử số 4', sub: 'Thứ ba 6/10 · 48 phút', result: '33/40', href: 'Results.dc.html' }
+].map(function (h) { return { tag: h.tag, tagStyle: tag + h.tc, title: h.title, sub: h.sub, result: h.result, href: h.href }; });
+var mdata = [
+{ name: 'Dịch tễ học cơ bản', now: 93, later: 85 },
+{ name: 'Tiêm chủng mở rộng', now: 88, later: 78 },
+{ name: 'Thống kê y sinh', now: 74, later: 58 }
+];
+var mods = mdata.map(function (m, i) {
+return {
+name: m.name, now: m.now + '%', later: m.later + '%',
+aria: m.name + ': độ nhớ hiện tại ' + m.now + '%, sau 7 ngày nếu không ôn còn ' + m.later + '%',
+row: 'display: flex; flex-direction: column; gap: 8px; padding: 10px 0;' + (i < mdata.length - 1 ? ' border-bottom: 1px solid #ECEFEC;' : ''),
+keep: 'display: block; height: 8px; background: #1E7A4F; width: ' + m.later + '%',
+lose: 'display: block; height: 8px; background: #F2C894; width: ' + (m.now - m.later) + '%'
+};
+});
+return { weeks: weeks, forecast: forecast, history: history, mods: mods };
+}
+}
+</script>
+</body>
+</html>

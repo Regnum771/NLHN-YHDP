@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<title>Lịch ôn tập</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&amp;family=Literata:opsz,wght@7..72,400;7..72,500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#1E7A4F;text-decoration:none}a:hover{color:#17603E}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: #F5F6F3; font-family: 'Be Vietnam Pro', system-ui, sans-serif; color: #15201C; display: flex; flex-direction: column; overflow: hidden">
+
+<header style="flex-shrink: 0; padding: 8px 8px 0 8px; display: flex; align-items: center; gap: 4px">
+<a href="ProgressRhythm.dc.html" aria-label="Quay lại Tiến độ" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; color: #15201C"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"></path></svg></a>
+<h1 style="margin: 0; flex-grow: 1; font-size: 22px; font-weight: 700">Lịch ôn tập</h1>
+<a href="DeckSettings.dc.html" aria-label="Cài đặt ôn tập" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; color: #15201C"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h10"></path><path d="M18 6h2"></path><circle cx="16" cy="6" r="2"></circle><path d="M4 12h4"></path><path d="M12 12h8"></path><circle cx="10" cy="12" r="2"></circle><path d="M4 18h12"></path><circle cx="18" cy="18" r="2"></circle></svg></a>
+</header>
+
+<main style="flex-grow: 1; overflow-y: auto; padding: 4px 16px 20px 16px; display: flex; flex-direction: column; gap: 14px">
+
+<div style="display: flex; align-items: center; justify-content: space-between; padding: 0 4px">
+<span style="font-size: 14px; color: #3B4541">Còn <strong style="color: #15201C">142 ngày</strong> đến kỳ thi</span>
+<span style="font-size: 12px; color: #58635F">01/03/2027</span>
+</div>
+
+<sc-if value="{{ isR2 }}" hint-placeholder-val="{{ false }}">
+<section style="background: #E3F2E9; border-radius: 16px; padding: 12px 12px 12px 14px; display: flex; align-items: center; gap: 10px">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#17603E" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"></path></svg>
+<span style="flex-grow: 1; font-size: 13px; line-height: 1.4; color: #15201C">Gia sư dời 2 buổi sau <strong>Đề thi thử số 4</strong></span>
+<button type="button" style="min-height: 44px; padding: 0 12px; border: 1px solid #1E7A4F; border-radius: 12px; background: #FFFFFF; font-family: inherit; font-size: 13px; font-weight: 600; color: #17603E; cursor: pointer">Xem</button>
+</section>
+</sc-if>
+
+<section style="background: #FFFFFF; border: 1px solid #DCE1DD; border-radius: 18px; padding: 8px 8px 12px 8px">
+<div style="display: flex; align-items: center; justify-content: space-between">
+<button type="button" aria-label="Tháng trước" style="width: 44px; height: 44px; border: 0; background: transparent; color: #3B4541; cursor: pointer; display: flex; align-items: center; justify-content: center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"></path></svg></button>
+<span style="font-size: 15px; font-weight: 600">Tháng 10, 2026</span>
+<button type="button" aria-label="Tháng sau" style="width: 44px; height: 44px; border: 0; background: transparent; color: #3B4541; cursor: pointer; display: flex; align-items: center; justify-content: center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg></button>
+</div>
+<div aria-hidden="true" style="display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); text-align: center; font-size: 11px; font-weight: 600; color: #58635F; padding: 2px 0 4px 0">
+<span>T2</span><span>T3</span><span>T4</span><span>T5</span><span>T6</span><span>T7</span><span>CN</span>
+</div>
+<div role="grid" aria-label="Tháng 10, 2026" style="display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); row-gap: 2px">
+<sc-for list="{{ cells }}" as="c" hint-placeholder-count="35">
+<button type="button" aria-label="{{ c.aria }}" aria-pressed="{{ c.pressed }}" onClick="{{ c.pick }}" style="{{ c.style }}">
+<span style="{{ c.numStyle }}">{{ c.num }}</span>
+<span style="{{ c.markStyle }}"></span>
+</button>
+</sc-for>
+</div>
+<div style="display: flex; align-items: center; justify-content: center; gap: 14px; padding-top: 8px; font-size: 11px; color: #58635F">
+<span style="display: flex; align-items: center; gap: 4px"><span style="width: 18px; height: 4px; border-radius: 2px; background: #C6E5D2"></span>Ít thẻ</span>
+<span style="display: flex; align-items: center; gap: 4px"><span style="width: 18px; height: 4px; border-radius: 2px; background: #1E7A4F"></span>Nhiều thẻ</span>
+<span style="display: flex; align-items: center; gap: 4px"><span style="width: 8px; height: 8px; border-radius: 4px; background: #B4530A"></span>Thi thử</span>
+</div>
+</section>
+
+<section aria-live="polite" style="display: flex; flex-direction: column; gap: 8px">
+<h2 style="margin: 0 4px; font-size: 13px; font-weight: 600; color: #58635F; text-transform: uppercase; letter-spacing: 0.06em">{{ dayTitle }}</h2>
+<div style="background: #FFFFFF; border: 1px solid #DCE1DD; border-radius: 16px; overflow: hidden">
+<sc-for list="{{ agenda }}" as="a" hint-placeholder-count="3">
+<a href="{{ a.href }}" style="display: flex; align-items: center; gap: 12px; min-height: 64px; padding: 8px 12px 8px 14px; border-bottom: 1px solid #ECEFEC; color: #15201C">
+<span style="{{ a.iconStyle }}">{{ a.glyph }}</span>
+<span style="flex-grow: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px">
+<span style="font-size: 15px; font-weight: 600; line-height: 1.35">{{ a.title }}</span>
+<span style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap; font-size: 12px; color: #58635F">{{ a.sub }}<sc-if value="{{ a.tutor }}" hint-placeholder-val="{{ false }}"><span style="font-size: 11px; color: #17603E; background: #E3F2E9; border-radius: 999px; padding: 2px 8px">Gia sư đề xuất</span></sc-if></span>
+</span>
+<sc-if value="{{ a.cta }}" hint-placeholder-val="{{ false }}"><span style="min-height: 36px; padding: 0 12px; border-radius: 10px; background: #1E7A4F; color: #FFFFFF; font-size: 13px; font-weight: 600; display: flex; align-items: center">Bắt đầu</span></sc-if>
+<sc-if value="{{ a.chev }}" hint-placeholder-val="{{ true }}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6B7571" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg></sc-if>
+</a>
+</sc-for>
+<sc-if value="{{ empty }}" hint-placeholder-val="{{ false }}"><div style="min-height: 64px; display: flex; align-items: center; justify-content: center; font-size: 14px; color: #58635F">Không có lượt ôn</div></sc-if>
+</div>
+</section>
+
+</main>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"release":{"editor":"enum","options":["R1 — thẻ ôn","R2 — có lộ trình gia sư"],"default":"R1 — thẻ ôn"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+constructor(props) {
+super(props);
+this.state = { day: 10 };
+}
+renderVals() {
+var self = this;
+var r2 = (this.props.release ?? 'R1 — thẻ ôn') !== 'R1 — thẻ ôn';
+var today = 10;
+var sel = this.state.day;
+var due = [0, 6, 4, 7, 3, 5, 2, 0, 8, 5, 12, 5, 9, 3, 7, 4, 6, 7, 3, 6, 4, 9, 2, 5, 6, 3, 7, 4, 5, 6, 3, 4];
+var mock = { 17: 'Đề thi thử số 5', 31: 'Đề thi thử số 6' };
+var tutor = {
+10: { t: 'Dịch tễ học · Chủ đề 3', s: 'Học phần' },
+12: { t: 'Dịch tễ học · Chủ đề 4', s: 'Học phần' },
+11: { t: 'Bệnh truyền nhiễm · Chủ đề 1', s: 'Học phần' },
+13: { t: 'Dịch tễ học · Chủ đề 5', s: 'Học phần' },
+15: { t: 'Ôn trước thi thử: Thống kê y sinh', s: 'Học phần' }
+};
+var offset = 3;
+var cells = [];
+for (var b = 0; b < offset; b++) {
+cells.push({ num: '', aria: 'Trống', pressed: 'false', pick: function () {}, style: 'min-height: 48px; border: 0; background: transparent; pointer-events: none;', numStyle: 'display: none', markStyle: 'display: none' });
+}
+for (var d = 1; d <= 31; d++) {
+(function (d) {
+var past = d < today;
+var n = due[d];
+var isSel = d === sel;
+var isToday = d === today;
+var shade = n >= 8 ? '#1E7A4F' : (n >= 5 ? '#5CAD80' : (n >= 1 ? '#C6E5D2' : 'transparent'));
+var hasMock = r2 && !!mock[d];
+var mark;
+if (hasMock) mark = 'display: block; width: 8px; height: 8px; border-radius: 4px; background: #B4530A;';
+else if (past) mark = 'display: block; width: 4px; height: 4px; border-radius: 2px; background: #9AA39F;';
+else mark = 'display: block; width: 22px; height: 4px; border-radius: 2px; background: ' + shade + ';';
+var bg = isSel ? 'background: #15201C;' : (isToday ? 'background: #E3F2E9;' : 'background: transparent;');
+var color = isSel ? '#FFFFFF' : (past ? '#8A938F' : '#15201C');
+cells.push({
+num: d,
+aria: d + ' tháng 10' + (isToday ? ', hôm nay' : '') + (past ? ', đã qua' : ', ' + n + ' thẻ') + (hasMock ? ', ' + mock[d] : ''),
+pressed: isSel ? 'true' : 'false',
+pick: function () { self.setState({ day: d }); },
+style: 'min-height: 48px; border: 0; border-radius: 12px; font-family: inherit; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; padding: 0; ' + bg,
+numStyle: 'font-size: 14px; font-weight: ' + (isToday || isSel ? 700 : 500) + '; color: ' + color,
+markStyle: isSel && !hasMock ? mark.replace(/background: [^;]+;$/, 'background: #FFFFFF;') : mark
+});
+})(d);
+}
+var agenda = [];
+var past = sel < today;
+var isToday = sel === today;
+if (past) {
+agenda.push({ glyph: '✓', title: 'Đã ôn ' + due[sel] + ' thẻ', sub: 'Hoàn thành', href: 'Decks.dc.html', tutor: false, cta: false, chev: true, iconStyle: 'width: 40px; height: 40px; flex-shrink: 0; border-radius: 12px; background: #ECEFEC; color: #3B4541; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 700' });
+} else {
+if (due[sel] > 0) agenda.push({ glyph: due[sel], title: 'Ôn thẻ đến hạn', sub: due[sel] + ' thẻ · theo lịch ngắt quãng', href: 'Cards.dc.html', tutor: false, cta: isToday, chev: !isToday, iconStyle: 'width: 40px; height: 40px; flex-shrink: 0; border-radius: 12px; background: #E3F2E9; color: #17603E; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 700' });
+if (r2 && tutor[sel]) agenda.push({ glyph: '▤', title: tutor[sel].t, sub: tutor[sel].s, href: 'Unit.dc.html', tutor: true, cta: false, chev: true, iconStyle: 'width: 40px; height: 40px; flex-shrink: 0; border-radius: 12px; background: #ECEFEC; color: #3B4541; display: flex; align-items: center; justify-content: center; font-size: 16px' });
+if (r2 && mock[sel]) agenda.push({ glyph: '◷', title: mock[sel], sub: '40 câu · 50 phút', href: 'ExamRules.dc.html', tutor: true, cta: false, chev: true, iconStyle: 'width: 40px; height: 40px; flex-shrink: 0; border-radius: 12px; background: #FBEFD9; color: #6B3A08; display: flex; align-items: center; justify-content: center; font-size: 18px' });
+}
+var weekday = ['CN', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7'][(sel + 3) % 7];
+return {
+isR2: r2,
+cells: cells,
+agenda: agenda,
+empty: agenda.length === 0,
+dayTitle: (isToday ? 'Hôm nay · ' : '') + weekday + ', ' + sel + '/10'
+};
+}
+}
+</script>
+</body>
+</html>

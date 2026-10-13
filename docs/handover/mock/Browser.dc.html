@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<title>Duyệt thẻ</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&amp;family=Literata:opsz,wght@7..72,400;7..72,500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#1E7A4F;text-decoration:none}a:hover{color:#17603E}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: #F5F6F3; font-family: 'Be Vietnam Pro', system-ui, sans-serif; color: #15201C; display: flex; flex-direction: column; overflow: hidden">
+
+<header style="flex-shrink: 0; padding: 8px 16px 10px 8px; display: flex; flex-direction: column; gap: 10px">
+<div style="display: flex; align-items: center; gap: 4px">
+<a href="DeckDetail.dc.html" aria-label="Quay lại" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; color: #15201C"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"></path></svg></a>
+<h1 style="margin: 0; font-size: 22px; font-weight: 700">Duyệt thẻ</h1>
+</div>
+<div role="search" style="margin-left: 8px; height: 48px; box-sizing: border-box; background: #FFFFFF; border: 1px solid #C9D0CC; border-radius: 24px; padding: 0 16px; display: flex; align-items: center; gap: 10px">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3B4541" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4"></path></svg>
+<label for="card-search" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Tìm thẻ</label>
+<input id="card-search" type="search" placeholder="Tìm trong 24 thẻ…" style="flex-grow: 1; min-width: 0; border: 0; outline: none; font-family: inherit; font-size: 16px; color: #15201C; background: transparent">
+</div>
+<div aria-label="Lọc thẻ" style="margin-left: 8px; display: flex; gap: 8px; overflow-x: auto; white-space: nowrap">
+<sc-for list="{{ filters }}" as="f" hint-placeholder-count="5">
+<button type="button" aria-pressed="{{ f.pressed }}" onClick="{{ f.pick }}" style="{{ f.style }}">{{ f.label }}</button>
+</sc-for>
+</div>
+</header>
+
+<main style="flex-grow: 1; overflow-y: auto; padding: 4px 16px 20px 16px">
+<section style="background: #FFFFFF; border: 1px solid #DCE1DD; border-radius: 16px; overflow: hidden">
+<sc-for list="{{ cards }}" as="c" hint-placeholder-count="6">
+<div style="display: flex; gap: 8px; align-items: flex-start; padding: 12px 4px 12px 14px; border-bottom: 1px solid #ECEFEC">
+<div style="flex-grow: 1; min-width: 0; display: flex; flex-direction: column; gap: 6px">
+<span style="{{ c.frontStyle }}">{{ c.front }}</span>
+<span style="display: flex; flex-wrap: wrap; gap: 6px; align-items: center; font-size: 12px; color: #58635F">
+<span>{{ c.deck }}</span><span aria-hidden="true">·</span><span style="{{ c.dueStyle }}">{{ c.due }}</span>
+<span style="font-size: 11px; color: #3B4541; background: #ECEFEC; border-radius: 999px; padding: 2px 8px">{{ c.origin }}</span>
+<sc-if value="{{ c.leech }}" hint-placeholder-val="{{ false }}"><span style="font-size: 11px; font-weight: 600; color: #6B3A08; background: #FBEFD9; border-radius: 999px; padding: 2px 8px">Khó nhớ · quên 6 lần</span></sc-if>
+</span>
+</div>
+<button type="button" aria-label="{{ c.menuLabel }}" style="width: 44px; height: 44px; flex-shrink: 0; border: 0; background: transparent; color: #3B4541; display: flex; align-items: center; justify-content: center; cursor: pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5" r="1.8"></circle><circle cx="12" cy="12" r="1.8"></circle><circle cx="12" cy="19" r="1.8"></circle></svg></button>
+</div>
+</sc-for>
+</section>
+</main>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+constructor(props) {
+super(props);
+this.state = { filter: 'all' };
+}
+renderVals() {
+var self = this;
+var all = [
+{ front: 'Mẫu số của tỷ lệ mới mắc là gì?', deck: 'Chủ đề 3', due: 'Đến hạn hôm nay', kind: 'due', origin: 'Từ đề thi thử' },
+{ front: 'Tỷ lệ hiện mắc = số người đang mắc ÷ …?', deck: 'Chủ đề 3', due: 'Sau 2 ngày', kind: 'review', origin: 'Từ quiz học phần' },
+{ front: 'Liều VGB sơ sinh: trong vòng […] giờ đầu sau sinh', deck: 'Tiêm chủng', due: 'Đến hạn hôm nay', kind: 'due', origin: 'Từ bài đánh giá' },
+{ front: 'Phân biệt tỷ suất và tỷ lệ', deck: 'Chủ đề 2', due: 'Đến hạn hôm nay', kind: 'leech', origin: 'Từ quiz học phần', leech: true },
+{ front: 'Nghiên cứu cắt ngang ước lượng chỉ số nào?', deck: 'Chủ đề 2', due: 'Sau 6 ngày', kind: 'review', origin: 'Từ đề thi thử' },
+{ front: 'Tỷ lệ tấn công dùng trong tình huống nào?', deck: 'Chủ đề 3', due: 'Mới', kind: 'new', origin: 'Từ quiz học phần' },
+{ front: 'Tỷ số chênh (OR) dùng trong thiết kế nào?', deck: 'Chủ đề 2', due: 'Tạm ẩn', kind: 'suspended', origin: 'Từ quiz học phần' }
+];
+var f = this.state.filter;
+var shown = all.filter(function (c) { return f === 'all' || c.kind === f || (f === 'due' && c.kind === 'leech'); });
+var cards = shown.map(function (c) {
+var dueColor = c.kind === 'new' ? '#1F5FAD' : (c.kind === 'suspended' ? '#8A938F' : (c.kind === 'review' ? '#58635F' : '#17603E'));
+return {
+front: c.front, deck: c.deck, due: c.due, origin: c.origin, leech: !!c.leech,
+frontStyle: 'font-size: 15px; font-weight: 500; line-height: 1.45; ' + (c.kind === 'suspended' ? 'color: #8A938F; text-decoration: line-through;' : 'color: #15201C;'),
+dueStyle: 'font-weight: 600; color: ' + dueColor,
+menuLabel: 'Tùy chọn thẻ: ' + c.front
+};
+});
+var defs = [{ id: 'all', label: 'Tất cả' }, { id: 'due', label: 'Đến hạn' }, { id: 'new', label: 'Mới' }, { id: 'leech', label: 'Khó nhớ' }, { id: 'suspended', label: 'Tạm ẩn' }];
+var filters = defs.map(function (d) {
+var on = d.id === f;
+return { label: d.label, pressed: on ? 'true' : 'false', style: 'min-height: 44px; flex-shrink: 0; padding: 0 16px; border-radius: 999px; font-family: inherit; font-size: 14px; font-weight: 500; cursor: pointer; ' + (on ? 'background: #15201C; color: #FFFFFF; border: 1px solid #15201C;' : 'background: #FFFFFF; color: #15201C; border: 1px solid #C9D0CC;'), pick: function () { self.setState({ filter: d.id }); } };
+});
+return { cards: cards, filters: filters };
+}
+}
+</script>
+</body>
+</html>

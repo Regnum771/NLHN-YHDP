@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<title>B1 · Học phần — bản đồ năng lực</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&amp;family=Literata:opsz,wght@7..72,400;7..72,500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#1E7A4F;text-decoration:none}a:hover{color:#17603E}
+</style>
+</helmet>
+<div style="width: 390px; height: 1060px; box-sizing: border-box; background: #F5F6F3; font-family: 'Be Vietnam Pro', system-ui, sans-serif; color: #15201C; display: flex; flex-direction: column; overflow: hidden">
+
+<header style="flex-shrink: 0; padding: 8px 16px 12px 8px; display: flex; align-items: flex-start; gap: 4px">
+<a href="Modules.dc.html" aria-label="Quay lại Luyện tập" style="width: 44px; height: 44px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; color: #15201C"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"></path></svg></a>
+<div style="display: flex; flex-direction: column; gap: 4px; padding-top: 8px">
+<h1 style="margin: 0; font-size: 22px; font-weight: 700; line-height: 1.3">Dịch tễ học cơ bản</h1>
+<span style="font-size: 13px; color: #58635F">8 chủ đề · 2 đạt ngưỡng · 1 đang học</span>
+</div>
+</header>
+
+<main style="flex-grow: 1; overflow-y: auto; padding: 4px 16px 20px 16px; display: flex; flex-direction: column; gap: 18px">
+
+<section aria-labelledby="rec-title" style="background: #15201C; color: #FFFFFF; border-radius: 20px; padding: 18px; display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 12px; font-weight: 600; color: #A6DDBF; text-transform: uppercase; letter-spacing: 0.06em">Gia sư đề xuất</span>
+<h2 id="rec-title" style="margin: 0; font-size: 18px; font-weight: 700; line-height: 1.4">Củng cố mẫu số trước khi sang Tỷ suất tử vong</h2>
+<p style="margin: 0; font-size: 14px; line-height: 1.55; color: #E2EAE6">Bạn sai phần mẫu số ở 3/4 câu gần nhất về các tỷ lệ. Mình chọn riêng 6 câu, khoảng 8 phút.</p>
+<div style="display: flex; gap: 8px; align-items: center; padding-top: 4px">
+<a href="SmartB_Quiz.dc.html" style="min-height: 46px; padding: 0 18px; border-radius: 12px; background: #FFFFFF; color: #15201C; font-size: 15px; font-weight: 600; display: flex; align-items: center">Luyện 6 câu</a>
+<button type="button" style="min-height: 46px; padding: 0 14px; border: 0; background: transparent; color: #A6DDBF; font-family: inherit; font-size: 14px; cursor: pointer">Để sau</button>
+</div>
+</section>
+
+<div style="display: flex; flex-direction: column; gap: 8px">
+<h2 style="margin: 0; font-size: 13px; font-weight: 600; color: #58635F; text-transform: uppercase; letter-spacing: 0.06em">Lộ trình chủ đề</h2>
+<span style="display: flex; align-items: center; gap: 8px; font-size: 12px; color: #3B4541">
+<span style="display: grid; grid-template-columns: repeat(3, 14px); gap: 3px"><span style="height: 6px; border-radius: 3px; background: #1E7A4F"></span><span style="height: 6px; border-radius: 3px; background: #1E7A4F"></span><span style="height: 6px; border-radius: 3px; background: #E6EAE7"></span></span>
+Ba vạch = Nhớ · Hiểu · Vận dụng, tô theo câu đúng gần đây</span>
+</div>
+
+<ol style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column">
+<sc-for list="{{ topics }}" as="t" hint-placeholder-count="8">
+<li style="display: flex; gap: 12px">
+<span style="display: flex; flex-direction: column; align-items: center; width: 20px; flex-shrink: 0; padding-top: 4px">
+<span style="{{ t.node }}"></span>
+<span style="{{ t.line }}"></span>
+</span>
+<div style="flex-grow: 1; min-width: 0; display: flex; flex-direction: column; gap: 10px; padding-bottom: 16px">
+<button type="button" onClick="{{ t.toggle }}" aria-expanded="{{ t.expanded }}" style="border: 0; background: transparent; padding: 0; text-align: left; font-family: inherit; color: #15201C; cursor: pointer; display: flex; flex-direction: column; gap: 8px; min-height: 44px">
+<span style="display: flex; justify-content: space-between; align-items: baseline; gap: 10px; width: 100%">
+<span style="font-size: 15px; font-weight: 600; line-height: 1.35">{{ t.name }}</span>
+<span style="{{ t.statusStyle }}">{{ t.status }}</span>
+</span>
+<span style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px; width: 100%">
+<sc-for list="{{ t.levels }}" as="l" hint-placeholder-count="3">
+<span style="display: block; height: 6px; border-radius: 3px; background: #E6EAE7; overflow: hidden"><span style="{{ l.fill }}"></span></span>
+</sc-for>
+</span>
+</button>
+<sc-if value="{{ t.open }}" hint-placeholder-val="{{ false }}">
+<div style="background: #FFFFFF; border: 1px solid #DCE1DD; border-radius: 14px; padding: 12px 14px; display: flex; flex-direction: column; gap: 10px">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<sc-for list="{{ t.levels }}" as="l" hint-placeholder-count="3">
+<span style="display: flex; justify-content: space-between; font-size: 13px"><span style="color: #3B4541">{{ l.name }}</span><span style="font-weight: 600">{{ l.text }}</span></span>
+</sc-for>
+</div>
+<span style="font-size: 13px; color: #3B4541; border-top: 1px solid #ECEFEC; padding-top: 10px">{{ t.cards }}</span>
+<div style="display: flex; gap: 8px">
+<a href="Unit.dc.html" style="flex-grow: 1; min-height: 44px; border-radius: 12px; border: 1px solid #C9D0CC; color: #15201C; font-size: 14px; font-weight: 500; display: flex; align-items: center; justify-content: center">Học chủ đề</a>
+<a href="SmartB_Quiz.dc.html" style="flex-grow: 1; min-height: 44px; border-radius: 12px; background: #1E7A4F; color: #FFFFFF; font-size: 14px; font-weight: 600; display: flex; align-items: center; justify-content: center">Luyện chủ đề</a>
+</div>
+</div>
+</sc-if>
+</div>
+</li>
+</sc-for>
+</ol>
+</main>
+
+<nav aria-label="Điều hướng chính" style="height: 72px; flex-shrink: 0; background: #FFFFFF; border-top: 1px solid #DCE1DD; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); padding-bottom: 6px; box-sizing: border-box">
+<a href="Main.dc.html" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; font-size: 11px; color: #58635F"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"></path></svg>Trang chủ</a>
+<a href="Chat.dc.html" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; font-size: 11px; color: #58635F"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"></path></svg>Hỏi đáp</a>
+<a href="Modules.dc.html" aria-current="page" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; font-size: 11px; font-weight: 600; color: #1E7A4F"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"></path><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"></path></svg>Luyện tập</a>
+<a href="Exams.dc.html" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; font-size: 11px; color: #58635F"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"></circle><path d="M12 9v4l2.5 2.5"></path><path d="M9 2h6"></path></svg>Thi thử</a>
+<a href="ProgressSkills.dc.html" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; font-size: 11px; color: #58635F"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10"></path><path d="M10 20V4"></path><path d="M16 20v-7"></path><path d="M22 20H2"></path></svg>Tiến độ</a>
+</nav>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":1060}}'>
+class Component extends DCLogic {
+constructor(props) {
+super(props);
+this.state = { open: 2 };
+}
+renderVals() {
+var self = this;
+var none = [[0, 'chưa làm'], [0, 'chưa làm'], [0, 'chưa làm']];
+var data = [
+{ name: 'Khái niệm cơ bản', state: 'done', status: 'Đạt ngưỡng', lv: [[100, '8/8 câu đúng'], [100, '6/6 câu đúng'], [80, '4/5 câu đúng']], cards: 'Không có thẻ đến hạn' },
+{ name: 'Quần thể và chọn mẫu', state: 'fade', status: '2 thẻ cần ôn', lv: [[100, '7/7 câu đúng'], [80, '4/5 câu đúng'], [50, '2/4 câu đúng']], cards: '2 thẻ đến hạn hôm nay — đã 9 ngày chưa ôn' },
+{ name: 'Đo lường bệnh trạng', state: 'current', status: 'Đang học · 3/5', lv: [[100, '3/3 câu đúng'], [50, '2/4 câu đúng'], [0, 'chưa làm']], cards: '3 thẻ mới từ câu bạn sai · ôn lần đầu ngày mai' },
+{ name: 'Tỷ suất tử vong', state: 'next', status: 'Gợi ý tiếp theo', lv: none, cards: 'Mở sau khi củng cố mẫu số — bạn vẫn có thể học ngay' },
+{ name: 'Thiết kế nghiên cứu', state: 'new', status: 'Chưa học', lv: none, cards: 'Chưa có thẻ' },
+{ name: 'Sai số và yếu tố nhiễu', state: 'new', status: 'Chưa học', lv: none, cards: 'Chưa có thẻ' },
+{ name: 'Điều tra vụ dịch', state: 'new', status: 'Chưa học', lv: none, cards: 'Chưa có thẻ' },
+{ name: 'Giám sát dịch tễ học', state: 'new', status: 'Chưa học', lv: none, cards: 'Chưa có thẻ' }
+];
+var nodeBase = 'display: block; width: 16px; height: 16px; border-radius: 8px; box-sizing: border-box; flex-shrink: 0; ';
+var nodes = {
+done: 'background: #1E7A4F;',
+fade: 'border: 3px solid #B4530A; background: #FDF3E4;',
+current: 'border: 4px solid #15201C; background: #FFFFFF;',
+next: 'border: 2px dashed #1E7A4F; background: #FFFFFF;',
+new: 'border: 2px solid #C9D0CC; background: #FFFFFF;'
+};
+var statusColor = { done: 'color: #17603E;', fade: 'color: #8F4207; font-weight: 600;', current: 'color: #15201C; font-weight: 600;', next: 'color: #17603E; font-weight: 600;', new: 'color: #58635F;' };
+var names = ['Nhớ', 'Hiểu', 'Vận dụng'];
+var open = this.state.open;
+var topics = data.map(function (t, i) {
+var isOpen = open === i;
+return {
+name: t.name,
+status: t.status,
+statusStyle: 'font-size: 12px; white-space: nowrap; ' + statusColor[t.state],
+node: nodeBase + nodes[t.state],
+line: 'display: block; width: 2px; flex-grow: 1; margin-top: 4px; background: ' + (i === data.length - 1 ? 'transparent' : (i < 2 ? '#1E7A4F' : '#DCE1DD')),
+levels: t.lv.map(function (l, k) {
+return { name: names[k], text: l[1], fill: 'display: block; height: 6px; background: #1E7A4F; width: ' + l[0] + '%' };
+}),
+cards: t.cards,
+open: isOpen,
+expanded: isOpen ? 'true' : 'false',
+toggle: function () { self.setState({ open: self.state.open === i ? -1 : i }); }
+};
+});
+return { topics: topics };
+}
+}
+</script>
+</body>
+</html>
